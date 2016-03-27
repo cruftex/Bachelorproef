@@ -232,13 +232,21 @@ They should be able to do this with an efficient method, customized to the needs
 \end{itemize}
 \chapter{Methodology}
 \label{ch:methodology}
-
+First, a literature study will take place about caching in general: what concepts and principles are used? Which steps can be differentiated when interacting with a cache? What are some common techniques? Some of these will later be revisited and possibly simplified, to use them on a mobile device.
+\\\\
+At the same time, research can be done defining which events are commonly handled by a mobile native application. However the case study will be performed in the Android platform, it is important to consider all platforms (Android, iOS, Windows) and how each of them handles these events.
+\\\\
+After these first two steps, we can think about how the cache could respond to these different events and why and when this would be beneficial. Depending on the needs of the cache, the ultimate result should maintain the caches integrity, especially concerning business data. Possibly critical business data could be lost or even worse: wrong or insufficient business data could later be synchronized to and from the underlying data service.
+\\\\
+Parallel with step 3, a literatur study concerning the synchronization between the frontend cache and the underlying data service will be done. What techniques are commonly used? What happens when there is two-way synchronization and there is conflicting data? Although this is partially out of the scope of the frontend developer, it is important that everyone has a clear view of what they can do to facilitate synchronization. The backend can influence frontend performance and the frontend can influence backend performance!
+\\\\
+All these concepts and ideas will then be tested in a case study, which will analyze the performance, from an frontend Android application and a backend Java EE application. 
+When talking about performance, this will be mainly about the performance benefits on the frontend. Performance benefits of caching in the backend is not in the scope of this thesis.
 % TODO: Hoe ben je te werk gegaan? Verdeel je onderzoek in grote fasen, en
 % licht in elke fase toe welke stappen je gevolgd hebt. Verantwoord waarom je
 % op deze manier te werk gegaan bent. Je moet kunnen aantonen dat je de best
 % mogelijke manier toegepast hebt om een antwoord te vinden op de
 % onderzoeksvraag.
-\lipsum[21-25]
 
 \chapter{Basics of caching}
 \label{ch:caching}
@@ -296,11 +304,46 @@ The time since the last reference to object $x$ can be known by storing the refe
 Intuitively, one could see a relationship between the spatial and temporal locality. When the spatial distance to an object is greater, the temporal distance usually also increases because it will need to cover more ground to retrieve the object. When the temporal distance is greater the spatial distance will usually increase because of pacification of the object: it will be stored on slower memory due to the lack of interaction.
 When checking the relevance of objects to the processor are checked, with $D(x,t) \leq T$, only some objects will pass the inequality, the set of these objects is 
 called the \emph{working set}. It are the objects in the working set that would, among others, be candidates for caching. 
-\section{Caching algorithms}
+\section{CRUD}
+When interacting with a cache, there are, in general, several operations that each cache is able to do. In general, you will want all operations that allow you to read the contents of a cache and to get from an arbitrary cache state, to any other arbitrary cache state through, possibly composite, operations. These operations are known as CRUD operations and are a main part of RESTful web services \citep{battle2008bridging}. This will allow an easier implementation when using Read Through (or Cache Aside) Caches.
+% TODO: Add reference to section about read through and cache aside
+\emph{CRUD} is an acronym for Create Read Update Delete and as the name suggests, 4 operations can be distinguished:
+\begin{itemize}
+\item \emph{Create} allows some client to add an object to a data set. When adding an object to a cache you will typically invoke an add-function receiving two arguments: a key and a value. SQL implements this with its INSERT-statements and HTTP integrates this using a POST request.
+\item \emph{Read} is used to get all information or a subset of information from a data set, in a typical cache this will be integrated as a get-function receiving
+the key of the value you wish to access. \emph{The key passed to the function is the same key that is passed to the add-function when creating a new cache entry.} SQL implements this with its SELECT-statements, commonly known as queries, and HTTP integrates this using a GET request.
+\item \emph{Update} will change the contents of an existing object, this is separated from Create as these two might be treated differently, depending on the system in which the data set is embedded. A cache will mostly provide a common API for both Create and Update: a function with a key and a value as its parameters. Yet they might be seperated into separate functions to increase readability or to simplify event triggering. SQL implements this with its UPDATE-statement and HTTP implements this using PUT-requests.
+\item \emph{Delete} is used when an element should no longer be an element of the data set. In a cache this might happen when an object is outdated, or if the object has also been removed in the data service. You would then call a delete-function passing the key of the object that should be removed. SQL implements this with its DELETE-statements and HTTP integrates this with its DELETE request.
+\end{itemize}
+\citep{battle2008bridging} Note how these operations are defined on the database-level, software application level, and networking level. Also note how an interface of a cache should at least contain functions allowing the user to execute all CRUD-operations, yet they are not limited by them.
+\chapter{Cache replacement algorithms}
+Now that we know \emph{what} should be possible with caches, we can ask ourselves the question \emph{how} we could implement all of this, the algorithms implementing a cache system are called \emph{cache replacement algorithms} or \emph{cache replacement policies}. Yet not just any cache replacement algorithm will do, we are trying to find the most optimal algorithm, the one that will provide the best (performance) results by interacting with it using CRUD-operations. 
+Although most algorithms are only based on your interactions with the cache, some algorithms can be run on separate processes/threads that are
+then responsible for maintaining the cache even without interactions with the user.
+\section{RR}
+The first cache replacement algorithm that will be discussed is the Random Replacement strategy. Of all the strategies, this one could be considered one of the strategies with the lowest overhead and the easiest implementations \citep{random_replacement}. This makes it ideal for certain low-level systems or hardware that cannot afford many processing cycles on cache management.
+\paragraph{Read} When trying to get a certain object by its key, the algorithm can use any sorted or non-sorted collection. When using an non-sorted collection it would check each element in the collection in $\mathcal{O}(n)$. Note how this defines the upper bound of the function, therefore it could also be in constant time or $\mathcal{O}(\log_2n)$ when performing a binary search on a sorted list.
+\paragraph{Create} When adding an object while the cache is not yet full, it could simply be added to the collection, algorithm-independently. When the cache is already full, the algorithm will randomly remove replace an object from the collection by the new object that should be stored. The operation itself is primitive and easy to program, the only difficulty is creating a reliable random generator, yet this is not in the scope of this algorithm.
+\paragraph{Update} Updating is similar to \emph{create}, if the key is present it will result in a \emph{read} to get the appropriate object and then changes the object. If the key is not in the cache, it could either \emph{create} object or alarm the user that it is not present.
+\paragraph{Delete} When deleting an object, based on a key, it can be done by first performing a \emph{read} to know whether the key is present and if so removing it. Yet some collections will do this nevertheless, in that scenario the algorithm could simply delegate to the delete function from the backing collection.
+\section{FIFO}
+FIFO, acronym for First-In-First-Out, is a cache replacement policy much like a queue. New objects are inserted at one end of the queue, when the cache is full the first object at the other end will be discarded and the new object will be added at the insertion end \citep{reineke2007timing}. FIFO is analogous to FCFS, First-Come First-Served, which is used in OS scheduling algorithms.
+Note that the hit ratio performance of the FIFO replacement strategy is like the hit ratio performance of the RR replacement strategy \citep{rao1978performance}.
+\paragraph{Read} A read in a FIFO policy results in a queue being scanned in $\Theta(n)$, almost just like RR. The difference between RR and FIFO is that a FIFO cannot be a sorted collection, since its performance is based on a ``constantly'' defined sorting structure, this means that you cannot just swap two elements in the cache and expect it to work just the same: you have changed the actual state of the cache. Just like RR, a read does not change the state of the cache.
+\paragraph{Create} When adding a new object to the cache it will, without loss of generality, be placed on the left side of the queue. When the queue is full, the first element on the right will be removed and all other objects will be ``moved to the right'' (however this is not an actual operation that occurs in an efficient queue implementation), clearing a space on the left, ready to be filled in by the new object.
+\paragraph{Update} When updating an existing object, based on a key, there will be a read that will then change the object at the index $i$ by the new object. After the object $x$ is updated, $x$ should then be removed from the queue, every element left of $x$ should then be moved to the right and $x$ is again added to the left side of the queue. Note that all these operations should be executed in a procedural or atomic way.
+\paragraph{Delete} When deleting an existing object, you scan the queue until you find the index with value $x$ corresponding to the given key. You will then remove $x$ and move all elements left of $x$ to the right. The next object added to the queue will therefore not cause the object (completely) at the right to be removed from the cache.
+\section{LRU}
 An \emph{LRU-cache} (Least-Recently-Used Cache) is an efficient way of caching objects based on their temporal locality, by storing new objects to the cache while overriding the oldest cache lines/elements when the cache is full
 \citep{cache-algorithm-lru-belady}.
-There is currently no \emph{trivial} cache mechanism focusing on spatial locality, this would be a cache keeping objects predicted to be accessed due to some spatial locality/localities. \emph{Bélady's algorithm} is considered the most optimal caching algorithm available, as it discards the objects from which he knows it will not be needed for the longest period of time \citep{cache-algorithm-lru-belady}. Yet there are no claims whether this is the most optimal caching algorithm considering a dynamic cost for retrieving uncached data.
-% Read file:///D:/School/TI-3AS2/Bachelorproef/Bronnen/1-s2.0-S0140366400003121-main.pdf
+\section{MRU}
+\section{LFU}
+\section{LIRS?}
+\section{Bélády's algorithm}
+There is currently no \emph{trivial} cache mechanism focusing on spatial locality, this would be a cache keeping objects predicted to be accessed due to some spatial locality/localities. \emph{Bélády's algorithm} is considered the most optimal cache replacement algorithm available, as it discards the objects from which he knows it will not be needed for the longest period of time \citep{cache-algorithm-lru-belady}. Yet there are no claims whether this is the most optimal cache replacement algorithm considering a dynamic cost for retrieving uncached data.
+
+% TODO: Talk about how we are not talking about what happens if the cache does not find the object (cache aside & read through)
+% TODO: Read file:///D:/School/TI-3AS2/Bachelorproef/Bronnen/1-s2.0-S0140366400003121-main.pdf
 
 \chapter{Conclusion}
 \label{ch:conclusion}

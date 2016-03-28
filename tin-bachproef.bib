@@ -2,15 +2,16 @@
 % Encoding: Cp1252
 
 
-@Standard{cache-algorithm-lru-belady,
+@Unpublished{cache-algorithm-lru-belady,
   Title                    = {And Page Replacement Algorithms: Anomaly Cases},
-  Institution              = {Baghdad college of Economics Sciences},
   Author                   = {Najeeb A Al-Samarraie},
-  Url                      = {http://www.iasj.net/iasj?func=fulltext&aId=50712},
+  Note                     = {Baghdad college of Economics Sciences},
   Year                     = {n.d.},
 
+  Institution              = {Baghdad college of Economics Sciences},
   Owner                    = {Frederik},
-  Timestamp                = {2016.03.22}
+  Timestamp                = {2016.03.22},
+  Url                      = {http://www.iasj.net/iasj?func=fulltext&aId=50712}
 }
 
 @Article{battle2008bridging,
@@ -23,6 +24,16 @@
   Volume                   = {6},
 
   Publisher                = {Elsevier}
+}
+
+@Manual{lru_implementation,
+  Title                    = {LRU cache implementation in C++},
+  Author                   = {Tim Day},
+  Year                     = {2010-2012},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.03.28},
+  Url                      = {http://timday.bitbucket.org/lru.pdf}
 }
 
 @Article{locality_principle,
@@ -65,6 +76,15 @@
   Url                      = {https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html}
 }
 
+@InProceedings{fricker2012versatile,
+  Title                    = {A versatile and accurate approximation for LRU cache performance},
+  Author                   = {Fricker, Christine and Robert, Philippe and Roberts, James},
+  Booktitle                = {Proceedings of the 24th International Teletraffic Congress},
+  Year                     = {2012},
+  Organization             = {International Teletraffic Congress},
+  Pages                    = {8}
+}
+
 @Misc{extremetech_multilevelcache,
   Title                    = {How L1 and L2 CPU caches work, and why they're an essential part of modern chips},
 
@@ -102,6 +122,18 @@
   Publisher                = {ACM}
 }
 
+@Article{reineke2007timing,
+  Title                    = {Timing predictability of cache replacement policies},
+  Author                   = {Reineke, Jan and Grund, Daniel and Berg, Christoph and Wilhelm, Reinhard},
+  Journal                  = {Real-Time Systems},
+  Year                     = {2007},
+  Number                   = {2},
+  Pages                    = {99--122},
+  Volume                   = {37},
+
+  Publisher                = {Springer}
+}
+
 @Article{wulf1995hitting,
   Title                    = {Hitting the memory wall: implications of the obvious},
   Author                   = {Wulf, Wm A and McKee, Sally A},
@@ -112,6 +144,17 @@
   Volume                   = {23},
 
   Publisher                = {ACM}
+}
+
+@article{guan2014wcet,
+  title={WCET analysis with MRU cache: challenging LRU for predictability},
+  author={Guan, Nan and Lv, Mingsong and Yi, Wang and Yu, Ge},
+  journal={ACM Transactions on Embedded Computing Systems (TECS)},
+  volume={13},
+  number={4s},
+  pages={123},
+  year={2014},
+  publisher={ACM}
 }
 
 @Standard{random_replacement,
@@ -126,14 +169,3 @@
   Timestamp                = {2016.03.27}
 }
 
-
-@article{reineke2007timing,
-  title={Timing predictability of cache replacement policies},
-  author={Reineke, Jan and Grund, Daniel and Berg, Christoph and Wilhelm, Reinhard},
-  journal={Real-Time Systems},
-  volume={37},
-  number={2},
-  pages={99--122},
-  year={2007},
-  publisher={Springer}
-}

@@ -1,3 +1,4 @@
+# Latex
 *.aux
 *.glo
 *.idx
@@ -21,3 +22,13 @@
 *.mtc1
 *.out
 *.synctex.gz
+
+# Android cache benchmarking
+CacheBenchmarking/*.iml
+CacheBenchmarking/.gradle
+CacheBenchmarking//local.properties
+CacheBenchmarking//.idea/workspace.xml
+CacheBenchmarking//.idea/libraries
+CacheBenchmarking/.DS_Store
+CacheBenchmarking//build
+CacheBenchmarking//captures

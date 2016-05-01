@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">CacheBenchmarking</string>
+    <string name="app_name">Cache benchmarking</string>
+    <string name="benchmark_completed">Completed benchmark, check log for more information!</string>
 </resources>

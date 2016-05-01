@@ -9,4 +9,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="desmedt.frederik.cachebenchmarking.ui.BenchmarkActivity">
 
+    <ProgressBar
+        android:id="@+id/benchmarkProgressBar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:max="100" />
+
+    <ImageView
+        android:id="@+id/checkCompleted"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_check_green_24dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/textCompleted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkCompleted"
+        android:layout_centerHorizontal="true"
+        android:text="@string/benchmark_completed"
+        android:textAlignment="center"
+        android:visibility="invisible" />
 </RelativeLayout>

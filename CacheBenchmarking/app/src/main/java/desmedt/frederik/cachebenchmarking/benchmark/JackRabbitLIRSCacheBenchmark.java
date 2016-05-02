@@ -1,15 +1,5 @@
 package desmedt.frederik.cachebenchmarking.benchmark;
 
-import android.util.Pair;
-
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-
-import java.util.Random;
-
-import desmedt.frederik.cachebenchmarking.CacheBenchmarkConfiguration;
-import desmedt.frederik.cachebenchmarking.generator.RandomNumberGenerator;
-
 /**
  * Contains a collection of LIRS cache benchmarks, by JackRabbit, as inner classes.
  */
@@ -22,13 +12,13 @@ public class JackRabbitLIRSCacheBenchmark {
 //    public static class RandomRead extends CacheBenchmarkConfiguration<Integer, Integer> {
 //
 //        private final Cache<Integer, Integer> cache;
-//        private final RandomNumberGenerator generator;
+//        private final RandomGenerator generator;
 //
 //        public RandomRead(int cacheSize, int lowerBound, int upperBound) {
 //            super("LIRSRRead (" + cacheSize + ")", lowerBound, upperBound);
 //            cache = createCache(cacheSize);
 //
-//            generator = new RandomNumberGenerator(lowerBound, upperBound);
+//            generator = new RandomGenerator(lowerBound, upperBound);
 //            for (int i = 0; i < cacheSize || i < upperBound; i++) {
 //                cache.put(lowerBound + i, generator.next());
 //            }
@@ -78,14 +68,14 @@ public class JackRabbitLIRSCacheBenchmark {
 //    public static class Delete extends CacheBenchmarkConfiguration<Integer, Integer> {
 //
 //        private final Cache<Integer, Integer> cache;
-//        private final RandomNumberGenerator generator;
+//        private final RandomGenerator generator;
 //        private int lastKey = 0;
 //
 //        public Delete(int cacheSize, int lowerBound, int upperBound) {
 //            super("LIRSDelete (" + cacheSize + ")", lowerBound, upperBound);
 //            cache = createCache(cacheSize);
 //
-//            generator = new RandomNumberGenerator(lowerBound, upperBound);
+//            generator = new RandomGenerator(lowerBound, upperBound);
 //
 //            for (int i = 0; i < upperBound - lowerBound; i++) {
 //                cache.put(i + lowerBound, generator.next());
@@ -119,13 +109,13 @@ public class JackRabbitLIRSCacheBenchmark {
 //
 //        private Random random = new Random();
 //        private final Cache<Integer, Integer> cache;
-//        private final RandomNumberGenerator generator;
+//        private final RandomGenerator generator;
 //
 //        public Update(int cacheSize, int lowerBound, int upperBound) {
 //            super("LIRSUpdate (" + cacheSize + ")", lowerBound, upperBound);
 //            cache = createCache(cacheSize);
 //
-//            generator = new RandomNumberGenerator(lowerBound, upperBound);
+//            generator = new RandomGenerator(lowerBound, upperBound);
 //        }
 //
 //        @Override

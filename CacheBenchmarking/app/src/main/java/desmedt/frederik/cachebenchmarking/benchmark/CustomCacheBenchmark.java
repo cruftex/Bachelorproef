@@ -6,7 +6,9 @@ import java.util.Random;
 
 import desmedt.frederik.cachebenchmarking.CacheBenchmarkConfiguration;
 import desmedt.frederik.cachebenchmarking.cache.Cache;
-import desmedt.frederik.cachebenchmarking.generator.RandomNumberGenerator;
+import desmedt.frederik.cachebenchmarking.generator.Generator;
+import desmedt.frederik.cachebenchmarking.generator.RandomGenerator;
+import desmedt.frederik.cachebenchmarking.generator.ZipfGenerator;
 
 /**
  * A collection of cache benchmark configurations for every custom cache implemented.
@@ -17,17 +19,17 @@ public class CustomCacheBenchmark {
 
         private Cache<Integer, Integer> cache;
         private final Random random = new Random();
-        private final RandomNumberGenerator generator;
+        private final RandomGenerator generator;
         private int nextKey;
 
         public Insert(String name, Cache<Integer, Integer> cache, int lowerBound, int upperBound) {
             super(name + "Insert (" + cache.maxSize() + ")", lowerBound, upperBound);
             this.cache = cache;
-            generator = new RandomNumberGenerator(lowerBound, upperBound);
+            generator = new RandomGenerator(lowerBound, upperBound);
         }
 
         @Override
-        protected void cleanup() {
+        protected void cleanup(Integer key, Integer value, boolean succeeded) {
             nextKey = generator.next();
             cache.remove(nextKey);
         }
@@ -48,16 +50,12 @@ public class CustomCacheBenchmark {
 
         private final Cache<Integer, Integer> cache;
         private final Random random = new Random();
-        private final RandomNumberGenerator generator;
+        private final RandomGenerator generator;
 
         public RandomRead(String name, Cache<Integer, Integer> cache, int lowerBound, int upperBound) {
             super(name + "RRead (" + cache.maxSize() + ")", lowerBound, upperBound);
             this.cache = cache;
-            generator = new RandomNumberGenerator(lowerBound, upperBound);
-
-            for (int i = 0; i < upperBound || i < cache.maxSize(); i++) {
-                cache.put(i + lowerBound, random.nextInt());
-            }
+            generator = new RandomGenerator(lowerBound, upperBound);
         }
 
         @Override
@@ -69,18 +67,55 @@ public class CustomCacheBenchmark {
         protected Pair<Integer, Integer> generateInput() {
             return new Pair<>(generator.next(), generator.next());
         }
+
+        @Override
+        protected void cleanup(Integer key, Integer value, boolean succeeded) {
+            if (!succeeded) {
+                cache.put(key, value);
+            }
+        }
+    }
+
+    public static class ZipfRead extends CacheBenchmarkConfiguration<Integer, Integer> {
+
+        private final Cache<Integer, Integer> cache;
+        private final Random random = new Random();
+        private final Generator<Integer> generator;
+
+        public ZipfRead(String name, Cache<Integer, Integer> cache, int lowerBound, int upperBound) {
+            super(name + "ZRead (" + cache.maxSize() + ")", lowerBound, upperBound);
+            this.cache = cache;
+            generator = new ZipfGenerator(lowerBound, upperBound);
+        }
+
+        @Override
+        protected boolean run(Integer key, Integer value) {
+            return cache.get(key) != null;
+        }
+
+        @Override
+        protected Pair<Integer, Integer> generateInput() {
+            return new Pair<>(generator.next(), generator.next());
+        }
+
+        @Override
+        protected void cleanup(Integer key, Integer value, boolean succeeded) {
+            if (!succeeded) {
+                cache.put(key, value);
+            }
+        }
     }
 
     public static class Update extends CacheBenchmarkConfiguration<Integer, Integer> {
 
         private Cache<Integer, Integer> cache;
         private final Random random = new Random();
-        private final RandomNumberGenerator generator;
+        private final RandomGenerator generator;
 
         public Update(String name, Cache<Integer, Integer> cache, int lowerBound, int upperBound) {
             super(name + "Update (" + cache.maxSize() + ")", lowerBound, upperBound);
             this.cache = cache;
-            generator = new RandomNumberGenerator(lowerBound, upperBound);
+            generator = new RandomGenerator(lowerBound, upperBound);
         }
 
         @Override
@@ -99,13 +134,13 @@ public class CustomCacheBenchmark {
 
         private Cache<Integer, Integer> cache;
         private final Random random = new Random();
-        private final RandomNumberGenerator generator;
+        private final RandomGenerator generator;
         private int lastKey;
 
         public Delete(String name, Cache<Integer, Integer> cache, int lowerBound, int upperBound) {
             super(name + "Delete (" + cache.maxSize() + ")", lowerBound, upperBound);
             this.cache = cache;
-            generator = new RandomNumberGenerator(lowerBound, upperBound);
+            generator = new RandomGenerator(lowerBound, upperBound);
             for (int i = 0; i < upperBound - lowerBound; i++) {
                 cache.put(i + lowerBound, random.nextInt());
             }
@@ -129,7 +164,7 @@ public class CustomCacheBenchmark {
         }
 
         @Override
-        protected void cleanup() {
+        protected void cleanup(Integer key, Integer value, boolean succeeded) {
             cache.put(lastKey, 0);
         }
     }

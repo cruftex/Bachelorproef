@@ -1,16 +1,16 @@
 package desmedt.frederik.cachebenchmarking.benchmark;
 
-import android.util.Log;
 import android.util.Pair;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.LoadingCache;
 
 import java.util.Random;
 
 import desmedt.frederik.cachebenchmarking.CacheBenchmarkConfiguration;
-import desmedt.frederik.cachebenchmarking.generator.RandomNumberGenerator;
+import desmedt.frederik.cachebenchmarking.generator.Generator;
+import desmedt.frederik.cachebenchmarking.generator.RandomGenerator;
+import desmedt.frederik.cachebenchmarking.generator.ZipfGenerator;
 
 /**
  * Contains a collection of Guava benchmarks as inner classes.
@@ -20,7 +20,7 @@ public class GuavaBenchmarks {
     public static class RandomRead extends CacheBenchmarkConfiguration<Integer, Object> {
 
         private final Cache<Integer, Object> cache;
-        private final RandomNumberGenerator generator;
+        private final RandomGenerator generator;
 
         public RandomRead(int cacheSize, int lowerBound, int upperBound) {
             super("GuavaRRead (" + cacheSize + ")", lowerBound, upperBound);
@@ -28,10 +28,7 @@ public class GuavaBenchmarks {
                     .maximumSize(cacheSize)
                     .build();
 
-            generator = new RandomNumberGenerator(lowerBound, upperBound);
-            for (int i = 0; i < cacheSize || i < upperBound; i++) {
-                cache.put(lowerBound + i, generator.next());
-            }
+            generator = new RandomGenerator(lowerBound, upperBound);
         }
 
         @Override
@@ -41,7 +38,46 @@ public class GuavaBenchmarks {
 
         @Override
         protected Pair<Integer, Object> generateInput() {
-            return new Pair<>(generator.next(), null);
+            return new Pair<>(generator.next(), new Object());
+        }
+
+        @Override
+        protected void cleanup(Integer key, Object value, boolean succeeded) {
+            if (!succeeded) {
+                cache.put(key, value);
+            }
+        }
+    }
+
+    public static class ZipfRead extends CacheBenchmarkConfiguration<Integer, Object> {
+
+        private final Cache<Integer, Object> cache;
+        private final Generator<Integer> generator;
+
+        public ZipfRead(int cacheSize, int lowerBound, int upperBound) {
+            super("GuavaZRead (" + cacheSize + ")", lowerBound, upperBound);
+            cache = CacheBuilder.newBuilder()
+                    .maximumSize(cacheSize)
+                    .build();
+
+            generator = new ZipfGenerator(lowerBound, upperBound);
+        }
+
+        @Override
+        protected boolean run(Integer key, Object value) {
+            return cache.getIfPresent(key) != null;
+        }
+
+        @Override
+        protected Pair<Integer, Object> generateInput() {
+            return new Pair<>(generator.next(), new Object());
+        }
+
+        @Override
+        protected void cleanup(Integer key, Object value, boolean succeeded) {
+            if (!succeeded) {
+                cache.put(key, value);
+            }
         }
     }
 
@@ -60,7 +96,7 @@ public class GuavaBenchmarks {
         }
 
         @Override
-        protected void cleanup() {
+        protected void cleanup(Integer key, Integer value, boolean succeeded) {
             nextKey = getLowerKeyBound() + random.nextInt(getUpperKeyBound());
             cache.invalidate(nextKey);
         }
@@ -80,7 +116,7 @@ public class GuavaBenchmarks {
     public static class Delete extends CacheBenchmarkConfiguration<Integer, Object> {
 
         private final Cache<Integer, Integer> cache;
-        private final RandomNumberGenerator generator;
+        private final RandomGenerator generator;
         private int lastKey = 0;
 
         public Delete(int cacheSize, int lowerBound, int upperBound) {
@@ -89,7 +125,7 @@ public class GuavaBenchmarks {
                     .maximumSize(cacheSize)
                     .build();
 
-            generator = new RandomNumberGenerator(lowerBound, upperBound);
+            generator = new RandomGenerator(lowerBound, upperBound);
 
             for (int i = 0; i < upperBound - lowerBound; i++) {
                 cache.put(i + lowerBound, generator.next());
@@ -114,7 +150,7 @@ public class GuavaBenchmarks {
         }
 
         @Override
-        protected void cleanup() {
+        protected void cleanup(Integer key, Object value, boolean succeeded) {
             cache.put(lastKey, 0);
         }
     }
@@ -123,14 +159,14 @@ public class GuavaBenchmarks {
 
         private Random random = new Random();
         private final Cache<Integer, Integer> cache;
-        private final RandomNumberGenerator generator;
+        private final RandomGenerator generator;
 
         public Update(int cacheSize, int lowerBound, int upperBound) {
             super("GuavaUpdate (" + cacheSize + ")", lowerBound, upperBound);
             cache = CacheBuilder.newBuilder()
                     .maximumSize(cacheSize)
                     .build();
-            generator = new RandomNumberGenerator(lowerBound, upperBound);
+            generator = new RandomGenerator(lowerBound, upperBound);
         }
 
         @Override

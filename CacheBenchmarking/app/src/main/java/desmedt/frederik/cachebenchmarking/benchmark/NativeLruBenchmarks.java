@@ -3,13 +3,12 @@ package desmedt.frederik.cachebenchmarking.benchmark;
 import android.support.v4.util.LruCache;
 import android.util.Pair;
 
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-
 import java.util.Random;
 
 import desmedt.frederik.cachebenchmarking.CacheBenchmarkConfiguration;
-import desmedt.frederik.cachebenchmarking.generator.RandomNumberGenerator;
+import desmedt.frederik.cachebenchmarking.generator.Generator;
+import desmedt.frederik.cachebenchmarking.generator.RandomGenerator;
+import desmedt.frederik.cachebenchmarking.generator.ZipfGenerator;
 
 /**
  * Contains a collection of native LRU benchmarks as inner classes.
@@ -19,12 +18,12 @@ public class NativeLruBenchmarks {
     public static class Update extends CacheBenchmarkConfiguration<Integer, Integer> {
 
         private final LruCache cache;
-        private final RandomNumberGenerator generator;
+        private final RandomGenerator generator;
 
         public Update(int cacheSize, int lowerBound, int upperBound) {
             super("NativeLruUpdate (" + cacheSize + ")", lowerBound, upperBound);
             cache = new LruCache(cacheSize);
-            generator = new RandomNumberGenerator(lowerBound, upperBound);
+            generator = new RandomGenerator(lowerBound, upperBound);
         }
 
         @Override
@@ -43,16 +42,12 @@ public class NativeLruBenchmarks {
 
         private final LruCache cache;
         private final Random random = new Random();
-        private final RandomNumberGenerator generator;
+        private final RandomGenerator generator;
 
         public RandomRead(int cacheSize, int lowerBound, int upperBound) {
             super("NativeLruRRead (" + cacheSize + ")", lowerBound, upperBound);
             cache = new LruCache(cacheSize);
-            generator = new RandomNumberGenerator(lowerBound, upperBound);
-
-            for (int i = 0; i < upperBound || i < cacheSize; i++) {
-                cache.put(i + lowerBound, random.nextInt());
-            }
+            generator = new RandomGenerator(lowerBound, upperBound);
         }
 
         @Override
@@ -64,19 +59,56 @@ public class NativeLruBenchmarks {
         protected Pair<Integer, Integer> generateInput() {
             return new Pair<>(generator.next(), generator.next());
         }
+
+        @Override
+        protected void cleanup(Integer key, Integer value, boolean succeeded) {
+            if (!succeeded) {
+                cache.put(key, value);
+            }
+        }
+    }
+
+    public static class ZipfRead extends CacheBenchmarkConfiguration<Integer, Integer> {
+
+        private final LruCache cache;
+        private final Random random = new Random();
+        private final Generator<Integer> generator;
+
+        public ZipfRead(int cacheSize, int lowerBound, int upperBound) {
+            super("NativeLruZRead (" + cacheSize + ")", lowerBound, upperBound);
+            cache = new LruCache(cacheSize);
+            generator = new ZipfGenerator(lowerBound, upperBound);
+        }
+
+        @Override
+        protected boolean run(Integer key, Integer value) {
+            return cache.get(key) != null;
+        }
+
+        @Override
+        protected Pair<Integer, Integer> generateInput() {
+            return new Pair<>(generator.next(), generator.next());
+        }
+
+        @Override
+        protected void cleanup(Integer key, Integer value, boolean succeeded) {
+            if (!succeeded) {
+                cache.put(key, value);
+            }
+        }
     }
 
     public static class Delete extends CacheBenchmarkConfiguration<Integer, Integer> {
 
         private final LruCache cache;
         private final Random random = new Random();
-        private final RandomNumberGenerator generator;
+        private final RandomGenerator generator;
         private int nextKey;
 
         public Delete(int cacheSize, int lowerBound, int upperBound) {
             super("NativeLruDelete (" + cacheSize + ")", lowerBound, upperBound);
             cache = new LruCache(cacheSize);
-            generator = new RandomNumberGenerator(lowerBound, upperBound);
+            generator = new RandomGenerator(lowerBound, upperBound);
 
             for (int i = 0; i < upperBound - lowerBound; i++) {
                 cache.put(i + lowerBound, random.nextInt());
@@ -114,7 +146,7 @@ public class NativeLruBenchmarks {
         }
 
         @Override
-        protected void cleanup() {
+        protected void cleanup(Integer key, Integer value, boolean succeeded) {
             nextKey = getLowerKeyBound() + random.nextInt(getUpperKeyBound());
             cache.remove(nextKey);
         }

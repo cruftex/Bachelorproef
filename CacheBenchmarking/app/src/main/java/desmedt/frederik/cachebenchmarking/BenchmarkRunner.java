@@ -38,76 +38,101 @@ public class BenchmarkRunner {
 
         /* Insert benchmarks */
 
-        submitCountedBenchmark(new GuavaBenchmarks.Insert(10, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.Insert(10, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Insert("FifoCache", new FIFOCache<Integer, Integer>(10), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Insert("RandomCache", new RandomCache<Integer, Integer>(10), 0, 100));
+//        submitCountedBenchmark(new GuavaBenchmarks.Insert(10, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.Insert(10, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Insert("FifoCache", new FIFOCache<Integer, Integer>(10), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Insert("RandomCache", new RandomCache<Integer, Integer>(10), 0, 100));
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.Insert(100, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.Insert(100, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Insert("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Insert("RandomCache", new RandomCache<Integer, Integer>(100), 0, 100));
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.Insert(1000, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.Insert(1000, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Insert("FifoCache", new FIFOCache<Integer, Integer>(1000), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Insert("RandomCache", new RandomCache<Integer, Integer>(1000), 0, 100));
+//
+//        /* Random read benchmarks */
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.RandomRead(10, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.RandomRead(10, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("FifoCache", new FIFOCache<Integer, Integer>(10), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("RandomCache", new RandomCache<Integer, Integer>(10), 0, 100));
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.RandomRead(100, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.RandomRead(100, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("RandomCache", new RandomCache<Integer, Integer>(100), 0, 100));
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.RandomRead(1000, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.RandomRead(1000, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("FifoCache", new FIFOCache<Integer, Integer>(1000), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("RandomCache", new RandomCache<Integer, Integer>(1000), 0, 100));
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.RandomRead(100, 0, 10000));
+//        submitCountedBenchmark(new NativeLruBenchmarks.RandomRead(100, 0, 10000));
+//        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 10000));
+//        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("RandomCache", new RandomCache<Integer, Integer>(100), 0, 10000));
+        
+        /* Zipf read benchmarks */
 
-        submitCountedBenchmark(new GuavaBenchmarks.Insert(100, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.Insert(100, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Insert("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Insert("RandomCache", new RandomCache<Integer, Integer>(100), 0, 100));
+        submitCountedBenchmark(new GuavaBenchmarks.ZipfRead(1, 0, 10), 100, 10000);
+        submitCountedBenchmark(new NativeLruBenchmarks.ZipfRead(1, 0, 10), 100, 10000);
+        submitCountedBenchmark(new CustomCacheBenchmark.ZipfRead("FifoCache", new FIFOCache<Integer, Integer>(1), 0, 10), 100, 10000);
+        submitCountedBenchmark(new CustomCacheBenchmark.ZipfRead("RandomCache", new RandomCache<Integer, Integer>(1), 0, 10), 100, 10000);
 
-        submitCountedBenchmark(new GuavaBenchmarks.Insert(1000, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.Insert(1000, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Insert("FifoCache", new FIFOCache<Integer, Integer>(1000), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Insert("RandomCache", new RandomCache<Integer, Integer>(1000), 0, 100));
+        submitCountedBenchmark(new GuavaBenchmarks.ZipfRead(10, 0, 10), 100, 10000);
+        submitCountedBenchmark(new NativeLruBenchmarks.ZipfRead(10, 0, 10), 100, 10000);
+        submitCountedBenchmark(new CustomCacheBenchmark.ZipfRead("FifoCache", new FIFOCache<Integer, Integer>(10), 0, 10), 100, 10000);
+        submitCountedBenchmark(new CustomCacheBenchmark.ZipfRead("RandomCache", new RandomCache<Integer, Integer>(10), 0, 10), 100, 10000);
 
-        /* Random read benchmarks */
+        submitCountedBenchmark(new GuavaBenchmarks.ZipfRead(100, 0, 10), 100, 10000);
+        submitCountedBenchmark(new NativeLruBenchmarks.ZipfRead(100, 0, 10), 100, 10000);
+        submitCountedBenchmark(new CustomCacheBenchmark.ZipfRead("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 10), 100, 10000);
+        submitCountedBenchmark(new CustomCacheBenchmark.ZipfRead("RandomCache", new RandomCache<Integer, Integer>(100), 0, 10), 100, 10000);
 
-        submitCountedBenchmark(new GuavaBenchmarks.RandomRead(10, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.RandomRead(10, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("FifoCache", new FIFOCache<Integer, Integer>(10), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("RandomCache", new RandomCache<Integer, Integer>(10), 0, 100));
-
-        submitCountedBenchmark(new GuavaBenchmarks.RandomRead(100, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.RandomRead(100, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("RandomCache", new RandomCache<Integer, Integer>(100), 0, 100));
-
-        submitCountedBenchmark(new GuavaBenchmarks.RandomRead(1000, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.RandomRead(1000, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("FifoCache", new FIFOCache<Integer, Integer>(1000), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("RandomCache", new RandomCache<Integer, Integer>(1000), 0, 100));
-
-        submitCountedBenchmark(new GuavaBenchmarks.RandomRead(100, 0, 10000));
-        submitCountedBenchmark(new NativeLruBenchmarks.RandomRead(100, 0, 10000));
-        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 10000));
-        submitCountedBenchmark(new CustomCacheBenchmark.RandomRead("RandomCache", new RandomCache<Integer, Integer>(100), 0, 10000));
+        for (int i = 1; i < 9; i++) {
+            int cacheSize = Math.round(200 * ((float) i / 10));
+            submitCountedBenchmark(new GuavaBenchmarks.ZipfRead(cacheSize, 0, 200), 100, 10000);
+            submitCountedBenchmark(new NativeLruBenchmarks.ZipfRead(cacheSize, 0, 200), 100, 10000);
+            submitCountedBenchmark(new CustomCacheBenchmark.ZipfRead("FifoCache", new FIFOCache<Integer, Integer>(cacheSize), 0, 200), 100, 10000);
+            submitCountedBenchmark(new CustomCacheBenchmark.ZipfRead("RandomCache", new RandomCache<Integer, Integer>(cacheSize), 0, 200), 100, 10000);
+        }
 
         /* Update benchmarks */
 
-        submitCountedBenchmark(new GuavaBenchmarks.Update(10, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.Update(10, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Update("FifoCache", new FIFOCache<Integer, Integer>(10), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Update("RandomCache", new RandomCache<Integer, Integer>(10), 0, 100));
-
-        submitCountedBenchmark(new GuavaBenchmarks.Update(100, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.Update(100, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Update("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Update("RandomCache", new RandomCache<Integer, Integer>(100), 0, 100));
-
-        submitCountedBenchmark(new GuavaBenchmarks.Update(1000, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.Update(1000, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Update("FifoCache", new FIFOCache<Integer, Integer>(1000), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Update("RandomCache", new RandomCache<Integer, Integer>(1000), 0, 100));
-
-        /* Delete benchmarks */
-
-        submitCountedBenchmark(new GuavaBenchmarks.Delete(10, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.Delete(10, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Delete("FifoCache", new FIFOCache<Integer, Integer>(10), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Delete("RandomCache", new RandomCache<Integer, Integer>(10), 0, 100));
-
-        submitCountedBenchmark(new GuavaBenchmarks.Delete(100, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.Delete(100, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Delete("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Delete("RandomCache", new RandomCache<Integer, Integer>(100), 0, 100));
-
-        submitCountedBenchmark(new GuavaBenchmarks.Delete(1000, 0, 100));
-        submitCountedBenchmark(new NativeLruBenchmarks.Delete(1000, 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Delete("FifoCache", new FIFOCache<Integer, Integer>(1000), 0, 100));
-        submitCountedBenchmark(new CustomCacheBenchmark.Delete("RandomCache", new RandomCache<Integer, Integer>(1000), 0, 100));
+//        submitCountedBenchmark(new GuavaBenchmarks.Update(10, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.Update(10, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Update("FifoCache", new FIFOCache<Integer, Integer>(10), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Update("RandomCache", new RandomCache<Integer, Integer>(10), 0, 100));
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.Update(100, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.Update(100, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Update("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Update("RandomCache", new RandomCache<Integer, Integer>(100), 0, 100));
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.Update(1000, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.Update(1000, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Update("FifoCache", new FIFOCache<Integer, Integer>(1000), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Update("RandomCache", new RandomCache<Integer, Integer>(1000), 0, 100));
+//
+//        /* Delete benchmarks */
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.Delete(10, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.Delete(10, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Delete("FifoCache", new FIFOCache<Integer, Integer>(10), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Delete("RandomCache", new RandomCache<Integer, Integer>(10), 0, 100));
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.Delete(100, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.Delete(100, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Delete("FifoCache", new FIFOCache<Integer, Integer>(100), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Delete("RandomCache", new RandomCache<Integer, Integer>(100), 0, 100));
+//
+//        submitCountedBenchmark(new GuavaBenchmarks.Delete(1000, 0, 100));
+//        submitCountedBenchmark(new NativeLruBenchmarks.Delete(1000, 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Delete("FifoCache", new FIFOCache<Integer, Integer>(1000), 0, 100));
+//        submitCountedBenchmark(new CustomCacheBenchmark.Delete("RandomCache", new RandomCache<Integer, Integer>(1000), 0, 100));
 
         benchmarkRunnerService.submit(new Runnable() {
             @Override

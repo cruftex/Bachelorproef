@@ -1,11 +1,7 @@
 package desmedt.frederik.cachebenchmarking;
 
-import android.app.Instrumentation;
-import android.test.InstrumentationTestCase;
 import android.util.Log;
 import android.util.Pair;
-
-import java.lang.ref.WeakReference;
 
 /**
  * A benchmark configuration ran by the {@link BenchmarkRunner}.
@@ -88,8 +84,11 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
     /**
      * Optional intermediary step performed after each single run. Here the benchmark configuration has the
      * chance of cleaning everything up to maintain reliable runs. This method is not recorded/timed.
+     * @param key The key of the last run
+     * @param value The value of the last run
+     * @param succeeded Whether the last run succeeded or not
      */
-    protected void cleanup() {
+    protected void cleanup(K key, V value, boolean succeeded) {
     }
 
     /**
@@ -204,7 +203,7 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
             after = System.nanoTime();
         }
 
-        cleanup();
+        cleanup(input.first, input.second, succeeded);
         return new Recording(succeeded, after - before);
     }
 

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="cache2k-core-0.25-BETA">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.25-BETA/fd6512c85b0140f3848f06391042e63826ca315d/cache2k-core-0.25-BETA.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.25-BETA/1316b5ac8ebe59476ac727a7af07437b29a5b480/cache2k-core-0.25-BETA-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

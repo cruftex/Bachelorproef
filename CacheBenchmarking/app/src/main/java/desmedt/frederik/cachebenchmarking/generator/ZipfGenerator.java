@@ -16,12 +16,12 @@ public class ZipfGenerator implements Generator<Integer> {
     private double UPISA = 0.78;
 
     public ZipfGenerator(int lowerBound, int upperBound) {
-        double exponent = 0.7d + Math.random() * 0.3;
-        distribution = new ZipfDistribution(upperBound - lowerBound, exponent);
+        distribution = new ZipfDistribution(upperBound - lowerBound, UPISA);
     }
 
     @Override
     public Integer next() {
-        return distribution.sample();
+        int next = distribution.sample();
+        return next;
     }
 }

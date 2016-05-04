@@ -74,6 +74,25 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
     protected abstract Pair<K, V> generateInput();
 
     /**
+     * Optional step performed after initialization and before the benchmark run.
+     * Here the benchmark configuration has the chance of performing operations that should be run a
+     * single time before the benchmark is started, like initializing the cache.
+     * This method is not recorded/timed.
+     */
+    protected void setup() {
+    }
+
+    /**
+     * Optional step performed after the complete benchmark run with
+     * {@link CacheBenchmarkConfiguration#runMany(long, long)} and
+     * {@link CacheBenchmarkConfiguration#runTimed(long, long)}. Here the benchmark configuration has
+     * the chance of performing operations that should be run a single time after the benchmark run,
+     * like purging the cache. This method is not recorded/timed.
+     */
+    protected void tearDown() {
+    }
+
+    /**
      * Optional intermediary step performed before each single run. Here the benchmark configuration has
      * the chance of performing dependent operations that are required in the run, yet should not be
      * recorded. Therefore this method is not recorded/timed.
@@ -84,8 +103,9 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
     /**
      * Optional intermediary step performed after each single run. Here the benchmark configuration has the
      * chance of cleaning everything up to maintain reliable runs. This method is not recorded/timed.
-     * @param key The key of the last run
-     * @param value The value of the last run
+     *
+     * @param key       The key of the last run
+     * @param value     The value of the last run
      * @param succeeded Whether the last run succeeded or not
      */
     protected void cleanup(K key, V value, boolean succeeded) {
@@ -119,6 +139,7 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
      * @returns The final result after completing all iterations
      */
     public final Results runMany(long warmupIterations, long runIterations) {
+        setup();
         final Results results = new Results(name);
         final long logPoint = runIterations / CONFIGURATION_RUN_LOG_POINT_COUNT;
 
@@ -130,7 +151,8 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
         Log.i(TAG, "Completed warmup, starting run");
 
         for (int i = 0; i < runIterations; i++) {
-            results.submitRecording(randomRunAndRecord());
+            Recording recording = randomRunAndRecord();
+            results.submitRecording(recording);
             if (i % logPoint == 0 && i != 0) {
                 Log.i(TAG, String.format("Reached %d iterations after %d millis", i, results.getTotalTimeMillis()));
             }
@@ -152,6 +174,7 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
      * @returns The final result after completing all iterations fitting in <code>runMillis</code> milliseconds
      */
     public final Results runTimed(long warmupMillis, long runMillis) {
+        setup();
         long nextLogPoint = runMillis / CONFIGURATION_RUN_LOG_POINT_COUNT;
 
         Log.i(TAG, "Starting warmup");
@@ -310,6 +333,11 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
 
         public boolean isSuccess() {
             return success;
+        }
+
+        @Override
+        public String toString() {
+            return "Recording (" + getTime() + "): " + isSuccess();
         }
     }
 }

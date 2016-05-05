@@ -4,6 +4,7 @@ import com.google.common.cache.Cache;
 
 import java.util.Random;
 
+import desmedt.frederik.cachebenchmarking.CacheBenchmarkConfiguration;
 import desmedt.frederik.cachebenchmarking.cache.CacheLIRS;
 
 /**
@@ -51,6 +52,11 @@ public class JackRabbitLIRSBenchmark {
         protected boolean run(Integer key, Integer value) {
             return lirsCache.getIfPresent(key) != null;
         }
+
+        @Override
+        protected CacheStats generateStats() {
+            return CacheStats.read((int) lirsCache.stats().hitCount(), (int) lirsCache.stats().missCount(), getCacheSize(), (int) lirsCache.size());
+        }
     }
 
     public static class ZipfRead extends BaseBenchmark.ZipfRead<Integer> {
@@ -90,6 +96,11 @@ public class JackRabbitLIRSBenchmark {
             boolean present = result != null;
             return present;
         }
+
+        @Override
+        protected CacheStats generateStats() {
+            return CacheStats.read((int) lirsCache.stats().hitCount(), (int) lirsCache.stats().missCount(), getCacheSize(), (int) lirsCache.size());
+        }
     }
 
     public static class Insert extends BaseBenchmark.Insert<Integer> {
@@ -125,6 +136,11 @@ public class JackRabbitLIRSBenchmark {
         @Override
         protected boolean run(Integer key, Integer value) {
             return false;
+        }
+
+        @Override
+        protected CacheStats generateStats() {
+            return CacheStats.nonRead(getCacheSize(), (int) lirsCache.size());
         }
     }
 
@@ -163,6 +179,11 @@ public class JackRabbitLIRSBenchmark {
             lirsCache.invalidate(key);
             return true;
         }
+
+        @Override
+        protected CacheStats generateStats() {
+            return CacheStats.nonRead(getCacheSize(), (int) lirsCache.size());
+        }
     }
 
     public static class Update extends BaseBenchmark.Update<Integer> {
@@ -199,6 +220,11 @@ public class JackRabbitLIRSBenchmark {
         protected boolean run(Integer key, Integer value) {
             lirsCache.put(key, value);
             return true;
+        }
+
+        @Override
+        protected CacheStats generateStats() {
+            return CacheStats.nonRead(getCacheSize(), (int) lirsCache.size());
         }
     }
 }

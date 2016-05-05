@@ -7,11 +7,10 @@ import android.util.Pair;
  * A benchmark configuration ran by the {@link BenchmarkRunner}.
  * <p/>
  * Note how this class is immutable, this is to enforce a reliable never-changing configuration
- * that maintains the integrity of the end results. There is no way to retrieve the results of the
- * last run, e.g. a method <code>getResults()</code> as this could be used to cheat, the implementation
- * could trivially modify the last results in its favor. This can not be avoided in any other way
- * due to the intrinsically mutable nature of {@link Results}. Every cache benchmark configuration
- * handles keys and values, where the key is {@link Comparable}.
+ * that maintains the integrity of the end results.
+ * After the benchmark is run {@link CacheStats} are generated that can be retrieved.
+ *
+ * Every cache benchmark configuration handles keys and values, where the key is {@link Comparable}.
  */
 public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
 
@@ -26,6 +25,9 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
 
     private K lowerKeyBound;
     private K upperKeyBound;
+
+    private CacheStats stats;
+    private long totalTimeNanos;
 
     public CacheBenchmarkConfiguration(String name, K lowerBound, K upperBound) {
         this.name = name;
@@ -72,6 +74,18 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
      * @return A key-value pair used as a possible input for a single run
      */
     protected abstract Pair<K, V> generateInput();
+
+    /**
+     * Generates statistics regarding the cache that is being benchmarked. Based on the type of benchmark
+     * some of the properties of the returned stats are allowed to be null.
+     * <p/>
+     * This method should not be used when trying to get an overview of benchmark statistics,
+     * {@link CacheBenchmarkConfiguration#getStats()} should be used instead.
+     *
+     * @return Statistics relating to the cache
+     * @see CacheStats
+     */
+    protected abstract CacheStats generateStats();
 
     /**
      * Optional step performed after initialization and before the benchmark run.
@@ -138,29 +152,28 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
      * @param runIterations    How many iterations the configuration should be run and recorded
      * @returns The final result after completing all iterations
      */
-    public final Results runMany(long warmupIterations, long runIterations) {
+    public final void runMany(long warmupIterations, long runIterations) {
         setup();
-        final Results results = new Results(name);
         final long logPoint = runIterations / CONFIGURATION_RUN_LOG_POINT_COUNT;
 
         Log.i(TAG, "Starting warmup");
         for (int i = 0; i < warmupIterations; i++) {
-            randomRunAndRecord();
+            runAndRecord();
         }
 
         Log.i(TAG, "Completed warmup, starting run");
 
         for (int i = 0; i < runIterations; i++) {
-            Recording recording = randomRunAndRecord();
-            results.submitRecording(recording);
+            runAndRecord();
             if (i % logPoint == 0 && i != 0) {
-                Log.i(TAG, String.format("Reached %d iterations after %d millis", i, results.getTotalTimeMillis()));
+                Log.i(TAG, String.format("Reached %d iterations after %d millis", i, totalTimeNanos / 1_000_000));
             }
         }
 
+        stats = generateStats();
+        stats.benchmarkName = getName();
+        stats.averageRunTime = totalTimeNanos / runIterations;
         Log.i(TAG, "Completed run");
-
-        return results;
     }
 
     /**
@@ -173,43 +186,43 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
      * @param runMillis    How long the actual recorded run should be in milliseconds
      * @returns The final result after completing all iterations fitting in <code>runMillis</code> milliseconds
      */
-    public final Results runTimed(long warmupMillis, long runMillis) {
+    public final void runTimed(long warmupMillis, long runMillis) {
         setup();
         long nextLogPoint = runMillis / CONFIGURATION_RUN_LOG_POINT_COUNT;
 
         Log.i(TAG, "Starting warmup");
-        long accumulatedWarmupTime = 0;
-        while (accumulatedWarmupTime < warmupMillis) {
-            accumulatedWarmupTime += randomRunAndRecord().getTime();
+        while (totalTimeNanos < warmupMillis) {
+            runAndRecord();
         }
 
         Log.i(TAG, "Completed warmup, starting run");
 
-        final Results results = new Results(name);
-        while (results.getTotalTimeMillis() < runMillis) {
-            Recording recording = randomRunAndRecord();
-            if (results.getTotalTimeMillis() + recording.getTime() / 1_000_000 <= runMillis) {
-                results.submitRecording(recording);
-            } else {
-                // Stop the loop as the recording does not fit in the specified run time
+        totalTimeNanos = 0;
+        int totalIterations = 0;
+        while (totalTimeNanos < runMillis) {
+            totalIterations++;
+            runAndRecord();
+            if (totalTimeNanos / 1_000_000 >= runMillis) {
+                // Stop the loop as the recording passed the specified run time
                 // Repeating the run until there is a recording that fits in the specified run time
                 // is both indeterministic and unfair.
                 break;
             }
 
-            if (results.getTotalTimeMillis() >= nextLogPoint) {
-                Log.i(TAG, String.format("Reached %d iterations after %d millis", results.getTotalIterations(),
-                        results.getTotalTimeMillis()));
+            if (totalTimeNanos >= nextLogPoint) {
+                Log.i(TAG, String.format("Reached %d iterations after %d millis", totalIterations,
+                        totalTimeNanos / 1_000_000));
                 nextLogPoint = nextLogPoint + runMillis / CONFIGURATION_RUN_LOG_POINT_COUNT;
             }
         }
 
+        stats = generateStats();
+        stats.benchmarkName = getName();
+        stats.averageRunTime = totalTimeNanos / totalIterations;
         Log.i(TAG, "Completed run");
-
-        return results;
     }
 
-    private Recording randomRunAndRecord() {
+    private void runAndRecord() {
         prepare();
         final Pair<K, V> input = generateLegalInput();
         long before = 0;
@@ -227,117 +240,154 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
         }
 
         cleanup(input.first, input.second, succeeded);
-        return new Recording(succeeded, after - before);
+        totalTimeNanos += after - before;
     }
 
-    public static class Results {
-
-        private long totalTime;
-        private int iterations;
-        private String benchmarkConfigurationName;
-
-        private int successes;
-        private int failures;
-
-        public Results(String benchmarkConfigurationName) {
-            this.benchmarkConfigurationName = benchmarkConfigurationName;
-        }
-
-        /**
-         * Submit one new recording, used to accumulate all recordings to eventually be analyzed.
-         *
-         * @param recording A recording with the recorded time, in nanoseconds, and whether
-         *                  there is a successes
-         */
-        private void submitRecording(Recording recording) {
-            totalTime += recording.getTime();
-            iterations += 1;
-
-            if (recording.isSuccess()) {
-                successes += 1;
-            } else {
-                failures += 1;
-            }
-        }
-
-        /**
-         * @return The accumulated time of all recordings in nanoseconds.
-         */
-        public long getTotalTime() {
-            return totalTime;
-        }
-
-        /**
-         * @return The accumulated time of all recordings in milliseconds.
-         */
-        public long getTotalTimeMillis() {
-            return totalTime / 1_000_000;
-        }
-
-        /**
-         * Calculates the average time of a single recording based on the total amount of iterations
-         * and the total time.
-         *
-         * @return The average time, in nanoseconds, considering all accumulated recordings
-         */
-        public double getAverageTime() {
-            return iterations == 0 ? 0 : totalTime / iterations;
-        }
-
-        /**
-         * Calculates the average time of a single recording based on the total amount of iterations
-         * and the total time.
-         *
-         * @return The average time, in milliseconds, considering all accumulated recordings
-         */
-        public double getAverageTimeMillis() {
-            return iterations == 0 ? 0 : totalTime / iterations / 1_000_000;
-        }
-
-        /**
-         * Returns the total amount of recordings, which is essentially the amount of times
-         * {@link Results#submitRecording(Recording)} is run.
-         *
-         * @return The total amount of recordings used for this result
-         */
-        public int getTotalIterations() {
-            return iterations;
-        }
-
-        public String getBenchmarkConfigurationName() {
-            return benchmarkConfigurationName;
-        }
-
-        public int getSuccesses() {
-            return successes;
-        }
-
-        public int getFailures() {
-            return failures;
-        }
+    /**
+     * Get stats of the benchmark configuration, consisting of a combination of statistics generated
+     * by the base {@link CacheBenchmarkConfiguration} and statistics generated by the cache itself.
+     * <p/>
+     * When the benchmark configuration is has not been run or is not yet finished, this will return
+     * null.
+     *
+     * @return Reliable cache statistics
+     */
+    public CacheStats getStats() {
+        return stats;
     }
 
-    private static class Recording {
+    /**
+     * Represents statistics of the cache used in the cache benchmark. Several statistics might be null
+     * based on the use case.
+     */
+    public static class CacheStats {
 
-        private long time;
-        private boolean success;
+        private Integer successCount;
+        private Integer failureCount;
+        private Integer maxCacheSize;
+        private Integer cacheEntryCount;
 
-        public Recording(boolean success, long time) {
-            this.success = success;
-            this.time = time;
+        private String benchmarkName;
+        private double averageRunTime;
+
+        private CacheStats() {
         }
 
-        public long getTime() {
-            return time;
+        /**
+         * A Simple Factory used for creating {@link CacheStats} of a cache benchmark where reading
+         * a cache is recorded.
+         *
+         * @param successCount    The amount of successful reads that have occurred in the current benchmark
+         *                        configuration
+         * @param failureCount    The amount of failed reads that have occurred in the current benchmark
+         *                        configuration
+         * @param cacheSize       The cache size of the cache used in the benchmark configuration (in entries), with
+         *                        a dynamically sized cache this is the maximum amount of entries
+         * @param cacheEntryCount The amount of cache entries in the cache used in the benchmark configuration
+         * @return A {@link CacheStats} object containing the specified data
+         */
+        public static CacheStats read(int successCount, int failureCount, int cacheSize, int cacheEntryCount) {
+            CacheStats metrics = new CacheStats();
+            metrics.successCount = successCount;
+            metrics.failureCount = failureCount;
+            metrics.maxCacheSize = cacheSize;
+            metrics.cacheEntryCount = cacheEntryCount;
+            return metrics;
         }
 
-        public boolean isSuccess() {
-            return success;
+        /**
+         * A Simple Factory used for creating {@link CacheStats} of a cache benchmark where
+         * inserting, updating or deleting a cache is recorded.
+         *
+         * @param maxCacheSize    The cache size of the cache used in the benchmark configuration (in entries), with
+         *                        a dynamically sized cache this is the maximum amount of entries
+         * @param cacheEntryCount The amount of cache entries in the cache used in the benchmark configuration
+         * @return A {@link CacheStats} object containing the specified data
+         */
+        public static CacheStats nonRead(int maxCacheSize, int cacheEntryCount) {
+            CacheStats metrics = new CacheStats();
+            metrics.maxCacheSize = maxCacheSize;
+            metrics.cacheEntryCount = cacheEntryCount;
+            return metrics;
+        }
+
+        /**
+         * @return The amount of successful reads that have occurred in the current benchmark
+         * configuration. Null if the benchmark configuration is not a reading benchmark.
+         */
+        public Integer getSuccessCount() {
+            return successCount;
+        }
+
+        /**
+         * @return The amount of failed reads that have occurred in the current benchmark
+         * configuration. Null if the benchmark configuration is not a reading benchmark.
+         */
+        public Integer getFailureCount() {
+            return failureCount;
+        }
+
+        /**
+         * @return The cache size of the cache used in the benchmark configuration (in entries), with
+         * a dynamically sized cache this is the maximum amount of entries.
+         */
+        public Integer getMaxCacheSize() {
+            return maxCacheSize;
+        }
+
+        /**
+         * @return The amount of cache entries in the cache used in the benchmark configuration.
+         * Null if this does not make sense in the current benchmark configuration, e.g. a delete
+         * benchmark that should always have 0 cache entries after each run.
+         */
+        public Integer getCacheEntryCount() {
+            return cacheEntryCount;
+        }
+
+        /**
+         * Sets the benchmark name, should only be set by the base {@link CacheBenchmarkConfiguration}.
+         *
+         * @param benchmarkName The benchmark name
+         */
+        private void setBenchmarkName(String benchmarkName) {
+            this.benchmarkName = benchmarkName;
+        }
+
+        /**
+         * Sets the average runtime, should only be set by the base {@link CacheBenchmarkConfiguration}.
+         *
+         * @param averageRunTime The average runtime in nanoseconds
+         */
+        private void setAverageRunTime(double averageRunTime) {
+            this.averageRunTime = averageRunTime;
         }
 
         @Override
         public String toString() {
-            return "Recording (" + getTime() + "): " + isSuccess();
+            final StringBuilder builder = new StringBuilder(String.format("%-25s", benchmarkName));
+            final boolean readBenchmark = successCount != null && failureCount != null;
+
+            builder.append(String.format("Cache size: %-5d ", maxCacheSize));
+
+            if (readBenchmark) {
+                builder.append(String.format("Hit ratio: %-5.2f%%     ", (double) successCount / (successCount + failureCount) * 100));
+            }
+
+            builder.append(String.format("Average (ns): %-7.1f     ", averageRunTime));
+
+            if (successCount != null) {
+                builder.append(String.format("Successes: %-8d     ", successCount));
+            }
+
+            if (failureCount != null) {
+                builder.append(String.format("Failures: %-8d     ", failureCount));
+            }
+
+            if (cacheEntryCount != null) {
+                builder.append(String.format("Cache entries: %-5d", cacheEntryCount));
+            }
+
+            return builder.toString();
         }
     }
 }

@@ -69,6 +69,10 @@ public class BaseBenchmark {
          * benchmark run and is not timed.
          */
         protected abstract void clearCache();
+
+        public int getCacheSize() {
+            return cacheSize;
+        }
     }
 
     /**
@@ -224,7 +228,7 @@ public class BaseBenchmark {
      * A default benchmark configuration for updating entries in a cache.
      * The key passed to the run might be bound to an already existing entry in the cache, yet this
      * is not enforced. Considering that a cache update is almost always used with a
-     * "update or add if non existent" intention.
+     * "update or add if non existent" semantics.
      *
      * It expects the cache to be based on {@link Integer} keys.
      * The keys generated are completely random.

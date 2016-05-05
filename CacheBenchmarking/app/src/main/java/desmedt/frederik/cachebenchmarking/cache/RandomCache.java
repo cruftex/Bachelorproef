@@ -53,6 +53,11 @@ public class RandomCache<K extends Comparable<K>, V> implements Cache<K, V> {
         }
     }
 
+    @Override
+    public void removeAll() {
+        heap.clear();
+    }
+
     private void removeElement() {
         final int index = random.nextInt(maxSize);
         heap.remove(index);
@@ -61,5 +66,10 @@ public class RandomCache<K extends Comparable<K>, V> implements Cache<K, V> {
     @Override
     public int maxSize() {
         return maxSize;
+    }
+
+    @Override
+    public int size() {
+        return heap.size();
     }
 }

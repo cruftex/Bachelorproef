@@ -28,4 +28,9 @@ public class CacheTestBenchmark extends CacheBenchmarkConfiguration {
     public Pair generateInput() {
         return null;
     }
+
+    @Override
+    protected CacheStats generateStats() {
+        return CacheStats.nonRead(0, 0);
+    }
 }

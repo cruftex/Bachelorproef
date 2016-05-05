@@ -1,104 +1,138 @@
 package desmedt.frederik.cachebenchmarking.benchmark;
 
-import android.util.Pair;
-
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
 import java.util.Random;
 
 import desmedt.frederik.cachebenchmarking.CacheBenchmarkConfiguration;
-import desmedt.frederik.cachebenchmarking.generator.Generator;
-import desmedt.frederik.cachebenchmarking.generator.RandomGenerator;
-import desmedt.frederik.cachebenchmarking.generator.ZipfGenerator;
 
 /**
  * Contains a collection of Guava benchmarks as inner classes.
  */
 public class GuavaBenchmarks {
 
-    public static class RandomRead extends CacheBenchmarkConfiguration<Integer, Object> {
+    public static final String CACHE_TAG = "Guava";
 
-        private final Cache<Integer, Object> cache;
-        private final RandomGenerator generator;
+    private static Cache<Integer, Integer> createCache(int cacheSize) {
+        return CacheBuilder.newBuilder()
+                .maximumSize(cacheSize)
+                .recordStats()
+                .build();
+    }
+
+    public static class RandomRead extends BaseBenchmark.RandomRead<Integer> {
+
+        private Cache<Integer, Integer> cache;
+        private Random random = new Random();
 
         public RandomRead(int cacheSize, int lowerBound, int upperBound) {
-            super("GuavaRRead (" + cacheSize + ")", lowerBound, upperBound);
-            cache = CacheBuilder.newBuilder()
-                    .maximumSize(cacheSize)
-                    .build();
-
-            generator = new RandomGenerator(lowerBound, upperBound);
+            super("Guava", cacheSize, lowerBound, upperBound);
         }
 
         @Override
-        protected boolean run(Integer key, Object value) {
+        protected boolean run(Integer key, Integer value) {
             return cache.getIfPresent(key) != null;
         }
 
         @Override
-        protected Pair<Integer, Object> generateInput() {
-            return new Pair<>(generator.next(), new Object());
+        protected void addToCache(Integer key, Integer value) {
+            cache.put(key, value);
         }
 
         @Override
-        protected void cleanup(Integer key, Object value, boolean succeeded) {
-            if (!succeeded) {
-                cache.put(key, value);
-            }
+        protected Integer generateValue() {
+            return random.nextInt();
+        }
+
+        @Override
+        protected void createCache(int cacheSize) {
+            cache = GuavaBenchmarks.createCache(cacheSize);
+        }
+
+        @Override
+        protected void clearCache() {
+            cache.invalidateAll();
+            cache = null;
+        }
+
+        @Override
+        protected CacheStats generateStats() {
+            return CacheStats.read((int) cache.stats().hitCount(), (int) cache.stats().missCount(), getCacheSize(), (int) cache.size());
         }
     }
 
-    public static class ZipfRead extends CacheBenchmarkConfiguration<Integer, Object> {
+    public static class ZipfRead extends BaseBenchmark.ZipfRead<Integer> {
 
-        private final Cache<Integer, Object> cache;
-        private final Generator<Integer> generator;
+        private Cache<Integer, Integer> cache;
+        private Random random = new Random();
 
         public ZipfRead(int cacheSize, int lowerBound, int upperBound) {
-            super("GuavaZRead (" + cacheSize + ")", lowerBound, upperBound);
-            cache = CacheBuilder.newBuilder()
-                    .maximumSize(cacheSize)
-                    .build();
-
-            generator = new ZipfGenerator(lowerBound, upperBound);
+            super("Guava", cacheSize, lowerBound, upperBound);
         }
 
         @Override
-        protected boolean run(Integer key, Object value) {
+        protected boolean run(Integer key, Integer value) {
             return cache.getIfPresent(key) != null;
         }
 
         @Override
-        protected Pair<Integer, Object> generateInput() {
-            return new Pair<>(generator.next(), new Object());
+        protected void addToCache(Integer key, Integer value) {
+            cache.put(key, value);
         }
 
         @Override
-        protected void cleanup(Integer key, Object value, boolean succeeded) {
-            if (!succeeded) {
-                cache.put(key, value);
-            }
+        protected Integer generateValue() {
+            return random.nextInt();
+        }
+
+        @Override
+        protected void createCache(int cacheSize) {
+            cache = GuavaBenchmarks.createCache(cacheSize);
+        }
+
+        @Override
+        protected void clearCache() {
+            cache.invalidateAll();
+            cache = null;
+        }
+
+        @Override
+        protected CacheStats generateStats() {
+            return CacheStats.read((int) cache.stats().hitCount(), (int) cache.stats().missCount(), getCacheSize(), (int) cache.size());
         }
     }
 
-    public static class Insert extends CacheBenchmarkConfiguration<Integer, Integer> {
+    public static class Insert extends BaseBenchmark.Insert<Integer> {
 
         private final Random random = new Random();
-        private final Cache<Integer, Integer> cache;
+        private Cache<Integer, Integer> cache;
 
         private int nextKey = 0;
 
         public Insert(int cacheSize, int lowerBound, int upperBound) {
-            super("GuavaInsert (" + cacheSize + ")", lowerBound, upperBound);
-            cache = CacheBuilder.newBuilder()
-                    .maximumSize(cacheSize)
-                    .build();
+            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
         }
 
         @Override
-        protected void cleanup(Integer key, Integer value, boolean succeeded) {
-            nextKey = getLowerKeyBound() + random.nextInt(getUpperKeyBound());
-            cache.invalidate(nextKey);
+        protected void removeElement(Integer key) {
+            cache.invalidate(key);
+        }
+
+        @Override
+        protected Integer generateValue() {
+            return random.nextInt();
+        }
+
+        @Override
+        protected void createCache(int cacheSize) {
+            cache = GuavaBenchmarks.createCache(cacheSize);
+        }
+
+        @Override
+        protected void clearCache() {
+            cache.invalidateAll();
+            cache = null;
         }
 
         @Override
@@ -108,65 +142,81 @@ public class GuavaBenchmarks {
         }
 
         @Override
-        public Pair<Integer, Integer> generateInput() {
-            return new Pair<>(nextKey, random.nextInt());
+        protected CacheStats generateStats() {
+            return CacheStats.nonRead(getCacheSize(), (int) cache.size());
         }
     }
 
-    public static class Delete extends CacheBenchmarkConfiguration<Integer, Object> {
+    public static class Delete extends BaseBenchmark.Delete<Integer> {
 
-        private final Cache<Integer, Integer> cache;
-        private final RandomGenerator generator;
-        private int lastKey = 0;
+        private Cache<Integer, Integer> cache;
+        private Random random = new Random();
 
-        public Delete(int cacheSize, int lowerBound, int upperBound) {
-            super("GuavaDelete (" + cacheSize + ")", lowerBound, upperBound);
-            cache = CacheBuilder.newBuilder()
-                    .maximumSize(cacheSize)
-                    .build();
-
-            generator = new RandomGenerator(lowerBound, upperBound);
-
-            for (int i = 0; i < upperBound - lowerBound; i++) {
-                cache.put(i + lowerBound, generator.next());
-            }
+        public Delete(int cacheSize, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
         }
 
         @Override
-        protected void prepare() {
-            lastKey = generator.next();
-            cache.put(lastKey, 0);
+        public void addToCache(int key, Integer value) {
+            cache.put(key, value);
         }
 
         @Override
-        protected boolean run(Integer key, Object value) {
+        protected Integer generateValue() {
+            return random.nextInt();
+        }
+
+        @Override
+        protected void createCache(int cacheSize) {
+            cache = GuavaBenchmarks.createCache(cacheSize);
+        }
+
+        @Override
+        protected void clearCache() {
+            cache.invalidateAll();
+            cache = null;
+        }
+
+        @Override
+        protected boolean run(Integer key, Integer value) {
             cache.invalidate(key);
             return true;
         }
 
         @Override
-        protected Pair<Integer, Object> generateInput() {
-            return new Pair<>(lastKey, null);
-        }
-
-        @Override
-        protected void cleanup(Integer key, Object value, boolean succeeded) {
-            cache.put(lastKey, 0);
+        protected CacheStats generateStats() {
+            return CacheStats.nonRead(getCacheSize(), (int) cache.size());
         }
     }
 
-    public static class Update extends CacheBenchmarkConfiguration<Integer, Integer> {
+    public static class Update extends BaseBenchmark.Update<Integer> {
 
         private Random random = new Random();
-        private final Cache<Integer, Integer> cache;
-        private final RandomGenerator generator;
+        private Cache<Integer, Integer> cache;
 
-        public Update(int cacheSize, int lowerBound, int upperBound) {
-            super("GuavaUpdate (" + cacheSize + ")", lowerBound, upperBound);
-            cache = CacheBuilder.newBuilder()
-                    .maximumSize(cacheSize)
-                    .build();
-            generator = new RandomGenerator(lowerBound, upperBound);
+        public Update(int cacheSize, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        }
+
+        @Override
+        protected void addToCache(int key, Integer value) {
+            cache.put(key, value);
+        }
+
+        @Override
+        protected Integer generateValue() {
+            return random.nextInt();
+        }
+
+        @Override
+        protected void createCache(int cacheSize) {
+            cache = GuavaBenchmarks.createCache(cacheSize);
+        }
+
+        @Override
+        protected void clearCache() {
+            cache.invalidateAll();
+            cache = null;
         }
 
         @Override
@@ -176,8 +226,8 @@ public class GuavaBenchmarks {
         }
 
         @Override
-        protected Pair<Integer, Integer> generateInput() {
-            return new Pair<>(generator.next(), random.nextInt());
+        protected CacheStats generateStats() {
+            return CacheStats.nonRead(getCacheSize(), (int) cache.size());
         }
     }
 }

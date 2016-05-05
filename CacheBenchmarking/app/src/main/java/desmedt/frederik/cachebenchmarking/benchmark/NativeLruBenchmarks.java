@@ -4,6 +4,7 @@ import android.support.v4.util.LruCache;
 import android.util.Pair;
 
 import java.util.Random;
+import java.util.StringTokenizer;
 
 import desmedt.frederik.cachebenchmarking.CacheBenchmarkConfiguration;
 import desmedt.frederik.cachebenchmarking.generator.Generator;
@@ -15,15 +16,36 @@ import desmedt.frederik.cachebenchmarking.generator.ZipfGenerator;
  */
 public class NativeLruBenchmarks {
 
-    public static class Update extends CacheBenchmarkConfiguration<Integer, Integer> {
+    public static final String CACHE_TAG = "NativeLru";
 
-        private final LruCache cache;
-        private final RandomGenerator generator;
+    public static class Update extends BaseBenchmark.Update<Integer> {
 
-        public Update(int cacheSize, int lowerBound, int upperBound) {
-            super("NativeLruUpdate (" + cacheSize + ")", lowerBound, upperBound);
+        private LruCache cache;
+        private final Random random = new Random();
+
+        public Update(int cacheSize, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        }
+
+        @Override
+        protected void addToCache(int key, Integer value) {
+            cache.put(key, value);
+        }
+
+        @Override
+        protected Integer generateValue() {
+            return random.nextInt();
+        }
+
+        @Override
+        protected void createCache(int cacheSize) {
             cache = new LruCache(cacheSize);
-            generator = new RandomGenerator(lowerBound, upperBound);
+        }
+
+        @Override
+        protected void clearCache() {
+            cache.evictAll();
+            cache = null;
         }
 
         @Override
@@ -33,21 +55,39 @@ public class NativeLruBenchmarks {
         }
 
         @Override
-        protected Pair<Integer, Integer> generateInput() {
-            return new Pair<>(generator.next(), generator.next());
+        protected CacheStats generateStats() {
+            return CacheStats.nonRead(cache.size(), cache.maxSize());
         }
     }
 
-    public static class RandomRead extends CacheBenchmarkConfiguration<Integer, Integer> {
+    public static class RandomRead extends BaseBenchmark.RandomRead<Integer> {
 
-        private final LruCache cache;
+        private LruCache cache;
         private final Random random = new Random();
-        private final RandomGenerator generator;
 
-        public RandomRead(int cacheSize, int lowerBound, int upperBound) {
-            super("NativeLruRRead (" + cacheSize + ")", lowerBound, upperBound);
+        public RandomRead(int cacheSize, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        }
+
+        @Override
+        protected void addToCache(Integer key, Integer value) {
+            cache.put(key, value);
+        }
+
+        @Override
+        protected Integer generateValue() {
+            return random.nextInt();
+        }
+
+        @Override
+        protected void createCache(int cacheSize) {
             cache = new LruCache(cacheSize);
-            generator = new RandomGenerator(lowerBound, upperBound);
+        }
+
+        @Override
+        protected void clearCache() {
+            cache.evictAll();
+            cache = null;
         }
 
         @Override
@@ -56,28 +96,39 @@ public class NativeLruBenchmarks {
         }
 
         @Override
-        protected Pair<Integer, Integer> generateInput() {
-            return new Pair<>(generator.next(), generator.next());
-        }
-
-        @Override
-        protected void cleanup(Integer key, Integer value, boolean succeeded) {
-            if (!succeeded) {
-                cache.put(key, value);
-            }
+        protected CacheStats generateStats() {
+            return CacheStats.read(cache.hitCount(), cache.missCount(), cache.maxSize(), cache.size());
         }
     }
 
-    public static class ZipfRead extends CacheBenchmarkConfiguration<Integer, Integer> {
+    public static class ZipfRead extends BaseBenchmark.ZipfRead<Integer> {
 
-        private final LruCache cache;
+        private LruCache cache;
         private final Random random = new Random();
-        private final Generator<Integer> generator;
 
-        public ZipfRead(int cacheSize, int lowerBound, int upperBound) {
-            super("NativeLruZRead (" + cacheSize + ")", lowerBound, upperBound);
+        public ZipfRead(int cacheSize, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        }
+
+        @Override
+        protected void addToCache(Integer key, Integer value) {
+            cache.put(key, value);
+        }
+
+        @Override
+        protected Integer generateValue() {
+            return random.nextInt();
+        }
+
+        @Override
+        protected void createCache(int cacheSize) {
             cache = new LruCache(cacheSize);
-            generator = new ZipfGenerator(lowerBound, upperBound);
+        }
+
+        @Override
+        protected void clearCache() {
+            cache.evictAll();
+            cache = null;
         }
 
         @Override
@@ -86,80 +137,92 @@ public class NativeLruBenchmarks {
         }
 
         @Override
-        protected Pair<Integer, Integer> generateInput() {
-            return new Pair<>(generator.next(), generator.next());
-        }
-
-        @Override
-        protected void cleanup(Integer key, Integer value, boolean succeeded) {
-            if (!succeeded) {
-                cache.put(key, value);
-            }
+        protected CacheStats generateStats() {
+            return CacheStats.read(cache.hitCount(), cache.missCount(), cache.maxSize(), cache.size());
         }
     }
 
-    public static class Delete extends CacheBenchmarkConfiguration<Integer, Integer> {
+    public static class Delete extends BaseBenchmark.Delete<Integer> {
 
-        private final LruCache cache;
+        private LruCache cache;
         private final Random random = new Random();
-        private final RandomGenerator generator;
-        private int nextKey;
 
-        public Delete(int cacheSize, int lowerBound, int upperBound) {
-            super("NativeLruDelete (" + cacheSize + ")", lowerBound, upperBound);
-            cache = new LruCache(cacheSize);
-            generator = new RandomGenerator(lowerBound, upperBound);
-
-            for (int i = 0; i < upperBound - lowerBound; i++) {
-                cache.put(i + lowerBound, random.nextInt());
-            }
+        public Delete(int cacheSize, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
         }
 
         @Override
-        protected void prepare() {
-            nextKey = generator.next();
-            cache.put(nextKey, random.nextInt());
+        public void addToCache(int key, Integer value) {
+            cache.put(key, value);
+        }
+
+        @Override
+        protected Integer generateValue() {
+            return random.nextInt();
+        }
+
+        @Override
+        protected void createCache(int cacheSize) {
+            cache = new LruCache(cacheSize);
+        }
+
+        @Override
+        protected void clearCache() {
+            cache.evictAll();
+            cache = null;
         }
 
         @Override
         protected boolean run(Integer key, Integer value) {
-            cache.remove(nextKey);
+            cache.remove(key);
             return true;
         }
 
         @Override
-        protected Pair<Integer, Integer> generateInput() {
-            return new Pair<>(generator.next(), 0);
+        protected CacheStats generateStats() {
+            return CacheStats.nonRead(cache.maxSize(), cache.size());
         }
     }
 
-    public static class Insert extends CacheBenchmarkConfiguration<Integer, Integer> {
+    public static class Insert extends BaseBenchmark.Insert<Integer> {
 
-        private final LruCache cache;
+        private LruCache cache;
         private final Random random = new Random();
 
-        private int nextKey = 0;
+        public Insert(int cacheSize, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        }
 
-        public Insert(int cacheSize, int lowerBound, int upperBound) {
-            super("NativeLruInsert (" + cacheSize + ")", lowerBound, upperBound);
+        @Override
+        protected void removeElement(Integer key) {
+            cache.remove(key);
+        }
+
+        @Override
+        protected Integer generateValue() {
+            return random.nextInt();
+        }
+
+        @Override
+        protected void createCache(int cacheSize) {
             cache = new LruCache(cacheSize);
         }
 
         @Override
-        protected void cleanup(Integer key, Integer value, boolean succeeded) {
-            nextKey = getLowerKeyBound() + random.nextInt(getUpperKeyBound());
-            cache.remove(nextKey);
+        protected void clearCache() {
+            cache.evictAll();
+            cache = null;
         }
 
         @Override
-        public boolean run(Integer key, Integer value) {
+        protected boolean run(Integer key, Integer value) {
             cache.put(key, value);
             return true;
         }
 
         @Override
-        public Pair<Integer, Integer> generateInput() {
-            return new Pair<>(nextKey, random.nextInt());
+        protected CacheStats generateStats() {
+            return CacheStats.nonRead(cache.maxSize(), cache.size());
         }
     }
 }

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="cache2k-jmx-api-0.23.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-jmx-api/0.23.1/f31c27feb18f9d8e5d3722320271bc84749c1e91/cache2k-jmx-api-0.23.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-jmx-api/0.23.1/e29318ac23ab839ea448f2436392adece1574d20/cache2k-jmx-api-0.23.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

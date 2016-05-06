@@ -1,27 +1,27 @@
 package desmedt.frederik.cachebenchmarking.generator;
 
-import org.apache.commons.math3.distribution.ZipfDistribution;
-
-import java.util.Random;
+import org.cache2k.benchmark.util.ZipfianPattern;
 
 /**
  * A generator generating random numbers between some lower and upper bound following a zipf-like
- * distribution.
+ * pattern.
  */
 public class ZipfGenerator implements Generator<Integer> {
 
-    private final ZipfDistribution distribution;
+    public static final String TRACE_TAG = "ZRead";
+
+    private final ZipfianPattern pattern;
 
     // UPisa trace
     private double UPISA = 0.78;
 
     public ZipfGenerator(int lowerBound, int upperBound) {
-        distribution = new ZipfDistribution(upperBound - lowerBound, UPISA);
+        pattern = new ZipfianPattern((long) lowerBound, (long) upperBound, UPISA);
     }
 
     @Override
     public Integer next() {
-        int next = distribution.sample();
+        int next = pattern.next();
         return next;
     }
 }

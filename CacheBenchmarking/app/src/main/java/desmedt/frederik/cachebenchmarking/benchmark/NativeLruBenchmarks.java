@@ -23,8 +23,8 @@ public class NativeLruBenchmarks {
         private LruCache cache;
         private final Random random = new Random();
 
-        public Update(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Update(double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheRatio, lowerBound, upperBound);
         }
 
         @Override
@@ -60,54 +60,13 @@ public class NativeLruBenchmarks {
         }
     }
 
-    public static class RandomRead extends BaseBenchmark.RandomRead<Integer> {
+    public static class Read extends BaseBenchmark.Read<Integer> {
 
         private LruCache cache;
         private final Random random = new Random();
 
-        public RandomRead(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
-        }
-
-        @Override
-        protected void addToCache(Integer key, Integer value) {
-            cache.put(key, value);
-        }
-
-        @Override
-        protected Integer generateValue() {
-            return random.nextInt();
-        }
-
-        @Override
-        protected void createCache(int cacheSize) {
-            cache = new LruCache(cacheSize);
-        }
-
-        @Override
-        protected void clearCache() {
-            cache.evictAll();
-            cache = null;
-        }
-
-        @Override
-        protected boolean run(Integer key, Integer value) {
-            return cache.get(key) != null;
-        }
-
-        @Override
-        protected CacheStats generateStats() {
-            return CacheStats.read(cache.hitCount(), cache.missCount(), cache.maxSize(), cache.size());
-        }
-    }
-
-    public static class ZipfRead extends BaseBenchmark.ZipfRead<Integer> {
-
-        private LruCache cache;
-        private final Random random = new Random();
-
-        public ZipfRead(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Read(String traceTag, Generator<Integer> traceGenerator, double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, traceTag, traceGenerator, cacheRatio, lowerBound, upperBound);
         }
 
         @Override
@@ -147,8 +106,8 @@ public class NativeLruBenchmarks {
         private LruCache cache;
         private final Random random = new Random();
 
-        public Delete(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Delete(double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheRatio, lowerBound, upperBound);
         }
 
         @Override
@@ -189,8 +148,8 @@ public class NativeLruBenchmarks {
         private LruCache cache;
         private final Random random = new Random();
 
-        public Insert(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Insert(double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheRatio, lowerBound, upperBound);
         }
 
         @Override

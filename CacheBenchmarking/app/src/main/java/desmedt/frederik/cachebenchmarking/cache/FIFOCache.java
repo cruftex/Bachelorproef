@@ -10,6 +10,8 @@ import java.util.Map;
  */
 public class FIFOCache<K extends Comparable<K>, V> implements Cache<K, V> {
 
+    public static final String CACHE_TAG = "FifoCache";
+
     private LinkedHashMap<K, V> heap = new LinkedHashMap<>();
     private int maxSize = 0;
 

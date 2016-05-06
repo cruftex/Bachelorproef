@@ -173,6 +173,7 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
         stats = generateStats();
         stats.benchmarkName = getName();
         stats.averageRunTime = totalTimeNanos / runIterations;
+        tearDown();
         Log.i(TAG, "Completed run");
     }
 
@@ -219,6 +220,7 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
         stats = generateStats();
         stats.benchmarkName = getName();
         stats.averageRunTime = totalTimeNanos / totalIterations;
+        tearDown();
         Log.i(TAG, "Completed run");
     }
 
@@ -364,13 +366,13 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
 
         @Override
         public String toString() {
-            final StringBuilder builder = new StringBuilder(String.format("%-25s", benchmarkName));
+            final StringBuilder builder = new StringBuilder(String.format("%-25s ", benchmarkName));
             final boolean readBenchmark = successCount != null && failureCount != null;
 
             builder.append(String.format("Cache size: %-5d ", maxCacheSize));
 
             if (readBenchmark) {
-                builder.append(String.format("Hit ratio: %-5.2f%%     ", (double) successCount / (successCount + failureCount) * 100));
+                builder.append(String.format("Hit ratio: %-5.3f%%     ", (double) successCount / (successCount + failureCount) * 100));
             }
 
             builder.append(String.format("Average (ns): %-7.1f     ", averageRunTime));

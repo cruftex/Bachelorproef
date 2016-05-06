@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 import desmedt.frederik.cachebenchmarking.cache.Cache;
 
@@ -11,6 +12,8 @@ import desmedt.frederik.cachebenchmarking.cache.Cache;
  * A simple random cache replacement policy implementation.
  */
 public class RandomCache<K extends Comparable<K>, V> implements Cache<K, V> {
+
+    public static final String CACHE_TAG = "RandomCache";
 
     private int maxSize;
     private LinkedList<Element<K, V>> heap = new LinkedList<>();

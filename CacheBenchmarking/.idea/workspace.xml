@@ -36,37 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="JackRabbitLIRSBenchmark.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/JackRabbitLIRSBenchmark.java">
+      <file leaf-file-name="Cache2KBenchmark.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KBenchmark.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-              <folding>
-                <element signature="e#4063#4064#0" expanded="true" />
-                <element signature="e#4099#4100#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NativeLruBenchmarks.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/NativeLruBenchmarks.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="225" column="9" selection-start-line="225" selection-start-column="9" selection-end-line="225" selection-end-column="9" />
-              <folding>
-                <element signature="e#3729#3730#0" expanded="true" />
-                <element signature="e#3782#3783#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomBenchmark.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CustomBenchmark.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
+              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -75,91 +49,89 @@
       <file leaf-file-name="BenchmarkRunner.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/BenchmarkRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3715342">
-              <caret line="131" column="9" selection-start-line="131" selection-start-column="9" selection-end-line="131" selection-end-column="9" />
-              <folding>
-                <element signature="e#7475#7608#0" expanded="true" />
-                <element signature="e#7607#7608#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="111" selection-start-line="26" selection-start-column="111" selection-end-line="26" selection-end-column="111" />
+            <state vertical-scroll-proportion="0.6215054">
+              <caret line="66" column="197" selection-start-line="66" selection-start-column="197" selection-end-line="66" selection-end-column="197" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CacheBenchmarkConfiguration.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/CacheBenchmarkConfiguration.java">
+      <file leaf-file-name="SearchEngineGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/SearchEngineGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="366" column="99" selection-start-line="366" selection-start-column="99" selection-end-line="366" selection-end-column="99" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cache.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/Cache.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FIFOCache.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/FIFOCache.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
-              <folding>
-                <element signature="e#1314#1315#0" expanded="true" />
-                <element signature="e#1348#1349#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cache2KBenchmark.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KBenchmark.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2358#2359#0" expanded="true" />
-                <element signature="e#2412#2413#0" expanded="true" />
-                <element signature="e#4213#4214#0" expanded="true" />
-                <element signature="e#4267#4268#0" expanded="true" />
-                <element signature="e#5287#5288#0" expanded="true" />
-                <element signature="e#5328#5329#0" expanded="true" />
-                <element signature="e#5391#5392#0" expanded="true" />
-                <element signature="e#5438#5439#0" expanded="true" />
-                <element signature="e#6592#6593#0" expanded="true" />
-                <element signature="e#6637#6638#0" expanded="true" />
-                <element signature="e#6700#6701#0" expanded="true" />
-                <element signature="e#6747#6748#0" expanded="true" />
+                <element signature="e#1222#1223#0" expanded="true" />
+                <element signature="e#1246#1247#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GuavaBenchmarks.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/GuavaBenchmarks.java">
+      <file leaf-file-name="NfsGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/NfsGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="212" column="59" selection-start-line="212" selection-start-column="59" selection-end-line="212" selection-end-column="59" />
+              <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1125#1126#0" expanded="true" />
+                <element signature="e#1149#1150#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CacheAccessTraceSprite.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceSprite.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RandomGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/RandomGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ZipfGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/ZipfGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Web12Generator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/Web12Generator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NativeLruBenchmarks.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/NativeLruBenchmarks.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="151" column="65" selection-start-line="151" selection-start-column="65" selection-end-line="151" selection-end-column="65" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1469,7 +1441,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4386372952979" />
+        <entry key="$PROJECT_DIR$" value="4386402929840" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1653,9 +1625,10 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/intellij/annotations/12.0/annotations-12.0.jar" />
                             <option value="D:/Home/AndroidSDK/adt-bundle-windows-x86_64-20140321/sdk/extras/android/m2repository/com/android/support/appcompat-v7/23.1.1/appcompat-v7-23.1.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9/guava-19.0.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-math3/3.0/5f8d1d720333aa9a7dee1c949ea70d9ed7da6106/commons-math3-3.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-compress/1.11/f43ce4c878078cbcfbb061353aa672a4c8e81443/commons-compress-1.11.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.23.1/2143b15e776d6d63bb1515791626623fcd5cb5ef/cache2k-core-0.23.1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-api/0.23.1/7e0bf20b9a5edc49c9dd5ebf8f2edb3f2ce52219/cache2k-api-0.23.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/it.unimi.dsi/fastutil/7.0.12/9d9b3cfcf42706f3300e96c47c8df99194bf8d73/fastutil-7.0.12.jar" />
                             <option value="D:/Home/AndroidSDK/adt-bundle-windows-x86_64-20140321/sdk/extras/android/m2repository/com/android/support/support-v4/23.1.1/support-v4-23.1.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-jmx-api/0.23.1/f31c27feb18f9d8e5d3722320271bc84749c1e91/cache2k-jmx-api-0.23.1.jar" />
                             <option value="D:/Home/AndroidSDK/adt-bundle-windows-x86_64-20140321/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar" />
@@ -1744,10 +1717,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/TestBenchmark.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/BenchmarkConfiguration.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/TestCacheBenchmark.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/checkmark.svg" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_check_green_24dp.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_benchmark.xml" />
@@ -1756,34 +1725,48 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ehcache.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/RandomCache.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/JackrabbitLIRSCacheBenchmark.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/ui/BenchmarkActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/RandomNumberGenerator.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/RandomGenerator.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CustomCacheBenchmark.java" />
         <option value="$PROJECT_DIR$/../../Data/logs.txt" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/LIRSCache.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/CacheLIRS.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/BaseBenchmarkImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/JackRabbitLIRSCacheBenchmark.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/ZipfGenerator.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KClockProCacheBenchmark.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/Generator.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CaffeineTinyLfuBenchmark.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KClockProBenchmark.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KClockBenchmark.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/BaseBenchmark.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CacheTestBenchmark.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/Cache.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/NativeLruBenchmarks.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/util/AccessTrace.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/util/AccessPattern.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/util/Patterns.java" />
+        <option value="$PROJECT_DIR$/gradle.properties" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/ui/BenchmarkActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceWeb12.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/TraceCache.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/LoopingAccessPattern.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/FIFOCache.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/RandomCache.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/GuavaBenchmarks.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/RandomGenerator.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceUmassFinancial1.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceUmassWebSearch1.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CustomBenchmark.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KBenchmark.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/GuavaBenchmarks.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/JackRabbitLIRSBenchmark.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/NativeLruBenchmarks.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/BaseBenchmark.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/ZipfGenerator.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/CacheBenchmarkConfiguration.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/Web12Generator.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KBenchmark.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/SearchEngineGenerator.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/OltpGenerator.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/NfsGenerator.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceSprite.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/BenchmarkRunner.java" />
       </list>
     </option>
@@ -1838,6 +1821,121 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+      </pane>
+      <pane id="Scratches" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CacheBenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gradle Scripts" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CacheBenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CacheBenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="raw" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CacheBenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CacheBenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cachebenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CacheBenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cachebenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CacheBenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1936,95 +2034,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cachebenchmarking" />
+              <option name="myItemId" value="desmedt.frederik.cachebenchmarking" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Problems" />
-      </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CacheBenchmarking" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CacheBenchmarking" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CacheBenchmarking" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CacheBenchmarking" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cachebenchmarking" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CacheBenchmarking" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cachebenchmarking" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="benchmark" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2044,11 +2059,18 @@
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="UI_DESIGNER_EDITOR_MODE.CaptureAnalysis.SHOW" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="find&#9;ACTION&#9;FindInPath" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\School\TI-3AS2\Bachelorproef\Latex\CacheBenchmarking\app\src\main\java\org\cache2k\benchmark\traces" />
+    </key>
     <key name="android.template.packageName">
       <recent name="desmedt.frederik.cachebenchmarking.ui" />
       <recent name="desmedt.frederik.cachebenchmarking" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\School\TI-3AS2\Bachelorproef\Latex\CacheBenchmarking\app\src\main\java" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.app">
@@ -2341,26 +2363,25 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49046105" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36636972" sideWeight="0.5067568" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36636972" sideWeight="0.49324325" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45100224" sideWeight="0.40699524" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45100224" sideWeight="0.5922099" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49682036" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45100224" sideWeight="0.40779015" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18600954" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997773" sideWeight="0.49602544" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997773" sideWeight="0.49483308" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2368,6 +2389,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2383,217 +2405,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="176" />
+      <option name="time" value="213" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.jackrabbit/oak-core/1.5.1/6c6c25d0ac0169d2c002ec5aa0a5cdc6e76156a2/oak-core-1.5.1-sources.jar!/org/apache/jackrabbit/oak/cache/CacheLIRS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62846583">
-          <caret line="81" column="71" selection-start-line="0" selection-start-column="0" selection-end-line="1706" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Home/AndroidSDK/adt-bundle-windows-x86_64-20140321/sdk/sources/android-23/android/os/AsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33268103">
-          <caret line="295" column="0" selection-start-line="295" selection-start-column="0" selection-end-line="295" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/ui/BenchmarkActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-all/0.23.1/e94ddb1b22316ba9a03b227bbcd639aa03dd318f/cache2k-all-0.23.1.jar!/org/cache2k/ee/impl/JndiDefaultNameProvider.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39688715">
-          <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-all/0.23.1/e94ddb1b22316ba9a03b227bbcd639aa03dd318f/cache2k-all-0.23.1.jar!/org/cache2k/CacheManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68871593">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-all/0.23.1/e94ddb1b22316ba9a03b227bbcd639aa03dd318f/cache2k-all-0.23.1.jar!/org/cache2k/impl/CacheBuilderImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8677043">
-          <caret line="169" column="62" selection-start-line="169" selection-start-column="62" selection-end-line="169" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-all/0.23.1/e94ddb1b22316ba9a03b227bbcd639aa03dd318f/cache2k-all-0.23.1.jar!/org/cache2k/impl/CacheManagerImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44941634">
-          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/ZipfGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-all/0.23.1/e94ddb1b22316ba9a03b227bbcd639aa03dd318f/cache2k-all-0.23.1.jar!/org/cache2k/Cache.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7777777">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-all/0.23.1/e94ddb1b22316ba9a03b227bbcd639aa03dd318f/cache2k-all-0.23.1.jar!/org/cache2k/CacheConfig.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-all/0.23.1/e94ddb1b22316ba9a03b227bbcd639aa03dd318f/cache2k-all-0.23.1.jar!/org/cache2k/CacheBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12099644">
-          <caret line="94" column="23" selection-start-line="94" selection-start-column="23" selection-end-line="94" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.25-BETA/1316b5ac8ebe59476ac727a7af07437b29a5b480/cache2k-core-0.25-BETA-sources.jar!/org/cache2k/core/RefreshHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33268103">
-          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/CacheLIRS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.974122">
-          <caret line="1665" column="71" selection-start-line="1665" selection-start-column="71" selection-end-line="1665" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/Generator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="91" selection-start-line="4" selection-start-column="91" selection-end-line="4" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Home/AndroidSDK/adt-bundle-windows-x86_64-20140321/sdk/extras/android/m2repository/com/android/support/support-v4/23.1.1/support-v4-23.1.1-sources.jar!/android/support/v4/util/LruCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33271718">
-          <caret line="76" column="19" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-api/0.25-BETA/31d91c64ed212df89417cd9fa1d9f9be31570323/cache2k-api-0.25-BETA-sources.jar!/org/cache2k/spi/Cache2kCoreProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7005871">
-          <caret line="44" column="35" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-api/0.25-BETA/31d91c64ed212df89417cd9fa1d9f9be31570323/cache2k-api-0.25-BETA-sources.jar!/org/cache2k/spi/SingleProviderResolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5322896">
-          <caret line="102" column="65" selection-start-line="102" selection-start-column="65" selection-end-line="102" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-api/0.25-BETA/31d91c64ed212df89417cd9fa1d9f9be31570323/cache2k-api-0.25-BETA-sources.jar!/org/cache2k/Cache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33268103">
-          <caret line="639" column="7" selection-start-line="639" selection-start-column="7" selection-end-line="639" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.25-BETA/fd6512c85b0140f3848f06391042e63826ca315d/cache2k-core-0.25-BETA.jar!/org/cache2k/core/HeapCache.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37190083">
-          <caret line="1738" column="22" selection-start-line="1738" selection-start-column="16" selection-end-line="1738" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#65972#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.25-BETA/1316b5ac8ebe59476ac727a7af07437b29a5b480/cache2k-core-0.25-BETA-sources.jar!/org/cache2k/core/AbstractCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.25-BETA/1316b5ac8ebe59476ac727a7af07437b29a5b480/cache2k-core-0.25-BETA-sources.jar!/org/cache2k/core/StandardCommonMetrics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding>
-            <element signature="e#3583#3584#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-api/0.25-BETA/31d91c64ed212df89417cd9fa1d9f9be31570323/cache2k-api-0.25-BETA-sources.jar!/org/cache2k/Cache2kBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33271718">
-          <caret line="403" column="36" selection-start-line="403" selection-start-column="36" selection-end-line="403" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.25-BETA/1316b5ac8ebe59476ac727a7af07437b29a5b480/cache2k-core-0.25-BETA-sources.jar!/org/cache2k/core/InternalCacheInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33268103">
-          <caret line="72" column="7" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.25-BETA/1316b5ac8ebe59476ac727a7af07437b29a5b480/cache2k-core-0.25-BETA-sources.jar!/org/cache2k/core/CacheBaseInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="154" column="58" selection-start-line="154" selection-start-column="58" selection-end-line="154" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.25-BETA/1316b5ac8ebe59476ac727a7af07437b29a5b480/cache2k-core-0.25-BETA-sources.jar!/org/cache2k/core/EntryAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33275262">
-          <caret line="888" column="24" selection-start-line="888" selection-start-column="24" selection-end-line="888" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-core/0.25-BETA/1316b5ac8ebe59476ac727a7af07437b29a5b480/cache2k-core-0.25-BETA-sources.jar!/org/cache2k/core/HeapCache.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27351916">
           <caret line="1382" column="18" selection-start-line="1382" selection-start-column="18" selection-end-line="1382" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2601,10 +2421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33275262">
           <caret line="171" column="14" selection-start-line="171" selection-start-column="14" selection-end-line="171" selection-end-column="14" />
-          <folding>
-            <element signature="e#5293#5294#0" expanded="true" />
-            <element signature="e#5325#5326#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2612,7 +2428,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36585367">
           <caret line="219" column="3" selection-start-line="219" selection-start-column="3" selection-end-line="219" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2620,7 +2435,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39547038">
           <caret line="236" column="32" selection-start-line="236" selection-start-column="32" selection-end-line="236" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2628,7 +2442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8292683">
           <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2636,7 +2449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.142329">
           <caret line="141" column="7" selection-start-line="141" selection-start-column="7" selection-end-line="141" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2644,7 +2456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="85" column="22" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2652,37 +2463,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.80406654">
           <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-api/0.23.1/7b8d6390848feef6a7d5b8024d941673eeaae6ea/cache2k-api-0.23.1-sources.jar!/org/cache2k/Cache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6881533">
-          <caret line="192" column="22" selection-start-line="192" selection-start-column="22" selection-end-line="192" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/BaseBenchmark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="29" />
-          <folding>
-            <element signature="e#2842#2843#0" expanded="true" />
-            <element signature="e#2882#2883#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CacheTestBenchmark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
-          <folding>
-            <element signature="e#794#795#0" expanded="true" />
-            <element signature="e#841#842#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2690,7 +2470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4216028">
           <caret line="120" column="7" selection-start-line="120" selection-start-column="7" selection-end-line="120" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2698,72 +2477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33275262">
           <caret line="281" column="25" selection-start-line="281" selection-start-column="25" selection-end-line="281" selection-end-column="25" />
-          <folding>
-            <element signature="e#10063#10064#0" expanded="true" />
-            <element signature="e#10090#10091#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/RandomCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-          <folding>
-            <element signature="e#1783#1784#0" expanded="true" />
-            <element signature="e#1817#1818#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/FIFOCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
-          <folding>
-            <element signature="e#1314#1315#0" expanded="true" />
-            <element signature="e#1348#1349#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/GuavaBenchmarks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="212" column="59" selection-start-line="212" selection-start-column="59" selection-end-line="212" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/Cache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KBenchmark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2358#2359#0" expanded="true" />
-            <element signature="e#2412#2413#0" expanded="true" />
-            <element signature="e#4213#4214#0" expanded="true" />
-            <element signature="e#4267#4268#0" expanded="true" />
-            <element signature="e#5287#5288#0" expanded="true" />
-            <element signature="e#5328#5329#0" expanded="true" />
-            <element signature="e#5391#5392#0" expanded="true" />
-            <element signature="e#5438#5439#0" expanded="true" />
-            <element signature="e#6592#6593#0" expanded="true" />
-            <element signature="e#6637#6638#0" expanded="true" />
-            <element signature="e#6700#6701#0" expanded="true" />
-            <element signature="e#6747#6748#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2771,28 +2484,246 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.16634052">
           <caret line="1526" column="25" selection-start-line="1526" selection-start-column="25" selection-end-line="1526" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5970425">
+          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/java/util/zip/GZIPInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.5452864">
+          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Home/AndroidSDK/adt-bundle-windows-x86_64-20140321/sdk/sources/android-23/java/util/zip/GZIPInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33268103">
+          <caret line="86" column="11" selection-start-line="86" selection-start-column="11" selection-end-line="86" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Home/AndroidSDK/adt-bundle-windows-x86_64-20140321/sdk/sources/android-23/android/content/ContextWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33268103">
+          <caret line="105" column="19" selection-start-line="105" selection-start-column="19" selection-end-line="105" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceCpp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74676526">
+          <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/TraceCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6848249">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/ui/BenchmarkActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43992606">
+          <caret line="38" column="64" selection-start-line="38" selection-start-column="64" selection-end-line="38" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/NativeLruBenchmarks.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/LoopingAccessPattern.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="225" column="9" selection-start-line="225" selection-start-column="9" selection-end-line="225" selection-end-column="9" />
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
           <folding>
-            <element signature="e#3729#3730#0" expanded="true" />
-            <element signature="e#3782#3783#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#687#688#0" expanded="false" />
+            <element signature="e#714#715#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/91a4d115400e904f22b03a78deb355e9ea803cd4/guava-19.0-sources.jar!/com/google/common/annotations/GwtCompatible.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5397413">
+          <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/91a4d115400e904f22b03a78deb355e9ea803cd4/guava-19.0-sources.jar!/com/google/common/base/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1552681">
+          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/FIFOCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/RandomCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="57" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/util/ZipfianPattern.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.93793106">
+          <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceGlimpse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59149724">
+          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceOltp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6229205">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceWeb12.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6543438">
+          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceWeb07.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59149724">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceOrmAccessBusy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59149724">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceUmassFinancial1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.074074">
+          <caret line="50" column="46" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceUmassWebSearch1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="87" selection-start-line="43" selection-start-column="87" selection-end-line="43" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/GuavaBenchmarks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="158" column="39" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/JackRabbitLIRSBenchmark.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <caret line="194" column="39" selection-start-line="194" selection-start-column="39" selection-end-line="194" selection-end-column="39" />
           <folding>
-            <element signature="e#4063#4064#0" expanded="true" />
-            <element signature="e#4099#4100#0" expanded="true" />
+            <element signature="e#1014#1015#0" expanded="false" />
+            <element signature="e#1061#1062#0" expanded="false" />
+            <element signature="e#1433#1434#0" expanded="false" />
+            <element signature="e#1482#1483#0" expanded="false" />
+            <element signature="e#2323#2324#0" expanded="false" />
+            <element signature="e#2370#2371#0" expanded="false" />
+            <element signature="e#2742#2743#0" expanded="false" />
+            <element signature="e#2791#2792#0" expanded="false" />
+            <element signature="e#3644#3645#0" expanded="false" />
+            <element signature="e#3693#3694#0" expanded="false" />
+            <element signature="e#3756#3757#0" expanded="false" />
+            <element signature="e#3803#3804#0" expanded="false" />
+            <element signature="e#4171#4172#0" expanded="false" />
+            <element signature="e#4207#4208#0" expanded="false" />
+            <element signature="e#4774#4775#0" expanded="false" />
+            <element signature="e#4823#4824#0" expanded="false" />
+            <element signature="e#4886#4887#0" expanded="false" />
+            <element signature="e#4933#4934#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CacheTestBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#382#383#0" expanded="false" />
+            <element signature="e#437#438#0" expanded="false" />
+            <element signature="e#709#710#0" expanded="false" />
+            <element signature="e#736#737#0" expanded="false" />
+            <element signature="e#794#795#0" expanded="false" />
+            <element signature="e#841#842#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CustomBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="169" column="35" selection-start-line="169" selection-start-column="35" selection-end-line="169" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/desmedt.frederik.cachebenchmarking_2016.05.06_00.18.hprof">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-api/0.23.1/7b8d6390848feef6a7d5b8024d941673eeaae6ea/cache2k-api-0.23.1-sources.jar!/org/cache2k/Cache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9371534">
+          <caret line="248" column="23" selection-start-line="248" selection-start-column="23" selection-end-line="248" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/BaseBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <element signature="e#1727#1728#0" expanded="true" />
+            <element signature="e#1782#1783#0" expanded="true" />
+            <element signature="e#1818#1819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2800,35 +2731,106 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/CacheBenchmarkConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="366" column="99" selection-start-line="366" selection-start-column="99" selection-end-line="366" selection-end-column="99" />
+          <caret line="222" column="19" selection-start-line="222" selection-start-column="19" selection-end-line="222" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CustomBenchmark.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/NativeLruBenchmarks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
+          <caret line="151" column="65" selection-start-line="151" selection-start-column="65" selection-end-line="151" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/Web12Generator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="111" selection-start-line="26" selection-start-column="111" selection-end-line="26" selection-end-column="111" />
+          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/RandomGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/ZipfGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/util/AccessTrace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/SearchEngineGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1222#1223#0" expanded="true" />
+            <element signature="e#1246#1247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceSprite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/NfsGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1125#1126#0" expanded="true" />
+            <element signature="e#1149#1150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceMulti2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3526882">
+          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/BenchmarkRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3715342">
-          <caret line="131" column="9" selection-start-line="131" selection-start-column="9" selection-end-line="131" selection-end-column="9" />
-          <folding>
-            <element signature="e#7475#7608#0" expanded="true" />
-            <element signature="e#7607#7608#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.6215054">
+          <caret line="66" column="197" selection-start-line="66" selection-start-column="197" selection-end-line="66" selection-end-column="197" />
+          <folding />
         </state>
       </provider>
     </entry>

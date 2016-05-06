@@ -13,8 +13,6 @@ import desmedt.frederik.cachebenchmarking.generator.ZipfGenerator;
  */
 public class BaseBenchmark {
 
-    public static final String ZIPF_READ_TAG = "ZRead";
-    public static final String RANDOM_READ_TAG = "RRead";
     public static final String INSERT_TAG = "Insert";
     public static final String DELETE_TAG = "Delete";
     public static final String UPDATE_TAG = "Update";
@@ -23,7 +21,7 @@ public class BaseBenchmark {
      * Base benchmark configuration used by all static classes in {@link BaseBenchmark}.
      * It contains all common functionalities of its subclasses as well as management of benchmark
      * {@link CacheBenchmarkConfiguration#setup()} and {@link CacheBenchmarkConfiguration#tearDown()}.
-     *
+     * <p/>
      * It expects the cache to be based on {@link Integer} keys.
      *
      * @param <V> The type of values that will be stored in the cache
@@ -32,9 +30,9 @@ public class BaseBenchmark {
 
         private int cacheSize;
 
-        public BaseBenchmarkConfiguration(String name, int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(name + " (" + cacheSize + ")", lowerBound, upperBound);
-            this.cacheSize = cacheSize;
+        public BaseBenchmarkConfiguration(String name, double cachedRatio, Integer lowerBound, Integer upperBound) {
+            super(String.format("%s (%2.2f%%)", name, cachedRatio * 100), lowerBound, upperBound);
+            cacheSize = (int) Math.round((upperBound - lowerBound) * cachedRatio);
         }
 
         @Override
@@ -75,21 +73,22 @@ public class BaseBenchmark {
         }
     }
 
-    /**
-     * A default benchmark configuration for reading a cache. It simulates random cache access by
-     * continuously generating random values before each individual run.
-     *
-     * It expects the cache to be based on {@link Integer} keys.
-     *
-     * @param <V> The type of the values that will be stored in the cache
-     */
-    public static abstract class RandomRead<V> extends BaseBenchmarkConfiguration<V> {
+    public static abstract class Read<V> extends BaseBenchmarkConfiguration<V> {
 
         private Generator<Integer> randomGenerator;
 
-        public RandomRead(String name, int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(name + RANDOM_READ_TAG, cacheSize, lowerBound, upperBound);
-            randomGenerator = new RandomGenerator(lowerBound, upperBound);
+        /**
+         *
+         * @param name The name of the cache policy used
+         * @param traceTag The name of trace used
+         * @param traceGenerator A generator representing some trace
+         * @param cachedRatio How much of the total key space should be available in the cache, {@code 0 <= cachedRatio <= 1}
+         * @param lowerBound The lower bound of the key space
+         * @param upperBound The upper bound of the key space
+         */
+        public Read(String name, String traceTag, Generator<Integer> traceGenerator, double cachedRatio, Integer lowerBound, Integer upperBound) {
+            super(name + traceTag, cachedRatio, lowerBound, upperBound);
+            randomGenerator = traceGenerator;
         }
 
         protected abstract void addToCache(Integer key, V value);
@@ -108,37 +107,34 @@ public class BaseBenchmark {
     }
 
     /**
-     * A default benchmark configuration for reading a cache. It simulates GET HTTP requests that
-     * pass by the cache by continuously generating random values according to a Zipf probability
-     * distribution ({@link ZipfGenerator}) before each individual run.
-     *
+     * A default benchmark configuration for reading a cache. It simulates random cache access by
+     * continuously generating random values before each individual run.
+     * <p/>
      * It expects the cache to be based on {@link Integer} keys.
      *
      * @param <V> The type of the values that will be stored in the cache
      */
-    public static abstract class ZipfRead<V> extends BaseBenchmarkConfiguration<V> {
+    public static abstract class RandomRead<V> extends BaseBenchmark.Read<V> {
 
-        private Generator<Integer> randomGenerator;
-
-        public ZipfRead(String name, int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(name + ZIPF_READ_TAG, cacheSize, lowerBound, upperBound);
-            randomGenerator = new ZipfGenerator(lowerBound, upperBound);
+        public RandomRead(String name, double cachedRatio, Integer lowerBound, Integer upperBound) {
+            super(name, RandomGenerator.TRACE_TAG, new RandomGenerator(lowerBound, upperBound), cachedRatio, lowerBound, upperBound);
         }
+    }
 
-        protected abstract void addToCache(Integer key, V value);
+    /**
+     * A default benchmark configuration for reading a cache. It simulates GET HTTP requests that
+     * pass by the cache by continuously generating random values according to a Zipf probability
+     * distribution ({@link ZipfGenerator}) before each individual run.
+     * <p/>
+     * It expects the cache to be based on {@link Integer} keys.
+     *
+     * @param <V> The type of the values that will be stored in the cache
+     */
+    public static abstract class ZipfRead<V> extends BaseBenchmark.Read<V> {
 
-        protected abstract V generateValue();
 
-        @Override
-        protected void cleanup(Integer key, V value, boolean succeeded) {
-            if (!succeeded) {
-                addToCache(key, value);
-            }
-        }
-
-        @Override
-        protected Pair<Integer, V> generateInput() {
-            return new Pair<>(randomGenerator.next(), generateValue());
+        public ZipfRead(String name, double cachedRatio, Integer lowerBound, Integer upperBound) {
+            super(name, ZipfGenerator.TRACE_TAG, new ZipfGenerator(lowerBound, upperBound), cachedRatio, lowerBound, upperBound);
         }
     }
 
@@ -147,7 +143,7 @@ public class BaseBenchmark {
      * in a cache. The key passed to the run will always be a key of an entry that is not currently
      * stored in the cache. Therefore it will always be a pure insert run and will never be updating
      * an existing entry.
-     *
+     * <p/>
      * It expects the cache to be based on {@link Integer} keys.
      * The keys that are used are completely random.
      *
@@ -158,8 +154,8 @@ public class BaseBenchmark {
         private Generator<Integer> generator;
         private int nextKey;
 
-        public Insert(String name, int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(name + INSERT_TAG, cacheSize, lowerBound, upperBound);
+        public Insert(String name, double cachedRatio, Integer lowerBound, Integer upperBound) {
+            super(name + INSERT_TAG, cachedRatio, lowerBound, upperBound);
             generator = new RandomGenerator(lowerBound, upperBound);
         }
 
@@ -183,7 +179,7 @@ public class BaseBenchmark {
      * A default benchmark configuration for deleting an entry from a cache.
      * The key passed to the run will always be a key of an existing entry in the cache. Therefore
      * the run is never told to try and remove the entry bound to the key that is not in the cache.
-     *
+     * <p/>
      * It expects the cache to be based on {@link Integer} keys.
      * The keys generated are completely random.
      *
@@ -193,10 +189,9 @@ public class BaseBenchmark {
 
         private Generator<Integer> generator;
         private int nextKey;
-        private int cacheSize;
 
-        public Delete(String name, int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(name + DELETE_TAG, cacheSize, lowerBound, upperBound);
+        public Delete(String name, double cachedRatio, Integer lowerBound, Integer upperBound) {
+            super(name + DELETE_TAG, cachedRatio, lowerBound, upperBound);
             generator = new RandomGenerator(lowerBound, upperBound);
         }
 
@@ -207,7 +202,7 @@ public class BaseBenchmark {
         @Override
         protected void setup() {
             super.setup();
-            for (int i = 0; i < cacheSize; i++) {
+            for (int i = 0; i < getCacheSize(); i++) {
                 prepare();
             }
         }
@@ -229,7 +224,7 @@ public class BaseBenchmark {
      * The key passed to the run might be bound to an already existing entry in the cache, yet this
      * is not enforced. Considering that a cache update is almost always used with a
      * "update or add if non existent" semantics.
-     *
+     * <p/>
      * It expects the cache to be based on {@link Integer} keys.
      * The keys generated are completely random.
      *
@@ -240,8 +235,8 @@ public class BaseBenchmark {
         private Generator<Integer> generator;
         private int nextKey;
 
-        public Update(String name, int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(name + UPDATE_TAG, cacheSize, lowerBound, upperBound);
+        public Update(String name, double cachedRatio, Integer lowerBound, Integer upperBound) {
+            super(name + UPDATE_TAG, cachedRatio, lowerBound, upperBound);
             generator = new RandomGenerator(lowerBound, upperBound);
         }
 

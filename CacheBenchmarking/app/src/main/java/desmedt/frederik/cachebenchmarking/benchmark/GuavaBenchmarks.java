@@ -6,6 +6,8 @@ import com.google.common.cache.CacheBuilder;
 import java.util.Random;
 
 import desmedt.frederik.cachebenchmarking.CacheBenchmarkConfiguration;
+import desmedt.frederik.cachebenchmarking.benchmark.BaseBenchmark.Read;
+import desmedt.frederik.cachebenchmarking.generator.Generator;
 
 /**
  * Contains a collection of Guava benchmarks as inner classes.
@@ -21,54 +23,13 @@ public class GuavaBenchmarks {
                 .build();
     }
 
-    public static class RandomRead extends BaseBenchmark.RandomRead<Integer> {
+    public static class Read extends BaseBenchmark.Read<Integer> {
 
         private Cache<Integer, Integer> cache;
         private Random random = new Random();
 
-        public RandomRead(int cacheSize, int lowerBound, int upperBound) {
-            super("Guava", cacheSize, lowerBound, upperBound);
-        }
-
-        @Override
-        protected boolean run(Integer key, Integer value) {
-            return cache.getIfPresent(key) != null;
-        }
-
-        @Override
-        protected void addToCache(Integer key, Integer value) {
-            cache.put(key, value);
-        }
-
-        @Override
-        protected Integer generateValue() {
-            return random.nextInt();
-        }
-
-        @Override
-        protected void createCache(int cacheSize) {
-            cache = GuavaBenchmarks.createCache(cacheSize);
-        }
-
-        @Override
-        protected void clearCache() {
-            cache.invalidateAll();
-            cache = null;
-        }
-
-        @Override
-        protected CacheStats generateStats() {
-            return CacheStats.read((int) cache.stats().hitCount(), (int) cache.stats().missCount(), getCacheSize(), (int) cache.size());
-        }
-    }
-
-    public static class ZipfRead extends BaseBenchmark.ZipfRead<Integer> {
-
-        private Cache<Integer, Integer> cache;
-        private Random random = new Random();
-
-        public ZipfRead(int cacheSize, int lowerBound, int upperBound) {
-            super("Guava", cacheSize, lowerBound, upperBound);
+        public Read(String traceTag, Generator<Integer> traceGenerator, double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super("Guava", traceTag, traceGenerator, cacheRatio, lowerBound, upperBound);
         }
 
         @Override
@@ -110,8 +71,8 @@ public class GuavaBenchmarks {
 
         private int nextKey = 0;
 
-        public Insert(int cacheSize, int lowerBound, int upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Insert(double cacheRatio, int lowerBound, int upperBound) {
+            super(CACHE_TAG, cacheRatio, lowerBound, upperBound);
         }
 
         @Override
@@ -152,8 +113,8 @@ public class GuavaBenchmarks {
         private Cache<Integer, Integer> cache;
         private Random random = new Random();
 
-        public Delete(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Delete(double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheRatio, lowerBound, upperBound);
         }
 
         @Override
@@ -194,8 +155,8 @@ public class GuavaBenchmarks {
         private Random random = new Random();
         private Cache<Integer, Integer> cache;
 
-        public Update(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Update(double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheRatio, lowerBound, upperBound);
         }
 
         @Override

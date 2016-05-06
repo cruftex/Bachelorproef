@@ -1,6 +1,7 @@
 package desmedt.frederik.cachebenchmarking.ui;
 
 import android.os.AsyncTask;
+import android.support.v4.os.TraceCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import org.cache2k.benchmark.traces.TraceCache;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,6 +36,7 @@ public class BenchmarkActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        TraceCache.applicationContext = getApplicationContext();
         benchmarkProgressBar = (ProgressBar) findViewById(R.id.benchmarkProgressBar);
         textCompleted = (TextView) findViewById(R.id.textCompleted);
         checkCompleted = (ImageView) findViewById(R.id.checkCompleted);

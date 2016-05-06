@@ -6,6 +6,7 @@ import java.util.Random;
 
 import desmedt.frederik.cachebenchmarking.CacheBenchmarkConfiguration;
 import desmedt.frederik.cachebenchmarking.cache.CacheLIRS;
+import desmedt.frederik.cachebenchmarking.generator.Generator;
 
 /**
  * Contains a collection of LIRS cache benchmarks, by JackRabbit, as inner classes.
@@ -59,14 +60,13 @@ public class JackRabbitLIRSBenchmark {
         }
     }
 
-    public static class ZipfRead extends BaseBenchmark.ZipfRead<Integer> {
+    public static class Read extends BaseBenchmark.Read<Integer> {
 
         private Random random = new Random();
         private Cache<Integer, Integer> lirsCache;
-        private int cacheSize;
 
-        public ZipfRead(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Read(String traceTag, Generator<Integer> traceGenerator, double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, traceTag, traceGenerator, cacheRatio, lowerBound, upperBound);
         }
 
         @Override
@@ -108,8 +108,8 @@ public class JackRabbitLIRSBenchmark {
         private Cache<Integer, Integer> lirsCache;
         private Random random = new Random();
 
-        public Insert(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Insert(double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheRatio, lowerBound, upperBound);
         }
 
         @Override
@@ -149,8 +149,8 @@ public class JackRabbitLIRSBenchmark {
         private Cache<Integer, Integer> lirsCache;
         private Random random = new Random();
 
-        public Delete(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Delete(double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheRatio, lowerBound, upperBound);
         }
 
         @Override
@@ -191,8 +191,8 @@ public class JackRabbitLIRSBenchmark {
         private Cache<Integer, Integer> lirsCache;
         private Random random = new Random();
 
-        public Update(int cacheSize, Integer lowerBound, Integer upperBound) {
-            super(CACHE_TAG, cacheSize, lowerBound, upperBound);
+        public Update(double cacheRatio, Integer lowerBound, Integer upperBound) {
+            super(CACHE_TAG, cacheRatio, lowerBound, upperBound);
         }
 
         @Override

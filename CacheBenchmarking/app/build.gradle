@@ -22,7 +22,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.google.guava:guava:19.0' // Guava Cache (LRU)
+    compile 'com.google.guava:guava:19.0'
     compile 'org.apache.commons:commons-compress:1.11'
     compile 'org.cache2k:cache2k-core:0.23.1' // Allow use of Clock eviction policy for better memory footprint
     compile 'org.cache2k:cache2k-api:0.23.1'

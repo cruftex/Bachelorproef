@@ -9,7 +9,7 @@ import android.util.Pair;
  * Note how this class is immutable, this is to enforce a reliable never-changing configuration
  * that maintains the integrity of the end results.
  * After the benchmark is run {@link CacheStats} are generated that can be retrieved.
- *
+ * <p/>
  * Every cache benchmark configuration handles keys and values, where the key is {@link Comparable}.
  */
 public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
@@ -22,6 +22,9 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
 
     public final String TAG;
     private final String name;
+    private final String policyTag;
+    private final String traceTag;
+    private final double cacheRatio;
 
     private K lowerKeyBound;
     private K upperKeyBound;
@@ -29,8 +32,11 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
     private CacheStats stats;
     private long totalTimeNanos;
 
-    public CacheBenchmarkConfiguration(String name, K lowerBound, K upperBound) {
-        this.name = name;
+    public CacheBenchmarkConfiguration(String policyTag, String traceTag, double cacheRatio, K lowerBound, K upperBound) {
+        this.name = policyTag + traceTag + " (" + String.format("%.1f%%", cacheRatio * 100) + ")";
+        this.policyTag = policyTag;
+        this.traceTag = traceTag;
+        this.cacheRatio = cacheRatio;
         TAG = CacheBenchmarkConfiguration.class.getSimpleName() + " - " + name;
         this.lowerKeyBound = lowerBound;
         this.upperKeyBound = upperBound;
@@ -46,6 +52,18 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
 
     public String getName() {
         return name;
+    }
+
+    public double getCacheRatio() {
+        return cacheRatio;
+    }
+
+    public String getPolicyTag() {
+        return policyTag;
+    }
+
+    public String getTraceTag() {
+        return traceTag;
     }
 
     /**
@@ -156,25 +174,28 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
         setup();
         final long logPoint = runIterations / CONFIGURATION_RUN_LOG_POINT_COUNT;
 
-        Log.i(TAG, "Starting warmup");
+        Log.v(TAG, "Starting warmup");
         for (int i = 0; i < warmupIterations; i++) {
             runAndRecord();
         }
 
-        Log.i(TAG, "Completed warmup, starting run");
+        Log.v(TAG, "Completed warmup, starting run");
 
         for (int i = 0; i < runIterations; i++) {
             runAndRecord();
             if (i % logPoint == 0 && i != 0) {
-                Log.i(TAG, String.format("Reached %d iterations after %d millis", i, totalTimeNanos / 1_000_000));
+                Log.v(TAG, String.format("Reached %d iterations after %d millis", i, totalTimeNanos / 1_000_000));
             }
         }
 
         stats = generateStats();
         stats.benchmarkName = getName();
+        stats.policyTag = policyTag;
+        stats.traceTag = traceTag;
+        stats.cacheRatio = cacheRatio;
         stats.averageRunTime = totalTimeNanos / runIterations;
         tearDown();
-        Log.i(TAG, "Completed run");
+        Log.v(TAG, "Completed run");
     }
 
     /**
@@ -211,7 +232,7 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
             }
 
             if (totalTimeNanos >= nextLogPoint) {
-                Log.i(TAG, String.format("Reached %d iterations after %d millis", totalIterations,
+                Log.v(TAG, String.format("Reached %d iterations after %d millis", totalIterations,
                         totalTimeNanos / 1_000_000));
                 nextLogPoint = nextLogPoint + runMillis / CONFIGURATION_RUN_LOG_POINT_COUNT;
             }
@@ -219,6 +240,9 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
 
         stats = generateStats();
         stats.benchmarkName = getName();
+        stats.policyTag = policyTag;
+        stats.traceTag = traceTag;
+        stats.cacheRatio = cacheRatio;
         stats.averageRunTime = totalTimeNanos / totalIterations;
         tearDown();
         Log.i(TAG, "Completed run");
@@ -271,6 +295,10 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
 
         private String benchmarkName;
         private double averageRunTime;
+
+        private String policyTag;
+        private String traceTag;
+        private double cacheRatio;
 
         private CacheStats() {
         }
@@ -346,13 +374,20 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
             return cacheEntryCount;
         }
 
-        /**
-         * Sets the benchmark name, should only be set by the base {@link CacheBenchmarkConfiguration}.
-         *
-         * @param benchmarkName The benchmark name
-         */
         private void setBenchmarkName(String benchmarkName) {
             this.benchmarkName = benchmarkName;
+        }
+
+        private void setCacheRatio(double cacheRatio) {
+            this.cacheRatio = cacheRatio;
+        }
+
+        private void setPolicyTag(String policyTag) {
+            this.policyTag = policyTag;
+        }
+
+        private void setTraceTag(String traceTag) {
+            this.traceTag = traceTag;
         }
 
         /**
@@ -362,6 +397,41 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
          */
         private void setAverageRunTime(double averageRunTime) {
             this.averageRunTime = averageRunTime;
+        }
+
+        public double getAverageRunTime() {
+            return averageRunTime;
+        }
+
+        public String getBenchmarkName() {
+            return benchmarkName;
+        }
+
+        /**
+         * @return The average hitrate of the run, which is a number where {@code 0 <= val <= 100}
+         */
+        public double getHitrate() {
+            return (double) successCount / (successCount + failureCount) * 100;
+        }
+
+        public String getPolicyTag() {
+            return policyTag;
+        }
+
+        public String getTraceTag() {
+            return traceTag;
+        }
+
+        public double getCacheRatio() {
+            return cacheRatio;
+        }
+
+        public String getPolicyWithCacheRatio() {
+            return policyTag + " (" + String.format("%.3f)", cacheRatio);
+        }
+
+        public boolean areReadStats() {
+            return successCount != null;
         }
 
         @Override

@@ -2,6 +2,8 @@ package desmedt.frederik.cachebenchmarking.benchmark;
 
 import android.util.Pair;
 
+import java.util.Random;
+
 import desmedt.frederik.cachebenchmarking.CacheBenchmarkConfiguration;
 import desmedt.frederik.cachebenchmarking.generator.Generator;
 import desmedt.frederik.cachebenchmarking.generator.RandomGenerator;
@@ -30,8 +32,8 @@ public class BaseBenchmark {
 
         private int cacheSize;
 
-        public BaseBenchmarkConfiguration(String name, double cachedRatio, Integer lowerBound, Integer upperBound) {
-            super(String.format("%s (%2.2f%%)", name, cachedRatio * 100), lowerBound, upperBound);
+        public BaseBenchmarkConfiguration(String policyTag, String traceTag, double cachedRatio, Integer lowerBound, Integer upperBound) {
+            super(policyTag, traceTag, cachedRatio, lowerBound, upperBound);
             cacheSize = (int) Math.round((upperBound - lowerBound) * cachedRatio);
         }
 
@@ -87,7 +89,7 @@ public class BaseBenchmark {
          * @param upperBound The upper bound of the key space
          */
         public Read(String name, String traceTag, Generator<Integer> traceGenerator, double cachedRatio, Integer lowerBound, Integer upperBound) {
-            super(name + traceTag, cachedRatio, lowerBound, upperBound);
+            super(name, traceTag, cachedRatio, lowerBound, upperBound);
             randomGenerator = traceGenerator;
         }
 
@@ -155,7 +157,7 @@ public class BaseBenchmark {
         private int nextKey;
 
         public Insert(String name, double cachedRatio, Integer lowerBound, Integer upperBound) {
-            super(name + INSERT_TAG, cachedRatio, lowerBound, upperBound);
+            super(name + INSERT_TAG, RandomGenerator.TRACE_TAG, cachedRatio, lowerBound, upperBound);
             generator = new RandomGenerator(lowerBound, upperBound);
         }
 
@@ -191,7 +193,7 @@ public class BaseBenchmark {
         private int nextKey;
 
         public Delete(String name, double cachedRatio, Integer lowerBound, Integer upperBound) {
-            super(name + DELETE_TAG, cachedRatio, lowerBound, upperBound);
+            super(name + DELETE_TAG, RandomGenerator.TRACE_TAG, cachedRatio, lowerBound, upperBound);
             generator = new RandomGenerator(lowerBound, upperBound);
         }
 
@@ -236,7 +238,7 @@ public class BaseBenchmark {
         private int nextKey;
 
         public Update(String name, double cachedRatio, Integer lowerBound, Integer upperBound) {
-            super(name + UPDATE_TAG, cachedRatio, lowerBound, upperBound);
+            super(name + UPDATE_TAG, RandomGenerator.TRACE_TAG, cachedRatio, lowerBound, upperBound);
             generator = new RandomGenerator(lowerBound, upperBound);
         }
 

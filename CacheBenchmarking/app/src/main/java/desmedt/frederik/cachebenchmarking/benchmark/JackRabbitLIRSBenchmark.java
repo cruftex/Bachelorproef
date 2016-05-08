@@ -140,7 +140,7 @@ public class JackRabbitLIRSBenchmark {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(getCacheSize(), (int) lirsCache.size());
+            return CacheStats.nonRead(StatType.INSERT, getCacheSize(), (int) lirsCache.size());
         }
     }
 
@@ -182,7 +182,7 @@ public class JackRabbitLIRSBenchmark {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(getCacheSize(), (int) lirsCache.size());
+            return CacheStats.nonRead(StatType.DELETE, getCacheSize(), (int) lirsCache.size());
         }
     }
 
@@ -224,7 +224,7 @@ public class JackRabbitLIRSBenchmark {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(getCacheSize(), (int) lirsCache.size());
+            return CacheStats.nonRead(StatType.UPDATE, getCacheSize(), (int) lirsCache.size());
         }
     }
 }

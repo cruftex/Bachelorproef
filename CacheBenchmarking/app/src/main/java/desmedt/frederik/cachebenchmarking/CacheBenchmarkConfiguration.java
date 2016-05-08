@@ -300,7 +300,10 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
         private String traceTag;
         private double cacheRatio;
 
-        private CacheStats() {
+        private final StatType type;
+
+        private CacheStats(StatType type) {
+            this.type = type;
         }
 
         /**
@@ -317,7 +320,7 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
          * @return A {@link CacheStats} object containing the specified data
          */
         public static CacheStats read(int successCount, int failureCount, int cacheSize, int cacheEntryCount) {
-            CacheStats metrics = new CacheStats();
+            CacheStats metrics = new CacheStats(StatType.READ);
             metrics.successCount = successCount;
             metrics.failureCount = failureCount;
             metrics.maxCacheSize = cacheSize;
@@ -334,8 +337,8 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
          * @param cacheEntryCount The amount of cache entries in the cache used in the benchmark configuration
          * @return A {@link CacheStats} object containing the specified data
          */
-        public static CacheStats nonRead(int maxCacheSize, int cacheEntryCount) {
-            CacheStats metrics = new CacheStats();
+        public static CacheStats nonRead(StatType type, int maxCacheSize, int cacheEntryCount) {
+            CacheStats metrics = new CacheStats(type);
             metrics.maxCacheSize = maxCacheSize;
             metrics.cacheEntryCount = cacheEntryCount;
             return metrics;
@@ -430,18 +433,17 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
             return policyTag + " (" + String.format("%.3f)", cacheRatio);
         }
 
-        public boolean areReadStats() {
-            return successCount != null;
+        public StatType getStatType() {
+            return type;
         }
 
         @Override
         public String toString() {
             final StringBuilder builder = new StringBuilder(String.format("%-25s ", benchmarkName));
-            final boolean readBenchmark = successCount != null && failureCount != null;
 
             builder.append(String.format("Cache size: %-5d ", maxCacheSize));
 
-            if (readBenchmark) {
+            if (getStatType() == StatType.READ) {
                 builder.append(String.format("Hit ratio: %-5.3f%%     ", (double) successCount / (successCount + failureCount) * 100));
             }
 
@@ -461,5 +463,9 @@ public abstract class CacheBenchmarkConfiguration<K extends Comparable, V> {
 
             return builder.toString();
         }
+    }
+
+    public enum StatType {
+        READ, INSERT, UPDATE, DELETE
     }
 }

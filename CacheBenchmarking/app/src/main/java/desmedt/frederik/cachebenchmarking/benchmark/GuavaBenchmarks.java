@@ -104,7 +104,7 @@ public class GuavaBenchmarks {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(getCacheSize(), (int) cache.size());
+            return CacheStats.nonRead(StatType.INSERT, getCacheSize(), (int) cache.size());
         }
     }
 
@@ -146,7 +146,7 @@ public class GuavaBenchmarks {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(getCacheSize(), (int) cache.size());
+            return CacheStats.nonRead(StatType.DELETE, getCacheSize(), (int) cache.size());
         }
     }
 
@@ -188,7 +188,7 @@ public class GuavaBenchmarks {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(getCacheSize(), (int) cache.size());
+            return CacheStats.nonRead(StatType.UPDATE, getCacheSize(), (int) cache.size());
         }
     }
 }

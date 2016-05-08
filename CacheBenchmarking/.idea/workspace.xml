@@ -6,6 +6,8 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="BenchmarkRunner" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -40,7 +42,27 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/BaseBenchmark.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="240" column="101" selection-start-line="240" selection-start-column="101" selection-end-line="240" selection-end-column="101" />
+              <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ZipfGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/ZipfGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RandomGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/RandomGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -50,7 +72,17 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KBenchmark.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <caret line="143" column="16" selection-start-line="143" selection-start-column="16" selection-end-line="143" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JackRabbitLIRSBenchmark.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/JackRabbitLIRSBenchmark.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -59,9 +91,24 @@
       <file leaf-file-name="BenchmarkRunner.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/BenchmarkRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9444444">
-              <caret line="97" column="127" selection-start-line="97" selection-start-column="127" selection-end-line="97" selection-end-column="127" />
-              <folding />
+            <state vertical-scroll-proportion="0.68213457">
+              <caret line="57" column="10" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
+              <folding>
+                <element signature="e#2620#2811#0" expanded="true" />
+                <element signature="e#2810#2811#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FIFOCache.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/FIFOCache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+              <folding>
+                <element signature="e#592#593#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,7 +117,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/TableFormatter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="160" column="24" selection-start-line="160" selection-start-column="24" selection-end-line="160" selection-end-column="24" />
+              <caret line="166" column="170" selection-start-line="166" selection-start-column="170" selection-end-line="166" selection-end-column="170" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,49 +129,15 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/CacheBenchmarkConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="98" selection-start-line="35" selection-start-column="98" selection-end-line="35" selection-end-column="98" />
+              <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
               <folding>
-                <element signature="e#16458#16459#0" expanded="true" />
-                <element signature="e#16498#16499#0" expanded="true" />
-                <element signature="e#16537#16538#0" expanded="true" />
-                <element signature="e#16576#16577#0" expanded="true" />
-                <element signature="e#16617#16618#0" expanded="true" />
-                <element signature="e#16658#16659#0" expanded="true" />
-                <element signature="e#16834#16835#0" expanded="true" />
-                <element signature="e#16885#16886#0" expanded="true" />
+                <element signature="e#11846#11847#0" expanded="true" />
+                <element signature="e#11886#11887#0" expanded="true" />
+                <element signature="e#16147#16148#0" expanded="true" />
+                <element signature="e#16192#16193#0" expanded="true" />
+                <element signature="e#16947#16948#0" expanded="true" />
+                <element signature="e#16982#16983#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchEngineGenerator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/SearchEngineGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NfsGenerator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/NfsGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CacheAccessTraceSprite.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceSprite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -1710,7 +1723,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_benchmark.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/EHCacheBenchmark.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ehcache.xml" />
@@ -1741,14 +1753,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/LoopingAccessPattern.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/FIFOCache.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/RandomCache.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/RandomGenerator.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceUmassFinancial1.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceUmassWebSearch1.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CustomBenchmark.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/GuavaBenchmarks.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/JackRabbitLIRSBenchmark.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/NativeLruBenchmarks.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/ZipfGenerator.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/Web12Generator.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/SearchEngineGenerator.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/OltpGenerator.java" />
@@ -1756,11 +1762,18 @@
         <option value="$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceSprite.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/TableGenerator.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/BaseBenchmark.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/CacheBenchmarkConfiguration.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KBenchmark.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CustomBenchmark.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/GuavaBenchmarks.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/JackRabbitLIRSBenchmark.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/NativeLruBenchmarks.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/CacheBenchmarkConfiguration.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/ZipfGenerator.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/TableFormatter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/RandomGenerator.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/BaseBenchmark.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/BenchmarkRunner.java" />
+        <option value="$PROJECT_DIR$/../../Data/log_final.txt" />
       </list>
     </option>
   </component>
@@ -1814,31 +1827,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CacheBenchmarking" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CacheBenchmarking" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1939,6 +1930,28 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="desmedt.frederik.cachebenchmarking" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CacheBenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gradle Scripts" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CacheBenchmarking" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2263,7 +2276,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2568" y="-8" width="2576" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49046105" order="12" side_tool="false" content_ui="tabs" />
@@ -2271,7 +2284,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45100224" sideWeight="0.40977743" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.56792873" sideWeight="0.5902226" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48886415" sideWeight="0.5902226" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49682036" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -2308,26 +2321,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/TableFormatter.java</url>
-          <line>131</line>
-          <properties />
-          <option name="timeStamp" value="251" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="253" />
+      <option name="time" value="263" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/Home/AndroidSDK/adt-bundle-windows-x86_64-20140321/sdk/sources/android-23/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.16634052">
-          <caret line="1526" column="25" selection-start-line="1526" selection-start-column="25" selection-end-line="1526" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradle.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5970425">
@@ -2399,13 +2397,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/FIFOCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/RandomCache.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2470,48 +2461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/GuavaBenchmarks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="158" column="39" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/JackRabbitLIRSBenchmark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="194" column="39" selection-start-line="194" selection-start-column="39" selection-end-line="194" selection-end-column="39" />
-          <folding>
-            <element signature="e#1014#1015#0" expanded="false" />
-            <element signature="e#1061#1062#0" expanded="false" />
-            <element signature="e#1433#1434#0" expanded="false" />
-            <element signature="e#1482#1483#0" expanded="false" />
-            <element signature="e#2323#2324#0" expanded="false" />
-            <element signature="e#2370#2371#0" expanded="false" />
-            <element signature="e#2742#2743#0" expanded="false" />
-            <element signature="e#2791#2792#0" expanded="false" />
-            <element signature="e#3644#3645#0" expanded="false" />
-            <element signature="e#3693#3694#0" expanded="false" />
-            <element signature="e#3756#3757#0" expanded="false" />
-            <element signature="e#3803#3804#0" expanded="false" />
-            <element signature="e#4171#4172#0" expanded="false" />
-            <element signature="e#4207#4208#0" expanded="false" />
-            <element signature="e#4774#4775#0" expanded="false" />
-            <element signature="e#4823#4824#0" expanded="false" />
-            <element signature="e#4886#4887#0" expanded="false" />
-            <element signature="e#4933#4934#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CustomBenchmark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="169" column="35" selection-start-line="169" selection-start-column="35" selection-end-line="169" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cache2k/cache2k-api/0.23.1/7b8d6390848feef6a7d5b8024d941673eeaae6ea/cache2k-api-0.23.1-sources.jar!/org/cache2k/Cache.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9371534">
@@ -2519,33 +2468,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/NativeLruBenchmarks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="151" column="65" selection-start-line="151" selection-start-column="65" selection-end-line="151" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/Web12Generator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/RandomGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/ZipfGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2561,7 +2487,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1222#1223#0" expanded="false" />
+            <element signature="e#1246#1247#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2605,7 +2535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="59" column="31" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2628,7 +2557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="165" column="21" selection-start-line="165" selection-start-column="21" selection-end-line="165" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2639,22 +2567,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/BaseBenchmark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="240" column="101" selection-start-line="240" selection-start-column="101" selection-end-line="240" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Home/AndroidSDK/adt-bundle-windows-x86_64-20140321/sdk/sources/android-23/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.1569893">
           <caret line="80" column="11" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="11" />
-          <folding>
-            <element signature="e#3143#3144#0" expanded="false" />
-            <element signature="e#3184#3185#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2671,7 +2587,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1125#1126#0" expanded="false" />
+            <element signature="e#1149#1150#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2683,27 +2600,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/CacheBenchmarkConfiguration.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceSprite.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="98" selection-start-line="35" selection-start-column="98" selection-end-line="35" selection-end-column="98" />
-          <folding>
-            <element signature="e#16458#16459#0" expanded="true" />
-            <element signature="e#16498#16499#0" expanded="true" />
-            <element signature="e#16537#16538#0" expanded="true" />
-            <element signature="e#16576#16577#0" expanded="true" />
-            <element signature="e#16617#16618#0" expanded="true" />
-            <element signature="e#16658#16659#0" expanded="true" />
-            <element signature="e#16834#16835#0" expanded="true" />
-            <element signature="e#16885#16886#0" expanded="true" />
-          </folding>
+          <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/CustomBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="202" column="55" selection-start-line="202" selection-start-column="55" selection-end-line="202" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/GuavaBenchmarks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="190" column="29" selection-start-line="190" selection-start-column="29" selection-end-line="190" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/NativeLruBenchmarks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/JackRabbitLIRSBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/Cache2KBenchmark.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <caret line="143" column="16" selection-start-line="143" selection-start-column="16" selection-end-line="143" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/ZipfGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -2711,26 +2658,70 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/TableFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="160" column="24" selection-start-line="160" selection-start-column="24" selection-end-line="160" selection-end-column="24" />
+          <caret line="166" column="170" selection-start-line="166" selection-start-column="170" selection-end-line="166" selection-end-column="170" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceSprite.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/generator/RandomGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/benchmark/BaseBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/CacheBenchmarkConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding>
+            <element signature="e#11846#11847#0" expanded="true" />
+            <element signature="e#11886#11887#0" expanded="true" />
+            <element signature="e#16147#16148#0" expanded="true" />
+            <element signature="e#16192#16193#0" expanded="true" />
+            <element signature="e#16947#16948#0" expanded="true" />
+            <element signature="e#16982#16983#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/cache/FIFOCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <folding>
+            <element signature="e#592#593#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Data/log_final.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5522041">
+          <caret line="676" column="42" selection-start-line="676" selection-start-column="42" selection-end-line="676" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/desmedt/frederik/cachebenchmarking/BenchmarkRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9444444">
-          <caret line="97" column="127" selection-start-line="97" selection-start-column="127" selection-end-line="97" selection-end-column="127" />
-          <folding />
+        <state vertical-scroll-proportion="0.68213457">
+          <caret line="57" column="10" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
+          <folding>
+            <element signature="e#2620#2811#0" expanded="true" />
+            <element signature="e#2810#2811#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

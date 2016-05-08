@@ -56,7 +56,7 @@ public class CustomBenchmark {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(cache.maxSize(), cache.size());
+            return CacheStats.nonRead(StatType.INSERT, cache.maxSize(), cache.size());
         }
     }
 
@@ -156,7 +156,7 @@ public class CustomBenchmark {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(cache.maxSize(), cache.size());
+            return CacheStats.nonRead(StatType.UPDATE, cache.maxSize(), cache.size());
         }
     }
 
@@ -200,7 +200,7 @@ public class CustomBenchmark {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(cache.maxSize(), cache.size());
+            return CacheStats.nonRead(StatType.DELETE, cache.maxSize(), cache.size());
         }
     }
 }

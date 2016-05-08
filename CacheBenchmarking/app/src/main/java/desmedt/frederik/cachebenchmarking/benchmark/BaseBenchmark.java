@@ -89,7 +89,7 @@ public class BaseBenchmark {
          * @param upperBound The upper bound of the key space
          */
         public Read(String name, String traceTag, Generator<Integer> traceGenerator, double cachedRatio, Integer lowerBound, Integer upperBound) {
-            super(name, traceTag, cachedRatio, lowerBound, upperBound);
+            super(name + "Read", traceTag, cachedRatio, lowerBound, upperBound);
             randomGenerator = traceGenerator;
         }
 

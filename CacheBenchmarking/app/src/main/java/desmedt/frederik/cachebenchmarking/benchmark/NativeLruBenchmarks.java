@@ -56,7 +56,7 @@ public class NativeLruBenchmarks {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(cache.size(), cache.maxSize());
+            return CacheStats.nonRead(StatType.UPDATE, cache.size(), cache.maxSize());
         }
     }
 
@@ -139,7 +139,7 @@ public class NativeLruBenchmarks {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(cache.maxSize(), cache.size());
+            return CacheStats.nonRead(StatType.DELETE, cache.maxSize(), cache.size());
         }
     }
 
@@ -181,7 +181,7 @@ public class NativeLruBenchmarks {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(cache.maxSize(), cache.size());
+            return CacheStats.nonRead(StatType.INSERT, cache.maxSize(), cache.size());
         }
     }
 }

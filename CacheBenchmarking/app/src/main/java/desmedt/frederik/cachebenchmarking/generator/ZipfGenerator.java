@@ -8,7 +8,7 @@ import org.cache2k.benchmark.util.ZipfianPattern;
  */
 public class ZipfGenerator implements Generator<Integer> {
 
-    public static final String TRACE_TAG = "ZRead";
+    public static final String TRACE_TAG = "Zipf";
 
     private final ZipfianPattern pattern;
 

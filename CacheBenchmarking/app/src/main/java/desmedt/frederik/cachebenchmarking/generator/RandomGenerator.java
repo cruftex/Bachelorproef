@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class RandomGenerator implements Generator<Integer> {
 
-    public static final String TRACE_TAG = "RRead";
+    public static final String TRACE_TAG = "Random";
 
     private Random random = new Random();
 

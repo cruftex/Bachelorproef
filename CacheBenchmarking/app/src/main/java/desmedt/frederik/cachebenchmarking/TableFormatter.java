@@ -107,19 +107,19 @@ public class TableFormatter {
     public static String formatRow(String... values) {
         StringBuilder builder = new StringBuilder();
         for (String value : values) {
-            builder.append(String.format("%" + value.length() + "s ", value));
+            builder.append(value);
         }
 
         return builder.toString();
     }
 
     public static String generateHitRatioTable(String policyTag, Collection<CacheBenchmarkConfiguration.CacheStats> stats) {
-        TableFormatter table = new TableFormatter(policyTag);
+        TableFormatter table = new TableFormatter("Cache size");
         Map<Double, RowBuilder> cacheRatioRowMap = new HashMap<>();
         List<String> tagIndexer = new ArrayList<>(stats.size() + 1);
         tagIndexer.add("");
         for (CacheBenchmarkConfiguration.CacheStats stat : stats) {
-            if (stat.areReadStats()) {
+            if (stat.getStatType() == CacheBenchmarkConfiguration.StatType.READ) {
                 if (!tagIndexer.contains(stat.getTraceTag())) {
                     tagIndexer.add(stat.getTraceTag());
                     table.addColumn(stat.getTraceTag());
@@ -137,7 +137,56 @@ public class TableFormatter {
             table.addRow(builder);
         }
 
-        return table.sort(0).toString();
+        return table.rows.isEmpty() ? "" : new StringBuilder(String.format("%s - %s - Hit ratios%n", policyTag, CacheBenchmarkConfiguration.StatType.READ.toString())).append(table.sort(0).toString()).toString();
+    }
+
+    public static String generateAvgReadRuntimeTable(String policyTag, Collection<CacheBenchmarkConfiguration.CacheStats> stats) {
+        TableFormatter table = new TableFormatter("Cache size");
+        Map<Double, RowBuilder> avgReadRowMap = new HashMap<>();
+        List<String> tagIndexer = new ArrayList<>(stats.size() + 1);
+        tagIndexer.add("");
+        for (CacheBenchmarkConfiguration.CacheStats stat : stats) {
+            if (stat.getStatType() == CacheBenchmarkConfiguration.StatType.READ) {
+                if (!tagIndexer.contains(stat.getTraceTag())) {
+                    tagIndexer.add(stat.getTraceTag());
+                    table.addColumn(stat.getTraceTag());
+                }
+
+                if (!avgReadRowMap.containsKey(stat.getCacheRatio())) {
+                    avgReadRowMap.put(stat.getCacheRatio(), new RowBuilder(String.format("%.2f%%", stat.getCacheRatio() * 100)));
+                }
+
+                avgReadRowMap.get(stat.getCacheRatio()).insertValue(tagIndexer.indexOf(stat.getTraceTag()), String.format("%.1f", stat.getAverageRunTime()));
+            }
+        }
+
+        for (RowBuilder builder : avgReadRowMap.values()) {
+            table.addRow(builder);
+        }
+
+        return table.rows.isEmpty() ? "" : new StringBuilder(String.format("%s - %s - Average execution time (ns)%n", policyTag, CacheBenchmarkConfiguration.StatType.READ)).append(table.sort(0).toString()).toString();
+    }
+
+    public static String generateAvgRuntimeTable(CacheBenchmarkConfiguration.StatType statType, String policyTag, Collection<CacheBenchmarkConfiguration.CacheStats> stats) {
+        if (statType == CacheBenchmarkConfiguration.StatType.READ) {
+            return generateAvgReadRuntimeTable(policyTag, stats);
+        }
+
+        TableFormatter table = new TableFormatter("Cache ratio", "Cache size", "Avg runtime (ns)");
+        Map<Double, RowBuilder> avgReadRowMap = new HashMap<>();
+        for (CacheBenchmarkConfiguration.CacheStats stat : stats) {
+            if (stat.getStatType() == statType) {
+                if (!avgReadRowMap.containsKey(stat.getCacheRatio())) {
+                    avgReadRowMap.put(stat.getCacheRatio(), new RowBuilder(String.format("%.2f%%", stat.getCacheRatio() * 100), stat.getMaxCacheSize().toString(), String.format("%.1f", stat.getAverageRunTime())));
+                }
+            }
+        }
+
+        for (RowBuilder builder : avgReadRowMap.values()) {
+            table.addRow(builder);
+        }
+
+        return table.rows.isEmpty() ? "" : new StringBuilder(String.format("%s - %s - Average execution time (ns)%n", policyTag, statType.toString())).append(table.sort(0).toString()).toString();
     }
 
     public static class RowBuilder {
@@ -203,14 +252,18 @@ public class TableFormatter {
             Object right = rhs.get(columnIndex);
 
             try {
-                double leftValue = 0;
+                double leftValue;
                 if (left.toString().endsWith("%")) {
                     leftValue = Double.parseDouble(left.toString().substring(0, left.toString().length() - 1));
+                } else {
+                    leftValue = Double.parseDouble(left.toString());
                 }
 
-                double rightValue = 0;
+                double rightValue;
                 if (right.toString().endsWith("%")) {
                     rightValue = Double.parseDouble(right.toString().substring(0, right.toString().length() - 1));
+                } else {
+                    rightValue = Double.parseDouble(right.toString());
                 }
 
                 return leftValue < rightValue ? -1 : 1;

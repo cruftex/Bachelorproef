@@ -129,7 +129,7 @@ public class Cache2KBenchmark {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(getCacheSize(), cache.getTotalEntryCount());
+            return CacheStats.nonRead(StatType.INSERT, getCacheSize(), cache.getTotalEntryCount());
         }
     }
 
@@ -174,7 +174,7 @@ public class Cache2KBenchmark {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(getCacheSize(), cache.getTotalEntryCount());
+            return CacheStats.nonRead(StatType.UPDATE, getCacheSize(), cache.getTotalEntryCount());
         }
     }
 
@@ -220,7 +220,7 @@ public class Cache2KBenchmark {
 
         @Override
         protected CacheStats generateStats() {
-            return CacheStats.nonRead(getCacheSize(), cache.getTotalEntryCount());
+            return CacheStats.nonRead(StatType.DELETE, getCacheSize(), cache.getTotalEntryCount());
         }
     }
 }

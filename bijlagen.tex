@@ -37,6 +37,9 @@
 \usepackage{lmodern}
 \usepackage{textcomp}
 
+\usepackage{pgfplots}
+\usepackage[toc,page]{appendix}
+
 \usepackage{lipsum}          % Voor vultekst (lorem ipsum)
 
 %%---------- Layout ------------------------------------------------------
@@ -111,6 +114,34 @@
 %  - tweede zit = 3e examenperiode
 \newcommand{\examenperiode}{Tweede examenperiode}
 
+\pgfplotsset{width=7cm,compat=1.13}
+
+\newcommand{\CUDGraphLarge}[2]{
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cache size}, 
+	ylabel={Avg runtime (ns)},
+	ymin=0, ymax=#2,
+]
+\addplot table {Data/#1.dat};
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\CUDGraph}[1]{
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cache ratio}, 
+	ylabel={Avg runtime (ns)},
+	ymin=0, ymax=5000,
+]
+\addplot table {Data/#1.dat};
+\end{axis}
+\end{tikzpicture}
+}
+
 %%========================================================================
 %% Inhoud document
 %%========================================================================
@@ -178,11 +209,30 @@
 
 
 \tableofcontents
+\newpage
 
-\appendix
+\begin{appendices}
+\chapter{Insert benchmarks}
+\CUDGraph{RandomCacheInsert}
+\CUDGraph{LIRSCacheInsert}
+\CUDGraph{GuavaCacheInsert}
+\CUDGraph{NativeLruCacheInsert}
+\\\CUDGraph{FifoCacheInsert}
+\\\\These benchmarks have an average execution time above 5000 ns. Due to the scale difference they are placed separately.
+\\\\\CUDGraphLarge{ClockCacheInsert}{15000}
+\CUDGraphLarge{ArcCacheInsert}{15000}
 
-\chapter{Appendix 1}
+\chapter{Update benchmarks}
 
+\CUDGraphLarge{LIRSCacheUpdate}{15000}
+\CUDGraphLarge{GuavaCacheUpdate}{15000}
+\\\CUDGraphLarge{NativeLruCacheUpdate}{15000}
+\CUDGraphLarge{FifoCacheUpdate}{15000}
+\\\CUDGraphLarge{ClockCacheInsert}{15000}
+\CUDGraphLarge{ArcCacheInsert}{15000}
+\\\\Due to the linear fashion of a random cache update, random cache is placed separately and has a different scale.
+\\\\\CUDGraphLarge{RandomCacheUpdate}{30000}
+\end{appendices}
 % Automatisch invoegen van al je Java broncode:
 % % 1/ maak een link naar je broncodedirectory naar subdirectory source
 % %      ln -s /path/to/java/src/ ./source

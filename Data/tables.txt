@@ -10,6 +10,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            2737.0 
      90.00%         450            2699.0 
     100.00%         500            2854.0 
+	
 ArcCacheInsert - INSERT - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50           13565.0 
@@ -22,6 +23,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400           14210.0 
      90.00%         450           14089.0 
     100.00%         500           14101.0 
+
 RandomCacheDelete - DELETE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            3034.0 
@@ -34,6 +36,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            2293.0 
      90.00%         450            2346.0 
     100.00%         500            2210.0 
+
 RandomCacheRead - READ - Hit ratios
 Cache size      NFS  SearchEngine    Web12     Zipf   Random 
      0.10%                 0.264% 
@@ -65,6 +68,7 @@ Cache size      NFS  SearchEngine    Web12     Zipf   Random
     18.00%  83.865%                69.026%  52.861%  17.325% 
     19.00%  83.485%                67.362%  52.925%  18.012% 
     20.00%  84.431%                67.138%  53.772%  19.040% 
+
 RandomCacheRead - READ - Average execution time (ns)
 Cache size     NFS  SearchEngine   Web12    Zipf  Random 
      0.10%                4418.0 
@@ -96,6 +100,7 @@ Cache size     NFS  SearchEngine   Web12    Zipf  Random
     18.00%  3967.0                4021.0  2893.0  3705.0 
     19.00%  3934.0                3926.0  2861.0  3686.0 
     20.00%  3458.0                3851.0  3101.0  3507.0 
+
 ArcCacheDelete - DELETE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50           11614.0 
@@ -108,6 +113,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            8967.0 
      90.00%         450            8733.0 
     100.00%         500            9584.0 
+
 GuavaRead - READ - Hit ratios
 Cache size      NFS  SearchEngine    Web12     Zipf   Random 
      0.10%                 0.255% 
@@ -139,6 +145,7 @@ Cache size      NFS  SearchEngine    Web12     Zipf   Random
     18.00%  92.233%                74.690%  52.551%  17.127% 
     19.00%  91.258%                75.038%  53.451%  18.082% 
     20.00%  93.072%                75.510%  54.189%  18.804% 
+
 GuavaRead - READ - Average execution time (ns)
 Cache size     NFS  SearchEngine   Web12    Zipf  Random 
      0.10%                2965.0 
@@ -170,6 +177,7 @@ Cache size     NFS  SearchEngine   Web12    Zipf  Random
     18.00%  3043.0                3219.0  2020.0  2514.0 
     19.00%  3173.0                4447.0  2098.0  2902.0 
     20.00%  3592.0                3095.0  1981.0  2552.0 
+
 NativeLruDelete - DELETE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            2237.0 
@@ -182,6 +190,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            1563.0 
      90.00%         450            1601.0 
     100.00%         500            1894.0 
+
 NativeLruUpdate - UPDATE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            1581.0 
@@ -194,6 +203,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            2112.0 
      90.00%         450            2179.0 
     100.00%         500            1912.0 
+
 ClockCacheRead - READ - Hit ratios
 Cache size      NFS  SearchEngine    Web12     Zipf   Random 
      0.10%                 0.382% 
@@ -225,6 +235,7 @@ Cache size      NFS  SearchEngine    Web12     Zipf   Random
     18.00%  92.700%                74.578%  53.558%  17.114% 
     19.00%  91.153%                75.674%  54.169%  18.099% 
     20.00%  92.956%                76.201%  55.135%  19.145% 
+
 ClockCacheRead - READ - Average execution time (ns)
 Cache size     NFS  SearchEngine   Web12    Zipf  Random 
      0.10%                5438.0 
@@ -256,6 +267,7 @@ Cache size     NFS  SearchEngine   Web12    Zipf  Random
     18.00%  4096.0                4802.0  3347.0  3860.0 
     19.00%  4217.0                4935.0  3170.0  4134.0 
     20.00%  4450.0                4914.0  3398.0  3727.0 
+
 ArcCacheUpdate - UPDATE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50           11958.0 
@@ -268,6 +280,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400           14299.0 
      90.00%         450           13933.0 
     100.00%         500           14799.0 
+
 ClockCacheUpdate - UPDATE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            9602.0 
@@ -280,6 +293,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400           11501.0 
      90.00%         450           10734.0 
     100.00%         500           11077.0 
+
 GuavaUpdate - UPDATE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            3595.0 
@@ -292,6 +306,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            4794.0 
      90.00%         450            4459.0 
     100.00%         500            4444.0 
+
 ClockCacheInsert - INSERT - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50           13066.0 
@@ -304,6 +319,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400           12601.0 
      90.00%         450           12992.0 
     100.00%         500           12796.0 
+
 ClockCacheDelete - DELETE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            9653.0 
@@ -316,6 +332,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            8328.0 
      90.00%         450            8008.0 
     100.00%         500            8300.0 
+
 LIRSDelete - DELETE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            3764.0 
@@ -328,6 +345,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            3064.0 
      90.00%         450            2840.0 
     100.00%         500            2906.0 
+
 GuavaInsert - INSERT - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            3743.0 
@@ -340,6 +358,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            3877.0 
      90.00%         450            4078.0 
     100.00%         500            3940.0 
+
 ArcCacheRead - READ - Hit ratios
 Cache size      NFS  SearchEngine    Web12     Zipf   Random 
      0.10%                 0.255% 
@@ -371,6 +390,7 @@ Cache size      NFS  SearchEngine    Web12     Zipf   Random
     18.00%  90.572%                75.085%  55.549%  17.060% 
     19.00%  90.782%                76.925%  56.391%  18.200% 
     20.00%  91.125%                77.323%  57.119%  18.965% 
+
 ArcCacheRead - READ - Average execution time (ns)
 Cache size     NFS  SearchEngine   Web12    Zipf  Random 
      0.10%                4531.0 
@@ -402,6 +422,7 @@ Cache size     NFS  SearchEngine   Web12    Zipf  Random
     18.00%  5634.0                5851.0  3543.0  4723.0 
     19.00%  5454.0                6309.0  3722.0  4126.0 
     20.00%  5623.0                6763.0  3731.0  3825.0 
+
 LIRSRead - READ - Hit ratios
 Cache size      NFS  SearchEngine    Web12     Zipf   Random 
      0.10%                 0.364% 
@@ -433,6 +454,7 @@ Cache size      NFS  SearchEngine    Web12     Zipf   Random
     18.00%  87.248%                76.036%  53.488%  16.909% 
     19.00%  90.451%                76.682%  54.590%  18.023% 
     20.00%  88.101%                77.138%  55.092%  18.890% 
+
 LIRSRead - READ - Average execution time (ns)
 Cache size     NFS  SearchEngine   Web12    Zipf  Random 
      0.10%                3764.0 
@@ -464,6 +486,7 @@ Cache size     NFS  SearchEngine   Web12    Zipf  Random
     18.00%  3541.0                3040.0  2227.0  2955.0 
     19.00%  3594.0                3604.0  2235.0  3128.0 
     20.00%  3118.0                3556.0  2310.0  2818.0 
+
 NativeLruInsert - INSERT - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            1892.0 
@@ -476,6 +499,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            1936.0 
      90.00%         450            1851.0 
     100.00%         500            2046.0 
+
 FifoCacheRead - READ - Hit ratios
 Cache size      NFS  SearchEngine    Web12     Zipf   Random 
      0.10%                 0.264% 
@@ -507,6 +531,7 @@ Cache size      NFS  SearchEngine    Web12     Zipf   Random
     18.00%  90.385%                71.191%  49.029%  17.298% 
     19.00%  89.075%                71.732%  49.826%  18.071% 
     20.00%  90.425%                72.015%  50.694%  18.914% 
+
 FifoCacheRead - READ - Average execution time (ns)
 Cache size      NFS  SearchEngine     Web12      Zipf    Random 
      0.10%               364242.0 
@@ -538,6 +563,7 @@ Cache size      NFS  SearchEngine     Web12      Zipf    Random
     18.00%  49517.0                131166.0  321858.0  582639.0 
     19.00%  56166.0                141779.0  333320.0  618812.0 
     20.00%  53459.0                146025.0  336138.0  620943.0 
+
 GuavaDelete - DELETE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            4639.0 
@@ -550,6 +576,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            3103.0 
      90.00%         450            2976.0 
     100.00%         500            3595.0 
+
 FifoCacheInsert - INSERT - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            1987.0 
@@ -562,6 +589,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            1780.0 
      90.00%         450            1871.0 
     100.00%         500            1803.0 
+
 RandomCacheUpdate - UPDATE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            4396.0 
@@ -574,6 +602,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400           22634.0 
      90.00%         450           25808.0 
     100.00%         500           29582.0 
+
 FifoCacheUpdate - UPDATE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            1492.0 
@@ -586,6 +615,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            2033.0 
      90.00%         450            2118.0 
     100.00%         500            2110.0 
+
 FifoCacheDelete - DELETE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            2009.0 
@@ -598,6 +628,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            1649.0 
      90.00%         450            1606.0 
     100.00%         500            1875.0 
+
 LIRSUpdate - UPDATE - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            3792.0 
@@ -610,6 +641,7 @@ Cache ratio  Cache size  Avg runtime (ns)
      80.00%         400            4632.0 
      90.00%         450            5013.0 
     100.00%         500            4749.0 
+
 NativeLruRead - READ - Hit ratios
 Cache size      NFS  SearchEngine    Web12     Zipf   Random 
      0.10%                 0.318% 
@@ -641,6 +673,7 @@ Cache size      NFS  SearchEngine    Web12     Zipf   Random
     18.00%  90.943%                74.783%  52.682%  17.110% 
     19.00%  92.987%                75.427%  53.452%  18.014% 
     20.00%  91.346%                75.715%  54.780%  18.980% 
+
 NativeLruRead - READ - Average execution time (ns)
 Cache size     NFS  SearchEngine   Web12    Zipf  Random 
      0.10%                2881.0 
@@ -672,6 +705,7 @@ Cache size     NFS  SearchEngine   Web12    Zipf  Random
     18.00%  1893.0                2341.0  1868.0  1751.0 
     19.00%  1864.0                2834.0  1519.0  1919.0 
     20.00%  2119.0                2414.0  1473.0  2096.0 
+
 LIRSInsert - INSERT - Average execution time (ns)
 Cache ratio  Cache size  Avg runtime (ns) 
      10.00%          50            1280.0 

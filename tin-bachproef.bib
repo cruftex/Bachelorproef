@@ -26,6 +26,16 @@
   Publisher                = {Elsevier}
 }
 
+@InProceedings{breslau1999web,
+  Title                    = {Web caching and Zipf-like distributions: Evidence and implications},
+  Author                   = {Breslau, Lee and Cao, Pei and Fan, Li and Phillips, Graham and Shenker, Scott},
+  Booktitle                = {INFOCOM'99. Eighteenth Annual Joint Conference of the IEEE Computer and Communications Societies. Proceedings. IEEE},
+  Year                     = {1999},
+  Organization             = {IEEE},
+  Pages                    = {126--134},
+  Volume                   = {1}
+}
+
 @Manual{lru_implementation,
   Title                    = {LRU cache implementation in C++},
   Author                   = {Tim Day},
@@ -34,6 +44,18 @@
   Owner                    = {Frederik},
   Timestamp                = {2016.03.28},
   Url                      = {http://timday.bitbucket.org/lru.pdf}
+}
+
+@Misc{guava_cachesexplained,
+  Title                    = {CachesExplained},
+
+  Author                   = {Colin Decker},
+  HowPublished             = {https://github.com/google/guava/wiki/CachesExplained},
+  Month                    = {09},
+  Year                     = {2015},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.11}
 }
 
 @Article{locality_principle,
@@ -85,6 +107,29 @@
   Pages                    = {8}
 }
 
+@Misc{android_studio_embedded_emulators,
+  Title                    = {Running Apps in the Android Emulator},
+
+  Author                   = {{Google Inc}},
+  HowPublished             = {http://developer.android.com/tools/devices/emulator.html},
+  Year                     = {2016},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.08}
+}
+
+@Article{guan2014wcet,
+  Title                    = {WCET analysis with MRU cache: challenging LRU for predictability},
+  Author                   = {Guan, Nan and Lv, Mingsong and Yi, Wang and Yu, Ge},
+  Journal                  = {ACM Transactions on Embedded Computing Systems (TECS)},
+  Year                     = {2014},
+  Number                   = {4s},
+  Pages                    = {123},
+  Volume                   = {13},
+
+  Publisher                = {ACM}
+}
+
 @Misc{extremetech_multilevelcache,
   Title                    = {How L1 and L2 CPU caches work, and why they're an essential part of modern chips},
 
@@ -96,6 +141,111 @@
   Owner                    = {Frederik},
   Timestamp                = {2016.03.06},
   Url                      = {http://www.extremetech.com/extreme/188776-how-l1-and-l2-cpu-caches-work-and-why-theyre-an-essential-part-of-modern-chips}
+}
+
+@InProceedings{jiang2005clock,
+  Title                    = {CLOCK-Pro: An Effective Improvement of the CLOCK Replacement.},
+  Author                   = {Jiang, Song and Chen, Feng and Zhang, Xiaodong},
+  Booktitle                = {USENIX Annual Technical Conference, General Track},
+  Year                     = {2005},
+  Pages                    = {323--336}
+}
+
+@Article{jiang2002lirs,
+  Title                    = {LIRS: an efficient low inter-reference recency set replacement policy to improve buffer cache performance},
+  Author                   = {Jiang, Song and Zhang, Xiaodong},
+  Journal                  = {ACM SIGMETRICS Performance Evaluation Review},
+  Year                     = {2002},
+  Number                   = {1},
+  Pages                    = {31--42},
+  Volume                   = {30},
+
+  Publisher                = {ACM}
+}
+
+@Manual{spc_umass_searchengine,
+  Title                    = {SPC Trace File Format Specification},
+
+  Address                  = {1060 El Camino Real, Suite "F", Redwood City, CA 94062-1645},
+  Author                   = {Ken Bates, Bruce McNutt, {Storage Performance Council}},
+  Edition                  = {1.0.1},
+  Month                    = {7},
+  Organization             = {{Storage Performance Council}},
+  Year                     = {2002},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.13},
+  Url                      = {http://traces.cs.umass.edu/index.php/Storage/Storage}
+}
+
+@TechReport{clock_cpan,
+  Title                    = {Cache::Ref::CLOCK - CLOCK cache replacement algorithm},
+  Author                   = {Yuval Kogman},
+  Institution              = {CPAN},
+  Year                     = {2010},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.12},
+  Url                      = {http://search.cpan.org/dist/Cache-Ref/lib/Cache/Ref/CLOCK.pm}
+}
+
+@Article{megiddo2004outperforming,
+  Title                    = {Outperforming LRU with an adaptive replacement cache algorithm},
+  Author                   = {Megiddo, Nimrod and Modha, Dharmendra S},
+  Journal                  = {Computer},
+  Year                     = {2004},
+  Number                   = {4},
+  Pages                    = {58--65},
+  Volume                   = {37},
+
+  Publisher                = {IEEE}
+}
+
+@Misc{visual_studio_emulator,
+  Title                    = {Introducing Visual Studio's Emulator for Android},
+
+  Author                   = {Daniel Moth},
+  HowPublished             = {https://blogs.msdn.microsoft.com/visualstudioalm/2014/11/12/introducing-visual-studios-emulator-for-android/},
+  Month                    = {November},
+  Year                     = {2014},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.08},
+  Url                      = {https://blogs.msdn.microsoft.com/visualstudioalm/2014/11/12/introducing-visual-studios-emulator-for-android/}
+}
+
+@Misc{cachelirs_oak,
+  Title                    = {CacheLIRS (Jackrabbit Oak)},
+
+  Author                   = {Thomas Mueller},
+  HowPublished             = {https://jackrabbit.apache.org/oak/docs/apidocs/org/apache/jackrabbit/oak/cache/CacheLIRS.html},
+  Year                     = {2016},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.12}
+}
+
+@Misc{oracle_concurrentmap,
+  Title                    = {ConcurrentMap},
+
+  Author                   = {{Oracle Inc}},
+  HowPublished             = {https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentMap.html},
+  Year                     = {2016},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.11}
+}
+
+@Misc{system_gc,
+  Title                    = {JDK-6668279 : (spec) System.gc() should indicate that we don't recommend use and don't guarantee behaviour},
+
+  Author                   = {{Oracle Inc}},
+  HowPublished             = {http://bugs.java.com/view\_bug.do?bug\_id=6668279},
+  Month                    = {02},
+  Year                     = {2011},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.11}
 }
 
 @Article{podlipnig2003survey,
@@ -134,6 +284,72 @@
   Publisher                = {Springer}
 }
 
+@TechReport{shah20101,
+  Title                    = {An O (1) algorithm for implementing the LFU cache eviction scheme},
+  Author                   = {Shah, Anirban Ketan and Matani, Mitra Dhruv},
+  Institution              = {Citeseer},
+  Year                     = {2010}
+}
+
+@Misc{lru_cache_native,
+  Title                    = {v4/java/android/support/v4/util/LruCache.java},
+
+  Author                   = {{The Android Open Source Project}},
+  HowPublished             = {https://android.googlesource.com/platform/frameworks/support.git/+/795b97d901e1793dac5c3e67d43c96a758fec388/v4/java/android/support/v4/util/LruCache.java},
+  Year                     = {2011},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.11}
+}
+
+@Misc{guava_localcache,
+  Title                    = {LocalCache.java},
+
+  Author                   = {{The Guava Authors}},
+  HowPublished             = {https://github.com/google/guava/blob/master/guava/src/com/google/common/cache/LocalCache.java},
+  Month                    = {03},
+  Year                     = {2016},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.11}
+}
+
+@Misc{cache2k_arc,
+  Title                    = {ArcCache},
+
+  Author                   = {Jens Wilke},
+  HowPublished             = {https://github.com/cache2k/cache2k/blob/v0.23/core/src/main/java/org/cache2k/impl/ArcCache.java},
+  Month                    = {1},
+  Year                     = {2016},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.13}
+}
+
+@Misc{cache2k_clock,
+  Title                    = {ClockCache},
+
+  Author                   = {Jens Wilke},
+  HowPublished             = {https://github.com/cache2k/cache2k/blob/7fdc51e72099b4ebe2d40b27bc726340d9ecf5d8/core/src/main/java/org/cache2k/core/ClockCache.java},
+  Month                    = {12},
+  Year                     = {2013},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.12}
+}
+
+@Misc{cache2k_web12,
+  Title                    = {CacheAccessWebTrace12},
+
+  Author                   = {Jens Wilke},
+  HowPublished             = {https://github.com/cache2k/cache2k-benchmark/blob/3a70338976792ccdb7bab9edf160f4ee4db48478/traces/src/main/java/org/cache2k/benchmark/traces/CacheAccessTraceWeb12.java},
+  Month                    = {11},
+  Year                     = {2013},
+
+  Owner                    = {Frederik},
+  Timestamp                = {2016.05.13}
+}
+
 @Article{wulf1995hitting,
   Title                    = {Hitting the memory wall: implications of the obvious},
   Author                   = {Wulf, Wm A and McKee, Sally A},
@@ -144,35 +360,6 @@
   Volume                   = {23},
 
   Publisher                = {ACM}
-}
-
-@article{guan2014wcet,
-  title={WCET analysis with MRU cache: challenging LRU for predictability},
-  author={Guan, Nan and Lv, Mingsong and Yi, Wang and Yu, Ge},
-  journal={ACM Transactions on Embedded Computing Systems (TECS)},
-  volume={13},
-  number={4s},
-  pages={123},
-  year={2014},
-  publisher={ACM}
-}
-
-@techreport{shah20101,
-  title={An O (1) algorithm for implementing the LFU cache eviction scheme},
-  author={Shah, Anirban Ketan and Matani, Mitra Dhruv},
-  year={2010},
-  institution={Citeseer}
-}
-
-@article{jiang2002lirs,
-  title={LIRS: an efficient low inter-reference recency set replacement policy to improve buffer cache performance},
-  author={Jiang, Song and Zhang, Xiaodong},
-  journal={ACM SIGMETRICS Performance Evaluation Review},
-  volume={30},
-  number={1},
-  pages={31--42},
-  year={2002},
-  publisher={ACM}
 }
 
 @Standard{random_replacement,

@@ -21,13 +21,7 @@ public class FIFOCache<K extends Comparable<K>, V> implements Cache<K, V> {
 
     @Override
     public V get(K key) {
-        for (Map.Entry<K, V> elem : heap.entrySet()) {
-            if (elem.getKey().equals(key)) {
-                return elem.getValue();
-            }
-        }
-
-        return null;
+        return heap.get(key);
     }
 
     @Override

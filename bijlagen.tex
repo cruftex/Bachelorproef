@@ -114,9 +114,8 @@
 %  - tweede zit = 3e examenperiode
 \newcommand{\examenperiode}{Tweede examenperiode}
 
+\newcommand{\RuntimeGraphLarge}[2]{
 \pgfplotsset{width=7cm,compat=1.13}
-
-\newcommand{\CUDGraphLarge}[2]{
 \begin{tikzpicture}
 \begin{axis}[
 	title=#1, 
@@ -129,7 +128,8 @@
 \end{tikzpicture}
 }
 
-\newcommand{\CUDGraph}[1]{
+\newcommand{\RuntimeGraph}[1]{
+\pgfplotsset{width=7cm,compat=1.13}
 \begin{tikzpicture}
 \begin{axis}[
 	title=#1, 
@@ -138,6 +138,162 @@
 	ymin=0, ymax=5000,
 ]
 \addplot table {Data/#1.dat};
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\RHitGraph}[1]{
+\pgfplotsset{width=12cm,compat=1.13,height=9cm}
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cached ratio (\%)}, 
+	ylabel={Hit ratio (\%)},
+	ymin=0, ymax=100,
+	legend entries={NFS,Web12,Zipf,Random},
+	legend pos=outer north east,
+	legend cell align=left
+]
+\addplot table[
+	x={Cache_ratio},
+	y=NFS
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Web12
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Zipf
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Random
+] {Data/#1HitRatio.dat};
+
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\RHitGraphTrace}[3]{
+\pgfplotsset{width=12cm,compat=1.13,height=18cm}
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cached ratio (\%)}, 
+	ylabel={Hit ratio (\%)},
+	ymin=#2, ymax=#3,
+	legend entries={ARC,CLOCK,Guava,Random,NLRU,FIFO,LIRS},
+	legend pos=outer north east,
+	legend cell align=left
+]
+\addplot table[
+	x={Cache_ratio},
+	y=ARC
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=CLOCK
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Guava
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Random
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=NLRU
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=FIFO
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=LIRS
+] {Data/#1HitRatio.dat};
+
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\RRuntimeGraphTrace}[3]{
+\pgfplotsset{width=12cm,compat=1.13,height=18cm}
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cached ratio (\%)}, 
+	ylabel={Avg runtime (ns)},
+	ymin=#2, ymax=#3,
+	legend entries={ARC,CLOCK,Guava,Random,NLRU,FIFO,LIRS},
+	legend pos=outer north east,
+	legend cell align=left
+]
+\addplot table[
+	x={Cache_ratio},
+	y=ARC
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=CLOCK
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Guava
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Random
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=NLRU
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=FIFO
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=LIRS
+] {Data/#1AvgRuntime.dat};
+
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\RAvgRuntimeGraph}[1]{
+\pgfplotsset{width=12cm,compat=1.13,height=9cm}
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cached ratio (\%)}, 
+	ylabel={Avg runtime (ns)},
+	ymin=0, ymax=7000,
+	legend entries={NFS,Web12,Zipf,Random},
+	legend pos=outer north east,
+	legend cell align=left
+]
+\addplot table[
+	x={Cache_ratio},
+	y=NFS
+] {Data/#1AvgTime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Web12
+] {Data/#1AvgTime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Zipf
+] {Data/#1AvgTime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Random
+] {Data/#1AvgTime.dat};
+
 \end{axis}
 \end{tikzpicture}
 }
@@ -213,25 +369,62 @@
 
 \begin{appendices}
 \chapter{Insert benchmarks}
-\CUDGraph{RandomCacheInsert}
-\CUDGraph{LIRSCacheInsert}
-\CUDGraph{GuavaCacheInsert}
-\CUDGraph{NativeLruCacheInsert}
-\\\CUDGraph{FifoCacheInsert}
+\RuntimeGraph{RandomCacheInsert}
+\RuntimeGraph{LIRSCacheInsert}
+\RuntimeGraph{GuavaCacheInsert}
+\RuntimeGraph{NativeLruCacheInsert}
+\\\RuntimeGraph{FifoCacheInsert}
 \\\\These benchmarks have an average execution time above 5000 ns. Due to the scale difference they are placed separately.
-\\\\\CUDGraphLarge{ClockCacheInsert}{15000}
-\CUDGraphLarge{ArcCacheInsert}{15000}
+\\\\\RuntimeGraphLarge{ClockCacheInsert}{15000}
+\RuntimeGraphLarge{ArcCacheInsert}{15000}
 
 \chapter{Update benchmarks}
 
-\CUDGraphLarge{LIRSCacheUpdate}{15000}
-\CUDGraphLarge{GuavaCacheUpdate}{15000}
-\\\CUDGraphLarge{NativeLruCacheUpdate}{15000}
-\CUDGraphLarge{FifoCacheUpdate}{15000}
-\\\CUDGraphLarge{ClockCacheInsert}{15000}
-\CUDGraphLarge{ArcCacheInsert}{15000}
+\RuntimeGraphLarge{LIRSCacheUpdate}{15000}
+\RuntimeGraphLarge{GuavaCacheUpdate}{15000}
+\\\RuntimeGraphLarge{NativeLruCacheUpdate}{15000}
+\RuntimeGraphLarge{FifoCacheUpdate}{15000}
+\\\RuntimeGraphLarge{ClockCacheInsert}{15000}
+\RuntimeGraphLarge{ArcCacheInsert}{15000}
 \\\\Due to the linear fashion of a random cache update, random cache is placed separately and has a different scale.
-\\\\\CUDGraphLarge{RandomCacheUpdate}{30000}
+\\\\\RuntimeGraphLarge{RandomCacheUpdate}{30000}
+
+\chapter{Delete benchmarks}
+
+\RuntimeGraphLarge{LIRSCacheDelete}{15000}
+\RuntimeGraphLarge{GuavaCacheDelete}{15000}
+\\\RuntimeGraphLarge{NativeLruCacheDelete}{15000}
+\RuntimeGraphLarge{FifoCacheDelete}{15000}
+\\\RuntimeGraphLarge{ClockCacheDelete}{15000}
+\RuntimeGraphLarge{ArcCacheDelete}{15000}
+\\\RuntimeGraphLarge{RandomCacheUpdate}{30000}
+
+\chapter{Read benchmarks}
+\newpage
+
+\RHitGraph{RandomCacheRead}
+\\\RAvgRuntimeGraph{RandomCacheRead}
+\\\RHitGraph{GuavaCacheRead}
+\\\RAvgRuntimeGraph{GuavaCacheRead}
+\\\RHitGraph{ClockCacheRead}
+\\\RAvgRuntimeGraph{ClockCacheRead}
+\\\RHitGraph{ArcCacheRead}
+\\\RAvgRuntimeGraph{ArcCacheRead}
+\\\RHitGraph{LIRSCacheRead}
+\\\RAvgRuntimeGraph{LIRSCacheRead}
+\\\RHitGraph{FifoCacheRead}
+\\\RAvgRuntimeGraph{FifoCacheRead}
+\\\RHitGraph{NativeLruCacheRead}
+\\\RAvgRuntimeGraph{NativeLruCacheRead}
+\\\RHitGraphTrace{Web12Read}{20}{80}
+\\\RRuntimeGraphTrace{Web12Read}{0}{8000}
+\\\RHitGraphTrace{NFSRead}{10}{100}
+\\\RRuntimeGraphTrace{NFSRead}{0}{8000}
+\\\RHitGraphTrace{ZipfRead}{0}{60}
+\\\RRuntimeGraphTrace{ZipfRead}{0}{8000}
+\\\RHitGraphTrace{RandomRead}{0}{20}
+\\\RRuntimeGraphTrace{RandomRead}{0}{8000}
+
 \end{appendices}
 % Automatisch invoegen van al je Java broncode:
 % % 1/ maak een link naar je broncodedirectory naar subdirectory source

@@ -128,6 +128,17 @@
 \end{tikzpicture}
 }
 
+\newcommand{\codefragment}[2]{ \lstset{%
+  language=java,
+  breaklines=true,
+  float=th,
+  caption={#2},
+  basicstyle=\scriptsize,
+  frame=single,
+  extendedchars=\true
+}
+\lstinputlisting{#1}}
+
 \newcommand{\RuntimeGraph}[1]{
 \pgfplotsset{width=7cm,compat=1.13}
 \begin{tikzpicture}
@@ -384,10 +395,10 @@
 \RuntimeGraphLarge{GuavaCacheUpdate}{15000}
 \\\RuntimeGraphLarge{NativeLruCacheUpdate}{15000}
 \RuntimeGraphLarge{FifoCacheUpdate}{15000}
-\\\RuntimeGraphLarge{ClockCacheInsert}{15000}
-\RuntimeGraphLarge{ArcCacheInsert}{15000}
-\\\\Due to the linear fashion of a random cache update, random cache is placed separately and has a different scale.
-\\\\\RuntimeGraphLarge{RandomCacheUpdate}{30000}
+\\\RuntimeGraphLarge{ClockCacheUpdate}{15000}
+\\\\Due to high average runtimes of ARC and random cache, they are placed separately and each have a different scale.
+\\\\\RuntimeGraphLarge{ArcCacheUpdate}{20000}
+\RuntimeGraphLarge{RandomCacheUpdate}{30000}
 
 \chapter{Delete benchmarks}
 
@@ -397,7 +408,7 @@
 \RuntimeGraphLarge{FifoCacheDelete}{15000}
 \\\RuntimeGraphLarge{ClockCacheDelete}{15000}
 \RuntimeGraphLarge{ArcCacheDelete}{15000}
-\\\RuntimeGraphLarge{RandomCacheUpdate}{30000}
+\\\\\RuntimeGraphLarge{RandomCacheDelete}{15000}
 
 \chapter{Read benchmarks}
 \newpage
@@ -425,6 +436,9 @@
 \\\RHitGraphTrace{RandomRead}{0}{20}
 \\\RRuntimeGraphTrace{RandomRead}{0}{8000}
 
+\chapter{Code}
+\input{source.tex}
+
 \end{appendices}
 % Automatisch invoegen van al je Java broncode:
 % % 1/ maak een link naar je broncodedirectory naar subdirectory source
@@ -434,6 +448,5 @@
 % % 2/ Genereer source.tex met het script source.sh
 % %      ./source.sh
 % % 3/ Haal volgende regel uit commentaar
-% %\input{source.tex}
 
 \end{document}

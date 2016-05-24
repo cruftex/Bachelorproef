@@ -42,6 +42,7 @@
 \usepackage{textcomp}
 
 \usepackage{pgfplots}
+\usepackage{float}
 
 \usepackage{lipsum}          % Voor vultekst (lorem ipsum)
 
@@ -57,11 +58,186 @@
 % lijn, wordt gebruikt in titelpagina
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
-% Create a graph for the average runtime of an insert, update or delete operation
-\newcommand{\CUDGraph}[2]{
+\newcommand{\RuntimeGraph}[1]{
+\pgfplotsset{width=7cm,compat=1.13}
 \begin{tikzpicture}
-\begin{axis}[title=#1, xlabel={Cache ratio}, ylabel={Avg runtime (ns)}, ymin=0, ymax=5000]
-\addplot table {#2};
+\begin{axis}[
+	title=#1, 
+	xlabel={Cache ratio}, 
+	ylabel={Avg runtime (ns)},
+	ymin=0, ymax=5000,
+]
+\addplot table {Data/#1.dat};
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\RuntimeGraphLarge}[2]{
+\pgfplotsset{width=7cm,compat=1.13}
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cache size}, 
+	ylabel={Avg runtime (ns)},
+	ymin=0, ymax=#2,
+]
+\addplot table {Data/#1.dat};
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\RHitGraph}[1]{
+\pgfplotsset{width=12cm,compat=1.13,height=9cm}
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cached ratio (\%)}, 
+	ylabel={Hit ratio (\%)},
+	ymin=0, ymax=100,
+	legend entries={NFS,Web12,Zipf,Random},
+	legend pos=outer north east,
+	legend cell align=left
+]
+\addplot table[
+	x={Cache_ratio},
+	y=NFS
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Web12
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Zipf
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Random
+] {Data/#1HitRatio.dat};
+
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\RHitGraphTrace}[3]{
+\pgfplotsset{width=12cm,compat=1.13,height=9cm}
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cached ratio (\%)}, 
+	ylabel={Hit ratio (\%)},
+	ymin=#2, ymax=#3,
+	legend entries={ARC,CLOCK,Guava,Random,NLRU,FIFO,LIRS},
+	legend pos=outer north east,
+	legend cell align=left
+]
+\addplot table[
+	x={Cache_ratio},
+	y=ARC
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=CLOCK
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Guava
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Random
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=NLRU
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=FIFO
+] {Data/#1HitRatio.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=LIRS
+] {Data/#1HitRatio.dat};
+
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\RRuntimeGraphTrace}[3]{
+\pgfplotsset{width=12cm,compat=1.13,height=9cm}
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cached ratio (\%)}, 
+	ylabel={Avg runtime (ns)},
+	ymin=#2, ymax=#3,
+	legend entries={ARC,CLOCK,Guava,Random,NLRU,FIFO,LIRS},
+	legend pos=outer north east,
+	legend cell align=left
+]
+\addplot table[
+	x={Cache_ratio},
+	y=ARC
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=CLOCK
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Guava
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Random
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=NLRU
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=FIFO
+] {Data/#1AvgRuntime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=LIRS
+] {Data/#1AvgRuntime.dat};
+
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\RAvgRuntimeGraph}[1]{
+\pgfplotsset{width=12cm,compat=1.13,height=9cm}
+\begin{tikzpicture}
+\begin{axis}[
+	title=#1, 
+	xlabel={Cached ratio (\%)}, 
+	ylabel={Avg runtime (ns)},
+	ymin=0, ymax=7000,
+	legend entries={NFS,Web12,Zipf,Random},
+	legend pos=outer north east,
+	legend cell align=left
+]
+\addplot table[
+	x={Cache_ratio},
+	y=NFS
+] {Data/#1AvgTime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Web12
+] {Data/#1AvgTime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Zipf
+] {Data/#1AvgTime.dat};
+\addplot table[
+	x={Cache_ratio},
+	y=Random
+] {Data/#1AvgTime.dat};
+
 \end{axis}
 \end{tikzpicture}
 }
@@ -149,9 +325,9 @@
     \vfill
     \student\\[3.5cm]
     \rapporttype\\[2cm]
-    Promotor:\\
+    Supervisor:\\
     \promotor\\
-    Copromotor:\\
+    Co-supervisor:\\
     \copromotor\\[2.5cm]
     Organization: \instelling\\[.5cm]
     Academic year: \academiejaar\\[.5cm]
@@ -178,9 +354,9 @@
     \vfill
     \student\\[3.5cm]
     \rapporttype\\[2cm]
-    Promotor:\\
+    Supervisor:\\
     \promotor\\
-    Copromotor:\\
+    Co-supervisor:\\
     \copromotor\\[2.5cm]
     Organization: \instelling\\[.5cm]
     Academic year: \academiejaar\\[.5cm]
@@ -274,7 +450,7 @@ The paging problem is very similar to finding the optimal caching strategy, RAM 
 \\\\
 \section{Locality principle}
 \subsection{What is the locality principle}
-When people are executing a process, such as preparing dinner, they always tend to gather everything they need before or during the process. If it were a bigger meal the entire meal is divided in a set of subprocesses. When preparing lasagna it could be divided in preparing the tomato sauce, creating each layer using previously prepared ingredients, etc. The principle of dividing a large task in a set of smaller subtasks is called \emph{divide and conquer}. % TODO: Find reference for divide and conquer
+When people are executing a process, such as preparing dinner, they always tend to gather everything they need before or during the process. If it were a bigger meal the entire meal is divided in a set of subprocesses. When preparing lasagna it could be divided in preparing the tomato sauce, creating each layer using previously prepared ingredients, etc. The principle of dividing a large task in a set of smaller subtasks is commonly called \emph{divide and conquer}.
 When creating the lasagna layers, one would first collect all supplies needed (tomato sauce, lasagna sheets, etc.) and put them somewhere close, e.g. on the counter, once that is done, the layers are assembled. This is more practical and time saving than to continually walk a relatively long distance each time the tomato sauce is needed.
 \\\\
 Something similar has been discovered with programs by \cite{locality_principle} when analyzing memory usage of multiprogramming systems using virtual memory in 1967.
@@ -309,8 +485,7 @@ Intuitively, one could see a relationship between the spatial and temporal local
 When checking the relevance of objects to the processor are checked, with $D(x,t) \leq T$, only some objects will pass the inequality, the set of these objects is 
 called the \emph{working set}. It are the objects in the working set that would, among others, be candidates for caching. 
 \section{CRUD}
-When interacting with a cache, there are, in general, several operations that each cache is able to do. In general, one would want all operations that allow the developer to read the contents of a cache and to get from an arbitrary cache state, to any other arbitrary cache state through, possibly composite, operations. These operations are known as CRUD operations and are a main part of RESTful web services \citep{battle2008bridging}. This will allow an easier implementation when using Read Through (or Cache Aside) Caches.
-% TODO: Add reference to section about read through and cache aside
+When interacting with a cache, there are, in general, several operations that each cache is able to do. In general, one would want all operations that allow the developer to read the contents of a cache and to get from an arbitrary cache state, to any other arbitrary cache state through, possibly composite, operations. These operations are known as CRUD operations and are a main part of RESTful web services \citep{battle2008bridging}.
 \emph{CRUD} is an acronym for Create Read Update Delete and as the name suggests, 4 operations can be distinguished:
 \begin{itemize}
 \item \emph{Create} allows some client to add an object to a data set. When adding an object to a cache this will typically invoke an add-function receiving two arguments: a key and a value. SQL implements this with its INSERT-statements and HTTP integrates this using a POST request.
@@ -319,31 +494,31 @@ the key of the value one would wish to access. \emph{The key passed to the funct
 \item \emph{Update} will change the contents of an existing object, this is separated from Create as these two might be treated differently, depending on the system in which the data set is embedded. A cache will mostly provide a common API for both Create and Update: a function with a key and a value as its parameters. Yet they might be separated into separate functions to increase readability or to simplify event triggering. SQL implements this with its UPDATE-statement and HTTP implements this using PUT-requests.
 \item \emph{Delete} is used when an element should no longer be an element of the data set. In a cache this might happen when an object is outdated, or if the object has also been removed in the data service. One would then call a delete-function passing the key of the object that should be removed. SQL implements this with its DELETE-statements and HTTP integrates this with its DELETE request.
 \end{itemize}
-\citep{battle2008bridging} Note how these operations are defined on the database-level, software application level, and networking level. Also note how an interface of a cache should at least contain functions allowing the user to execute all CRUD-operations, yet they are not limited by them.
+Note how these operations are defined on the database-level, software application level, and networking level. Also note how an interface of a cache should at least contain functions allowing the user to execute all CRUD-operations, yet they are not limited by them \citep{battle2008bridging}.
 \chapter{Cache replacement algorithms}
 \label{chap:caching_algorithms}
 With a concrete list of \emph{what} should be possible with caches, one can discuss \emph{how} this could all be implemented, the algorithms implementing a cache system are called \emph{cache replacement algorithms} or \emph{cache replacement policies}. Yet not just any cache replacement algorithm will do, it is an art to find the most optimal algorithm, the one that will provide the best (performance) results by interacting with it using CRUD-operations.
 Although most algorithms are only based on CRUD interactions with the cache, some algorithms can be run on separate processes/threads that are
 then responsible for maintaining the cache even without interactions with the user.
 \section{RR}
-The first cache replacement algorithm that will be discussed is the Random Replacement strategy. Of all the strategies, this one could be considered one of the strategies with the lowest overhead and the easiest implementations \citep{random_replacement}. This makes it ideal for certain low-level systems or hardware that cannot afford many processing cycles on cache management.
+The first cache replacement algorithm that will be discussed is the Random Replacement strategy. Of all the strategies, this one could be considered one of the strategies with the lowest overhead and the easiest implementations. This makes it ideal for certain low-level systems or hardware that cannot afford many processing cycles on cache management.
 \paragraph{Read} When trying to get a certain object by its key, the algorithm can use any sorted or non-sorted collection. When using an non-sorted collection it would check each element in the collection in $\mathcal{O}(n)$. Note how this defines the upper bound of the function, therefore it could also be in constant time or $\mathcal{O}(\log_2n)$ when performing a binary search on a sorted list.
 \paragraph{Create} When adding an object while the cache is not yet full, it could simply be added to the collection, algorithm-independently. When the cache is already full, the algorithm will randomly remove replace an object from the collection by the new object that should be stored. The operation itself is primitive and easy to program, the only difficulty is creating a reliable random generator, yet this is not in the scope of this algorithm.
 \paragraph{Update} Updating is similar to \emph{create}, if the key is present it will result in a \emph{read} to get the appropriate object and then changes the object. If the key is not in the cache, it could either \emph{create} object or alarm the user that it is not present.
-\paragraph{Delete} When deleting an object, based on a key, it can be done by first performing a \emph{read} to know whether the key is present and if so removing it. Yet some collections will do this nevertheless, in that scenario the algorithm could simply delegate to the delete function from the backing collection.
+\paragraph{Delete} When deleting an object, based on a key, it can be done by first performing a \emph{read} to know whether the key is present and if so removing it. Yet some collections will do this nevertheless, in that scenario the algorithm could simply delegate to the delete function from the backing collection \citep{random_replacement}.
 \section{FIFO}
 FIFO, acronym for First-In-First-Out, is a cache replacement policy much like a queue. New objects are inserted at one end of the queue, when the cache is full the first object at the other end will be discarded and the new object will be added at the insertion end \citep{reineke2007timing}. FIFO is analogous to FCFS, First-Come First-Served, which is used in OS scheduling algorithms.
-Note that the hit ratio performance of the FIFO replacement strategy is like the hit ratio performance of the RR replacement strategy \citep{rao1978performance}.
+Note that the hit ratio performance of the FIFO replacement strategy is like the hit ratio performance of the RR replacement strategy.
 \paragraph{Read} A read in a FIFO policy results in a queue being scanned in $\Theta(n)$, almost just like RR. The difference between RR and FIFO is that a FIFO cannot be a sorted collection, since its performance is based on a ``constantly'' defined sorting structure, this means that one cannot just swap two elements in the cache and expect it to work just the same: the actual state of the cache has changed. Just like RR, a read does not change the state of the cache.
 \paragraph{Create} When adding a new object to the cache it will, without loss of generality, be placed on the left side of the queue. When the queue is full, the first element on the right will be removed and all other objects will be ``moved to the right'' (however this is not an actual operation that occurs in an efficient queue implementation), clearing a space on the left, ready to be filled in by the new object.
 \paragraph{Update} When updating an existing object, based on a key, there will be a read that will then change the object at the index $i$ by the new object. After the object $x$ is updated, $x$ should then be removed from the queue, every element left of $x$ should then be moved to the right and $x$ is again added to the left side of the queue. Note that all these operations should be executed in a procedural or atomic way.
-\paragraph{Delete} When deleting an existing object, the algorithm scans the queue until it finds the index with value $x$ corresponding to the given key. It will then remove $x$ and move all elements left of $x$ to the right. The next object added to the queue will therefore not cause the object (completely) at the right to be removed from the cache.
+\paragraph{Delete} When deleting an existing object, the algorithm scans the queue until it finds the index with value $x$ corresponding to the given key. It will then remove $x$ and move all elements left of $x$ to the right. The next object added to the queue will therefore not cause the object (completely) at the right to be removed from the cache \citep{rao1978performance}.
 \section{CLOCK}
-This cache replacement algorithm produces similar results as the FIFO implementation described above, yet it uses a different internal algorithm to accomplish these results. It uses a circular collection, which repeats from the start when trying to retrieve the element after the last element. Using a queue this could be implemented by linking the next pointer of the last element to the first element \citep{clock_cpan}. Using an array one can always a modulus operator based on the size of the array to have get an index that is always lower than the size of the cache. At any given time there will be an index pointing to the ``current'' item, this is used throughout the text as the index pointer or $R$, using an array this can be an integer, using a linked list this can be an entry holding a value and references to the next and previous elements.
+This cache replacement algorithm produces similar results as the FIFO implementation described above, yet it uses a different internal algorithm to accomplish these results. It uses a circular collection, which repeats from the start when trying to retrieve the element after the last element. Using a queue this could be implemented by linking the next pointer of the last element to the first element. Using an array one can always a modulus operator based on the size of the array to have get an index that is always lower than the size of the cache. At any given time there will be an index pointing to the ``current'' item, this is used throughout the text as the index pointer or $R$, using an array this can be an integer, using a linked list this can be an entry holding a value and references to the next and previous elements.
 \paragraph{Read} Linearly scans the cache starting at $R$, scan ends when $R$ is the same as when the operation started or if the key is found. If the key is found, the key will be registered as being referenced, which could be a boolean or integer.
 \paragraph{Create} If the cache is full, check whether the element at $R$ is referenced, if not replace the element with the new element and increment $R$, otherwise increment $R$ and repeat this operation. Worst case scenario, every element was initially referenced. In this scenario after having added the new element, every element will not be referenced and the element at the initial $R$ will be replaced. If the cache is not yet full, add the element before the element at $R$ (in a linked list this will be in $\mathcal{O}(1)$) and do not change $R$. This allows the cache to always stay in a consistent FIFO state, as the cache can, at any point remove or read the cache in the correct order.
 \paragraph{Update} Find the element, update its value, signify it is not being referenced and increment $R$ to point to the next element. If the element is not yet in the cache, this is the same as a create operation.
-\paragraph{Delete} The element is read in the cache and removed and the size of the cache is decremented. When using a linked list, the algorithm will, indirectly, connect the previous element and next element to each other. When using an array one would need to pull every element after $R$ to the left, decrementing their indexes. This means that the linked list implementation runs in $\mathcal{O}(1)$ while the array implementation runs in $\mathcal{O}(n)$.
+\paragraph{Delete} The element is read in the cache and removed and the size of the cache is decremented. When using a linked list, the algorithm will, indirectly, connect the previous element and next element to each other. When using an array one would need to pull every element after $R$ to the left, decrementing their indexes. This means that the linked list implementation runs in $\mathcal{O}(1)$ while the array implementation runs in $\mathcal{O}(n)$ \citep{clock_cpan}.
 \section{LRU}
 An \emph{LRU}-cache (Least Recently Used Cache). There are lots of variants on LRU and therefore it can also be seen as a cache replacement algorithm family. The probability of an object being present in a cache, the hit rate $h(n)$, can be approximated by 
 $h(n) \approx 1 - e^{-q(n)t_C}$, where $n$ is the object being requested, $q(n)$ is the popularity of the object (see \emph{Zipfs law}) and $t_C$ being the (unique) root of 
@@ -367,7 +542,7 @@ be replaced before the next \emph{global-flip}. If the cache is full it will loo
 \paragraph{Update} If the object is not yet present in the cache, it will delegate the object to \emph{create}. If it is in the cache, it will replace the object, while keeping it at the same position, and set its MRU-bit to 1 or true. If the MRU-bit was previously 0 or false, it is important to check if a \emph{global-flip} should be executed or not. Yet it is always safe to check for this, even if the MRU-bit hasn't changed (and already was on 1 or true).
 \paragraph{Delete} To remove an object, the algorithm first checks whether the object is present in the cache, if it is not then it doesn't have to do anything, if it is present at index $i$, it moves the object at every index $j$ such that $j > i$ to the left which is the same as decrementing $j$ by one, so $j \leftarrow j - 1$.
 \\\\
-\citep{guan2014wcet} Having discussed the basic MRU and LRU algorithms one can now respond to temporal localities with different characteristics.
+Having discussed the basic MRU and LRU algorithms one can now respond to temporal localities with different characteristics \citep{guan2014wcet}.
 \section{LFU}
 \label{sec:LFU}
 LFU, acronym for Least Frequently Used, is a cache replacement algorithm that looks at how many times an object is accessed. This means that the object that has been accessed the least will be evicted when adding a new object to an already full cache. Just like MRU and LRU, this cache is only beneficial in specific scenario's.
@@ -384,7 +559,7 @@ This implementation uses two data structures, (1) a hash map where an element ca
 \\\\
 Note how the constant execution time of the algorithm fully depends on the hash map implementation used. If it is an implementation such as described above, it will provide a constant execution time, yet if it were $\mathcal{O}(\log n)$ or $\mathcal{O}(n)$, the algorithm would no longer have the constant execution time.
 \section{LIRS}
-\emph{LIRS}, \emph{Low Inter-reference Recency Set Replacement Policy} \citep{jiang2002lirs}, is a cache replacement algorithm based on LRU. 
+\emph{LIRS}, \emph{Low Inter-reference Recency Set Replacement Policy}, is a cache replacement algorithm based on LRU. 
 The major performance problem with LRU is that it always assumes that the object that has been referenced the least recent is the one that will not be accessed for the longest period of time. Yet in some (even trivial) cases, this is simply not the case: imagine a relational database with a B-tree for efficiently retrieving $N$ indexes for a set of $N$ records where there exists a bijective function from an index to a record. In the cache blocks of data are stored with a fixed-size where an index is made up of $I$ blocks and a record is made up of $R$ blocks, therefore there are $I \cdot N$ index blocks and $R \cdot N$ record blocks, where $I < R$. Because every operation on a record will first find the record based on the index B-tree, the probability of an index block being accessed will be higher than the probability of a record block being accessed. Yet in a simple LRU-cache it will most of the time favor record blocks in its cache as those are the last referenced blocks in a typical database operation. A cache favoring index blocks would however be more efficient as it increases the cache hit ratio. \emph{LIRS} tries to solve such a problem by looking at its IRR, \emph{Inter-Reference Recency}, which is the amount of referenced blocks between the last and second-to-last reference of a certain block. Say there exist objects $A$, $B$ and $C$ the following reference history could exist:
 \[ABCBABCCBCABC\]
 The initial \emph{IRR} of $A$ is 3 (with $BCB$ in between) and the next is 5 (with $BCCBC$ in between). When adding a new object to the cache $A$ will be the first object to be replaced because it has the highest \emph{IRR}. In a cache implementation there is a set of objects with a low IRR (\emph{LIR}) and a set of objects with a high IRR (\emph{HIR}), the cache mainly exists of \emph{LIR} objects, which are never considered for replacement. A small subset of the cache's memory is used for \emph{HIR} objects, that are eligible for replacement. When an \emph{HIR} object has a lower IRR than some \emph{LIR} object, the two will be swapped and the \emph{LIR} object becomes an \emph{HIR} object and the \emph{HIR} object becomes an \emph{LIR} object.
@@ -400,7 +575,7 @@ Every object in the LIRS stack is either a LIR or a HIR object, if it is a LIR o
 \\\\
 Note how all operations are reduced to operations on queues, therefore the performance of this cache replacement algorithm is directly related to the performance of queues. LIRS is based on IRR and recency, yet neither are explicitly stored or even mentioned in the implementation of the CRUD operations. This is thanks to the carefully defined data structures used in the cache, which have the intrinsic property of implicitly maintaining this information. This not only reduces memory usage, but also allows the algorithm to find the object with the highest IRR (and lowest recency) in $\mathcal{O}(1)$.
 \\\\
-When removing the bottom element of the LIR stack there will always be a, possibly implicit, stack prune to maintain the integrity of the stack and make sure that the bottom element of the LIR stack is always a LIR object.
+When removing the bottom element of the LIR stack there will always be a, possibly implicit, stack prune to maintain the integrity of the stack and make sure that the bottom element of the LIR stack is always a LIR object \citep{jiang2002lirs}.
 \section{ARC}
 ARC, Adaptive Replacement Replacement Cache, is a cache replacement algorithm that stores multiple collections and wraps around an existing replacement algorithm like LRU. It stores two main collections: $L1$ and $L2$, each respectively divided into $T1$ and $B1$, and $T2$ and $B2$. $L1$ consists of all elements that have ``recently'' been referenced exactly once, $L2$ consists of all elements that have ``recently'' been referenced more than once. Where $c$ is the total cache size, $\left\vert{L1}\right\vert = \left\vert{B1}\right\vert + \left\vert{T1}\right\vert = p$, $\left\vert{L2}\right\vert = \left\vert{B2}\right\vert + \left\vert{T2}\right\vert = c - p$ and $0 \le p \le c$. Some internal replacement algorithm, like LRU, is responsible for independently maintaining $T1$, $T2$, $B1$ and $B2$. Without loss of generality, when $\left\vert{T1}\right\vert > p$ due to the introduction of a new element in $T1$ or the decrease of $p$, the least recently used (LRU) element in the LRU cache maintaining $T1$ is passed down to the most recently used (MRU) side of $B1$, possibly removing the LRU element in $B1$ if $B1$ was already full.
 When the algorithm refers to updating $p$, this means that $p = \text{min}(c, p + \text{max}(\left\vert{B2}\right\vert/\left\vert{B1}\right\vert, 1))$ if in context of $L1$ and $p = \text{min}(c, p - \text{max}(\left\vert{B1}\right\vert/\left\vert{B2}\right\vert, 1))$ in context of $L2$. The $p$ replacement is what makes \emph{ARC} dynamic, without loss of generality, $p$ is incremented by the ratio between $B2$ and $B1$, yet is at least incremented by $1$ if the ratio is less than $1$, and will never exceed $p$.
@@ -410,7 +585,7 @@ When the algorithm refers to updating $p$, this means that $p = \text{min}(c, p 
 \paragraph{Update} When the element is updated, this boils down to the read operation, yet the value of the element is also updated. It is not the same as delete and create, as the element history would then be lost.
 \paragraph{Delete} Delete removes the element from the cache it is in, which is either $T1$, $T2$, $B1$ or $B2$ and $p$ is not updated accordingly. The removal of an element shouldn't increase the size reserved for that cache, if anything it should be reversed.
 \\\\
-\citep{megiddo2004outperforming} Note how in the average consistent $\left\vert{T1}\right\vert + \left\vert{T2}\right\vert = c$ and $\left\vert{B1}\right\vert + \left\vert{B2}\right\vert = c$. Because of this the total amount of elements is $2c$, if a developer wishes to set a maximum amount of elements, he/she should set $c = n / 2$, where $n$ is the maximum amount of elements in the entire cache.
+Note how in the average consistent $\left\vert{T1}\right\vert + \left\vert{T2}\right\vert = c$ and $\left\vert{B1}\right\vert + \left\vert{B2}\right\vert = c$. Because of this the total amount of elements is $2c$, if a developer wishes to set a maximum amount of elements, he/she should set $c = n / 2$, where $n$ is the maximum amount of elements in the entire cache \citep{megiddo2004outperforming}.
 \chapter{Cache benchmarking}
 In this chapter a detailed explanation of a case study and its results is given. The case study is used to answer the first, most fundamental, research question: \emph{How can a caching strategy efficiently store and fetch data in a native mobile application?}.
 The case study was done on top of the Android platform, and the actual benchmark was executed on an Android Lollipop 5.0 (API Level 21) XHDPI phone emulator, with 1GB of RAM, a x86 CPU architecture, 2 CPU cores and a screen resolution of 720x1280. The emulator uses the Hyper-V hypervisor and ADB to run and interact with the emulated device \citep{visual_studio_emulator}.
@@ -510,14 +685,20 @@ Throughout the app several traces are used. A trace can be seen as an access pat
 \subsection{Insert - Update - Delete}
 In this section the average execution time of every cache replacement algorithm and operation combination will be analyzed, the operations discussed here are: create, update and delete. Read operations will be discussed separately in the following section.
 \subsubsection{Insert}
-The insert benchmarks were generated by timing a million iterations on every cache implementation and cache ratio combination. The graphs at \emph{Appendix A} are based on the $\text{cache size} = \text{cache ratio} * \left\vert{\text{key space}}\right\vert$, where the key space are all integers between 0 and 499 (included). During an insert benchmark the cache will never be full and there will never be a key collision, meaning there will never be a key that is already present and would be overwritten.
+The insert benchmarks were generated by timing a million iterations on every cache implementation and cache ratio combination. The graphs at \emph{Appendix A} and at figure \ref{fig:insert} are based on the $\text{cache size} = \text{cache ratio} * \left\vert{\text{key space}}\right\vert$, where the key space are all integers between 0 and 499 (included). During an insert benchmark the cache will never be full and there will never be a key collision, meaning there will never be a key that is already present and would be overwritten.
 \\\\
 When looking at the graphs in \emph{Appendix A} one can find following ordering for insert operations based on the average execution time:
 \[
 \text{LIRS} < \text{FIFO} = \text{Native LRU} < \text{Random} < \text{Guava} < \text{CLOCK} < \text{ARC}
 \]
 This means that LIRS has the lowest average execution time and is thus the fastest cache implementation from all implementations benchmarked for inserting new elements.
-Every implementation seems to have a constant time complexity as was already determined earlier in their corresponding sections. A, relatively, very high average time has been recorded for both CLOCK and ARC, this phenomenon can be explained due to the internal hash buckets that are used in the implementations used. This means that, though we see a high execution time when inserting, we should see a considerably lower execution time when reading.
+Every implementation seems to have a constant time complexity as was already determined earlier in their corresponding sections. A very high relative average time has been recorded for both CLOCK and ARC, this phenomenon can be explained due to the internal hash buckets that are used in the implementations used. This means that, though we see a high execution time when inserting, we should see a considerably lower execution time when reading.
+\begin{figure}[h]
+\RuntimeGraph{LIRSCacheInsert}
+\RuntimeGraphLarge{ArcCacheInsert}{15000}
+\caption{Average runtime of the best and worst insert benchmark results}
+\label{fig:insert}
+\end{figure}
 \subsubsection{Update}
 As discussed in the previous section, insert benchmarks ensure there is always room in the cache and there are no key collisions, making it a pure insert, rather than a replacement. The update benchmark simply adds random key-value pairs to the cache, allowing key collisions and allowing a full cache. Benchmarking this might not make much sense as it depends on many different operations:
 \begin{itemize}
@@ -535,15 +716,23 @@ When looking at the graphs in \emph{Appendix B} one can find the following order
 Native LRU and FIFO seem to be very reliable, meaning they take about as long on smaller cache sizes as they do on larger cache sizes. This means they are very scalable and could be used in both smartphone and enterprise applications. CLOCK has a theoretically worst case scenario where finding an eviction candidate takes $\mathcal{O}(n)$, which occurs if every element is contiguously referenced before updating the cache with a new key-value pair. However, this benchmark does not execute intermediate reads, which means that CLOCK performs better than it should in real world applications.
 \\\\
 LIRS, Guava, CLOCK and ARC seem to reach some peak when reaching a cache size of about 300 elements (with a 60\% cache ratio), which is caused by the fuzzy performance nature of Android as these could not be reproduced afterwards. Nevertheless, they seem to stabilize afterwards, which might still make them scale to very high cache sizes. Considering higher cache sizes would however be rather rare in smartphone applications considering their memory availability, which is why no simulations were run to see how they scale with bigger cache sizes.
-\\\\
-The random cache replacement algorithm performed slightly worse than LIRS in the smallest cache size simulation, yet when reaching higher values the performance started dropping immensely ending with about double the average execution compared to ARC. The relationship $R$ between the average execution time and the cache size is of a linear nature. Therefore, a random cache policy is very unreliable and should only be used when the developer knows that the cache size $c$ will always stay very small. Note how $\frac{dR}{dc}$ seems to be similar to the hiccup that is present in LIRS and Guava.
+\begin{figure}[H]
+\RuntimeGraphLarge{NativeLruCacheUpdate}{15000}
+\RuntimeGraphLarge{RandomCacheUpdate}{30000}
+\caption{Average runtime of the best and worst update benchmark results}
+\end{figure}
+\begin{figure}[H]
+\RuntimeGraphLarge{LIRSCacheUpdate}{15000}
+\RuntimeGraphLarge{GuavaCacheUpdate}{15000}
+\caption{Peaking of update benchmark at $\approx300$ elements}
+\end{figure}
+The random cache replacement algorithm performed slightly worse than LIRS in the smallest cache size simulation, yet when reaching higher values the performance started dropping immensely ending with about double the average execution compared to ARC. The relationship $R$ between the average execution time and the cache size is of a linear nature. Therefore, a random cache policy is very unreliable and should only be used when the developer knows that the cache size $c$ will always stay very small. Note how $\frac{dR}{dc}$ seems to be similar to the hiccup that is present in LIRS, Guava, CLOCK and ARC.
 \\\\
 The reason why the random cache replacement algorithm performs so poorly, is due to the random value that needs to be generated when selecting an eviction candidate. Every other cache replacement algorithm can find an eviction candidate either in $\mathcal{O}(1)$ or $\mathcal{O}(n)$ (worst-case scenario in CLOCK), yet generating a random value completely depends on the performance of the generator.
 \\\\
 Note how in real world applications the performance of CLOCK will be somewhere between the recorded CLOCK benchmark (lower-bound) and the recorded asymptotic execution time from the random cache update benchmark, in other words $\Omega(1)$ and $\mathcal{O}(n)$.
 \\\\
 It is very interesting how many of the cache replacement algorithms have almost $\mathcal{O}(1)$ or $\mathcal{O}(n)$ with $n$ very close to $1$, even though updates might result in a complete scan of the cache. One explanation of this phenomenon is that the increased cache size and the intrinsic ordering of the cache will make sure that the cache will not need to do a complete scan most of the time. Which will produce even greater results in applications not updating in a random fashion, as a random trace results in the lowest hit ratio of all traces with every cache replacement algorithm.
-
 \subsubsection{Delete} Deleting elements from a cache are usually not considered when choosing a cache replacement algorithm implementation, yet, depending on the implementation, this might happen every time when adding an element to an already filled cache. Therefore, delete benchmarks were made that time the average runtime in nanoseconds.
 The average runtime is the average of 1 million runs, performed for each cache replacement algorithm and different cache sizes. The delete benchmark ensures that the key that should be removed is present in the cache as if this is not the case, the benchmark might just perform a read operation.
 When looking at the graphs in \emph{Appendix C} one can find the following ordering for delete operations based on the average execution time:
@@ -553,6 +742,11 @@ When looking at the graphs in \emph{Appendix C} one can find the following order
 Every cache replacement algorithm seems to produce reliable results, yet CLOCK and ARC have a higher, yet reliable, average runtime. This can be explained by the buckets/bins used in those implementations, for which hashing functions have to be performed and need to be removed from these buckets.
 \\\\
 In general the performance of deleting elements from a cache are usually not a real factor to consider when choosing a mobile cache replacement algorithm, both due to the benchmark results and due to the limited use in real world applications.
+\begin{figure}[h]
+\RuntimeGraphLarge{FIFOCacheDelete}{15000}
+\RuntimeGraphLarge{ARCCacheDelete}{15000}
+\caption{Average runtime of the best and worst delete benchmark results}
+\end{figure}
 \subsection{Read}
 Read benchmarks are initially performed on an empty cache, therefore there should always be at least one miss. When the read operation failed (the key was not present in the cache) the key will be added to the cache with a random value. This process is repeated a million iterations for each combination of the benchmark replacement algorithm, trace and cached ratio. This way the benchmark will measure the average runtime of the read operations and will be able to get the hit ratio of a specific cached ratio for a specific trace.
 \\\\
@@ -582,6 +776,26 @@ Note how the FIFO algorithm performs worse than the random replacement algorithm
 The random trace theoretically generates random values between the lower limit $t$ and upper limit $u$ completely independently, while the probability of the selection of any value $x$ is the same as the probability of the selection of any other value: $P(x) = \frac{1}{u - t}$. Therefore, there shouldn't be any cache replacement algorithm that performs better than any other algorithm, which is exactly what can easily be seen by looking at \emph{Appendix D}. The hit ratio is proportional to the cache ratio, which represents a function where $f : [0,1] \mapsto [0,1] : r \to f(r) = n\cdot r$, where $n \approx 1 \land n < 1$, the domain is the cache ratio and the codomain is the hit ratio.
 \\\\
 Since every algorithm provides the same hit ratios, the choice of the best algorithm is the one with the lowest average runtime, which is the very simple LRU implementation (Native LRU). Ironically the random replacement algorithm scores poorly on a random trace, since it has the same hit ratio as everyone else and has a relatively high average runtime due to the random number generation.
+\begin{figure}[h]
+\RHitGraphTrace{Web12Read}{20}{80}
+\\\RRuntimeGraphTrace{Web12Read}{0}{8000}
+\caption{Hit ratio and average runtime of the Web12 trace}
+\end{figure}
+\begin{figure}[h]
+\RHitGraphTrace{NFSRead}{10}{100}
+\\\RRuntimeGraphTrace{NFSRead}{0}{8000}
+\caption{Hit ratio and average runtime of the NFS trace}
+\end{figure}
+\begin{figure}[h]
+\RHitGraphTrace{ZipfRead}{0}{60}
+\\\RRuntimeGraphTrace{ZipfRead}{0}{8000}
+\caption{Hit ratio and average runtime of the Zipf trace}
+\end{figure}
+\begin{figure}[h]
+\RHitGraphTrace{RandomRead}{0}{20}
+\\\RRuntimeGraphTrace{RandomRead}{0}{8000}
+\caption{Hit ratio and average runtime of the Random trace}
+\end{figure}
 \subsubsection{Calculating best cache in a specific configuration}
 Throughout the analysis of the read benchmarks the decision of what cache replacement algorithm to use is usually based upon the ``retrieval cost'', which is the time in nanoseconds that it takes to retrieve the value that is not cached. All of this is based around $r + c \cdot (1 - h)$, where $r$ is the average runtime (ns), $h$ is the hit ratio and $c$ is the retrieval cost. This formula is used to represent the average cost of retrieving a (possibly non-cached) value from a cache.
 \\\\
@@ -599,9 +813,6 @@ ch_b - ch_a = r_b - r_a
 \]\[
 c = \frac{r_b - r_a}{h_b - h_a}
 \]
-% TODO: Talk about how the algorithms are storing simply ``an object'', yet this is usually a key-value pair
-% TODO: Talk about how we are not talking about what happens if the cache does not find the object (cache aside & read through)
-% TODO: Read file:///D:/School/TI-3AS2/Bachelorproef/Bronnen/1-s2.0-S0140366400003121-main.pdf
 \chapter{Cache synchronization and event handling}
 \section{Event handling}
 When creating a mobile application on the Android, iOS or UWP platform, there are several different callbacks, used to respond to system changes and to the app lifecycle. In general there can be considered three different states the app can be in: \emph{running}, \emph{suspended} and \emph{not running}. There can be some specialized states in different platforms, yet these are not discussed in this thesis.
@@ -701,6 +912,5 @@ In general there are a few cases where very specific instructions must be follow
 %%---------- Back matter -------------------------------------------------
 
 \listoffigures
-\listoftables
 
 \end{document}

@@ -22,8 +22,7 @@
   Year                     = {2015},
 
   Owner                    = {Frederik},
-  Timestamp                = {2016.05.22},
-  Url                      = {https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/TheAppLifeCycle/TheAppLifeCycle.html}
+  Timestamp                = {2016.05.22}
 }
 
 @Article{battle2008bridging,

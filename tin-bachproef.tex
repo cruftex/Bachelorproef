@@ -114,10 +114,10 @@
 \newcommand{\datum}{29 mei 2015}
 
 % Faculteit
-\newcommand{\faculteit}{Faculteit Bedrijf en Organisatie}
+\newcommand{\faculteit}{Faculty Business \& Information Management}
 
 % Soort rapport
-\newcommand{\rapporttype}{Scriptie voorgedragen tot het bekomen van de graad van\\Bachelor in de toegepaste informatica}
+\newcommand{\rapporttype}{Bachelor's thesis submitted to achieve the degree of\\Bachelor in the Applied Computer Science}
 
 % Academiejaar
 \newcommand{\academiejaar}{2015-2016}
@@ -126,7 +126,7 @@
 %  - 1e semester = 1e examenperiode
 %  - 2e semester = 2e examenperiode
 %  - tweede zit = 3e examenperiode
-\newcommand{\examenperiode}{Tweede examenperiode}
+\newcommand{\examenperiode}{Examination period 2}
 
 %%========================================================================
 %% Inhoud document
@@ -151,10 +151,10 @@
     \rapporttype\\[2cm]
     Promotor:\\
     \promotor\\
-    Co-promotor:\\
+    Copromotor:\\
     \copromotor\\[2.5cm]
-    Instelling: \instelling\\[.5cm]
-    Academiejaar: \academiejaar\\[.5cm]
+    Organisation: \instelling\\[.5cm]
+    Academic year: \academiejaar\\[.5cm]
     \examenperiode
     \endgroup
 
@@ -180,10 +180,10 @@
     \rapporttype\\[2cm]
     Promotor:\\
     \promotor\\
-    Co-promotor:\\
+    Copromotor:\\
     \copromotor\\[2.5cm]
-    Instelling: \instelling\\[.5cm]
-    Academiejaar: \academiejaar\\[.5cm]
+    Organisation: \instelling\\[.5cm]
+    Academic year: \academiejaar\\[.5cm]
     \examenperiode
     \endgroup
 
@@ -192,18 +192,17 @@
 \end{titlepage}
 
 \begin{abstract}
-% TODO: De "abstract" of samenvatting is een kernachtige (max 1 blz. voor een
-% thesis) synthese van het document. In ons geval beschrijf je kort de
-% probleemstelling en de context, de onderzoeksvragen, de aanpak en de
-% resultaten.
-  \lipsum[1-4]
+When discussing caching, one might think about large, optimized systems like servers or very low-level systems where efficiency is the main priority, like processors, yet regular-sized can be easily forgotten. In this paper the usages of a cache in mobile applications are discovered and is divided in three research questions. The main research question is what cache replacement algorithms can be used in a mobile application to provide efficient caching. To answer this question, several performant and popular cache replacement algorithms are discussed and are then benchmarked in an Android application. These results are then collected and analysed to decide which of the cache replacement algorithms is the best. Next is dicussed how this cache can be synchronized with the backend, to make sure that the objects used on the client are not too outdated. This will be solely based on research and uses the knowledge of the first question to understand how and why some of these techniques can be used. Based on possible lifecycle events that can occur in mobile applications, synchronisation and cache management might have to adapt. Several noticeable lifecycle events will be considered from the most popular mobile platforms: Android, iOS and Windows (Phone). These two parts make the last chapter of this thesis.
 \end{abstract}
 
-\chapter*{Voorwoord}
+\chapter*{Preface}
 \label{ch:voorwoord}
-
-% TODO: Vergeet ook niet te bedanken wie je geholpen/gesteund/... heeft
-\lipsum[5-6]
+As the final part of my education at the College of Ghent, I had to write a thesis of a specific subject relevant to the domain I am studying: Applied Computer Science.
+I have been confronted with the power of caching before, in both bigger applications and mobile apps, so I was already familiar with the basics of caching. APIs using caches in mobile apps do, however, each have their own way of caching. This made me curious in the research that had been done to objectively determine the performance of caches in mobile applications. Yet I found no real research that really focussed on verifying the performance of caches on mobile devices, it was for this reason I decided to choose this subject as the subject of my thesis.
+\\\\
+I would like to thank my promotor Joeri Van Herreweghe and my copromotor Jens Buysse, for reviewing my work and for supporting me and the subject of this thesis. I would also like to thank my parents and sister for understanding and encouraging me and my education for all these years.
+\\\\
+It is recommended that the reader understands the basic concepts of programming. If the reader would like to really understand the code written to create the benchmark results used in this thesis, he/she should have decent knowledge of Java and basic knowledge of Android.
 
 \tableofcontents
 
@@ -223,8 +222,8 @@ reducing battery consumption, and can these results be used when a (temporary) c
 \\\\
 Lots of IT companies already implement such a system:
 \begin{itemize}
-\item The Facebook-app still shows several posts and pictures when the user has no internet connection;
-\item Third-party API's, such as Picasso (Android) and SDWebImage (iOS) retrieve images from the web and have an embedded caching system;
+\item The Facebook-app still shows several posts and pictures when the user has no internet connection.
+\item Third-party API's, such as Picasso (Android) and SDWebImage (iOS) retrieve images from the web and have an embedded caching system.
 \item Twitter allows the user to change account settings offline, which are later synchronized with the backend when a connection is established\footnotemark.
 \end{itemize}
 \footnotetext{This is more about persistent data, however it is used to store temporary data that can later be forgotten once it is synchronized with the backend. Just like a cache containing business data.}
@@ -243,27 +242,18 @@ They should be able to do this with an efficient method, customized to the needs
 \\\\Because of these reasons, the following questions will be answered in this article:
 \begin{itemize}
 \item How can a caching strategy efficiently store and fetch data in a native mobile application?
-\item What life-cycle events should be considered and how can they react to these events?
+\item How can the cache be updated or changed based on lifecycle events in mobile applications?
 \item How can the cache be synchronized with the external data service (backend)?
 \end{itemize}
 \chapter{Methodology}
 \label{ch:methodology}
-First, a literature study will take place about caching in general: what concepts and principles are used? Which steps can be differentiated when interacting with a cache? What are some common techniques? Some of these will later be revisited and possibly simplified, to use them on a mobile device.
+First, a literature study has taken place about caching in general: what concepts and principles are used? Which steps can be differentiated when interacting with a cache? What are some common techniques? Some of these were later revisited to test them on a mobile device.
 \\\\
-At the same time, research can be done defining which events are commonly handled by a mobile native application. However the case study will be performed in the Android platform, it is important to consider all platforms (Android, iOS, Windows) and how each of them handles these events.
+All these concepts and ideas are then tested in a case study, which will analyze the performance of a frontend Android application. The performance measurements are created by running benchmarks on several cache replacement algorithms with several different traces.
 \\\\
-After these first two steps, we can think about how the cache could respond to these different events and why and when this would be beneficial. Depending on the needs of the cache, the ultimate result should maintain the caches integrity, especially concerning business data. Possibly critical business data could be lost or even worse: wrong or insufficient business data could later be synchronized to and from the underlying data service.
+After the case study, the events that are commonly handled by a mobile native application are discussed and how they fit in with the bigger picture concerning caches. However the case study will be performed in the Android platform, it is important to consider all platforms (Android, iOS, Windows) and how each of them handles these events.
 \\\\
-Parallel with step 3, a literatur study concerning the synchronization between the frontend cache and the underlying data service will be done. What techniques are commonly used? What happens when there is two-way synchronization and there is conflicting data? Although this is partially out of the scope of the frontend developer, it is important that everyone has a clear view of what they can do to facilitate synchronization. The backend can influence frontend performance and the frontend can influence backend performance!
-\\\\
-All these concepts and ideas will then be tested in a case study, which will analyze the performance, from an frontend Android application and a backend Java EE application. 
-When talking about performance, this will be mainly about the performance benefits on the frontend. Performance benefits of caching in the backend is not in the scope of this thesis.
-% TODO: Hoe ben je te werk gegaan? Verdeel je onderzoek in grote fasen, en
-% licht in elke fase toe welke stappen je gevolgd hebt. Verantwoord waarom je
-% op deze manier te werk gegaan bent. Je moet kunnen aantonen dat je de best
-% mogelijke manier toegepast hebt om een antwoord te vinden op de
-% onderzoeksvraag.
-
+Last, a literature study concerning the synchronization between the frontend cache and the underlying data service was done. Although some part can be partially out of the scope of the frontend developer, it is important that everyone has a clear view of what they can do to facilitate synchronization. The backend can influence frontend performance and the frontend can influence backend performance.
 \chapter{Basics of caching}
 \label{ch:caching}
 A cache can be defined as a (fast) memory structure designed to reduce costs and improve speeds of computer operations.
@@ -333,6 +323,7 @@ the key of the value one would wish to access. \emph{The key passed to the funct
 \end{itemize}
 \citep{battle2008bridging} Note how these operations are defined on the database-level, software application level, and networking level. Also note how an interface of a cache should at least contain functions allowing the user to execute all CRUD-operations, yet they are not limited by them.
 \chapter{Cache replacement algorithms}
+\label{chap:caching_algorithms}
 With a concrete list of \emph{what} should be possible with caches, one can discuss \emph{how} this could all be implemented, the algorithms implementing a cache system are called \emph{cache replacement algorithms} or \emph{cache replacement policies}. Yet not just any cache replacement algorithm will do, it is an art to find the most optimal algorithm, the one that will provide the best (performance) results by interacting with it using CRUD-operations.
 Although most algorithms are only based on CRUD interactions with the cache, some algorithms can be run on separate processes/threads that are
 then responsible for maintaining the cache even without interactions with the user.
@@ -380,9 +371,10 @@ be replaced before the next \emph{global-flip}. If the cache is full it will loo
 \\\\
 \citep{guan2014wcet} Having discussed the basic MRU and LRU algorithms one can now respond to temporal localities with different characteristics.
 \section{LFU}
+\label{sec:LFU}
 LFU, acronym for Least Frequently Used, is a cache replacement algorithm that looks at how many times an object is accessed. This means that the object that has been accessed the least will be evicted when adding a new object to an already full cache. Just like MRU and LRU, this cache is only benefitial in specific scenario's.
 \\\\
-When creating a cache for a web server, static pages, images, css-files, etc. are stored in a cache. This cache will then be accessed with every request to check for its presence, before retrieving the file from some other slower source. One might think LRU is a good idea since the most popular, and therefore the most requested, objects will be present in the cache. This is true to some extent, yet only in some concrete scenario's. Imagine that the ``GET /index.html'' HTTP request would call $n$ different objects in the cache. If the LRU-cache were to have a maximum size limit $N$ such that $N < n$, the cache will be adding new elements to the cache to later remove it during the same request. This is where LFU might be more meaningfull, even with a maximum size limit $N < n$. The LFU algorithm will give a better ranking to common objects that would be accessed over lots of different request, say a logo or common CSS file.
+When creating a cache for a web server, static pages, images, css-files, etc. are stored in a cache. This cache will then be accessed with every request to check for its presence, before retrieving the file from some other slower source. One might think LRU is a good idea since the most popular, and therefore the most requested, objects will be present in the cache. This is true to some extent, yet only in some concrete scenario's. Imagine that the ``GET /index.html'' HTTP request would call $n$ different objects in the cache. If the LRU-cache were to have a maximum size limit $N$ such that $N < n$, the cache will be adding new elements to the cache to later remove it during the same request. This is where LFU might be more meaningful, even with a maximum size limit $N < n$. The LFU algorithm will give a better ranking to common objects that would be accessed over lots of different request, say a logo or common CSS file.
 \\\\
 There are several implementations of an LFU cache, yet the algorithm from \cite{shah20101} will be discussed, which ensures $\mathcal{O}(1)$.
 This implementation uses two data structures, (1) a hashmap where an element can be accessed in $\mathcal{O}(1)$, this is possible if the hash function used is an 
@@ -611,24 +603,102 @@ ch_b - ch_a = r_b - r_a
 \]\[
 c = \frac{r_b - r_a}{h_b - h_a}
 \]
-\section{Conclusion}
-In general, considering the cache replacement algorithms mentioned in section \ref{sec:cache_algorithms_benchmark} with the traces mentioned in section \ref{sec:traces} the best choice as a cache replacement algorithm in mobile applications is ARC. It provides the highest hit ratio in a myriad of traces while sacrificing its average runtime, ultimately being more time efficient than all the other algorithms, considering a retrieval cost $> 12\text{µs}$, which can be considered true if retrieving a non-cached value results in connecting to an external data service\footnote{This can easily be tested by performing a PING request to the external data service}.
-\\\\
-One of the downsides of both ARC and LIRS is that they can each store some more information concerning the users access history. LIRS contains a \emph{LIR stack} and ARC contains $B1$ and $B2$, yet depending on the implementation this overhead can be reduced. Therefore, if memory usage is the most vital factor to be considered one might want to consider either using ARC or LIRS with a slightly smaller cache size, or using another cache.
 % TODO: Talk about how the algorithms are storing simply ``an object'', yet this is usually a key-value pair
 % TODO: Talk about how we are not talking about what happens if the cache does not find the object (cache aside & read through)
 % TODO: Read file:///D:/School/TI-3AS2/Bachelorproef/Bronnen/1-s2.0-S0140366400003121-main.pdf
-\chapter{Cache synchronisation}
-
+\chapter{Cache synchronisation and event handling}
+\section{Event handling}
+When creating a mobile application on the Android, iOS or UWP platform, there are several different callbacks, used to respond to system changes and to the app lifecycle. In general there can be considered three different states the app can be in: \emph{running}, \emph{suspended} and \emph{not running}. There can be some specialized states in different platforms, yet these are not dicussed in this thesis.
+\\\\
+The \emph{running} state indicates that the app is in the foreground, the app is ``used'' by the user. When the app is suspended it is still present in memory, yet is no longer running on the foreground. The difference between \emph{suspended} and \emph{not running} is that the app is still in memory compared to \emph{not running}, where the app does not use any CPU and does not keep any memory. When the user closes the app, the app is first placed in \emph{suspended}, so that if the user wishes to open the app in the near future, it can be opened quickly and efficiently. Depending on the platform the app might go from \emph{running} to \emph{not running} immediately, for example if the app has crashed.
+\\\\
+For the app itself, there is no real distinction between being in the \emph{suspended} or in the \emph{not running} state. When Android closes an app, its process can either become a background or empty process where the \emph{onStop()} callback is invoked. Whether the app is still in memory or not shouldn't make a difference for the app if it correctly handles the lifecycle callbacks.
+\\\\
+When a UWP app is suspended it can handle this event by registering an event handler on the \emph{Application.Suspending} event. When handling the event, the app can persist important data that is currently only stored in memory, defer completion of asynchronous methods, etc. Later the suspended app might be completely closed, due to inactivity by the user or due to a lack of system resources. Either way, developers should always consider that a suspended app can be completely killed without any other intermediate event that can be handled.
+\\\\
+It is possible that an iOS app never receives any events before being destroyed, therefore they should always make sure that they persist possibly important information while the application is still running. Yet there are two callbacks that can signify state changes: \emph{applicationWillResignActive} and \emph{applicationWillTerminate}. When an app is about to change from the \emph{running} state to some other state. Usually this callback is used to let the app know it will become a background app, but it is also used when the OS is trying to suspend the app: it will first put the app in a background state and will then put the app in the \emph{suspended} state without any notification. A \emph{suspended} app will not be notified when its resources are cleared, if the app is not yet suspended when the OS is trying to clear its resources, \emph{applicationWillTerminate} will be called. Based on the way the OS uses both callbacks, they should both be used to prepare the app to close.
+\\\\
+Based on the available callbacks and the way they are invoked by the OS, it is clear that there should be no real distinction between being suspended or being closed, for the app itself. Therefore there will be two different application states that will be considered in this thesis: \emph{running} and \emph{not running}, where the app is \emph{running} if the app can execute code and has memory assigned to it and the app is \emph{not running} if it can not execute code and might not have memory \citep{events_android}, \citep{events_uwp}, \citep{events_ios}.
+\\\\
+The application state is however not the only event that can influence a cache, based on the way synchronization works and possible events in the backend this thesis will also consider the events below.
+\paragraph{Backend connectivity} The synchronization strategies used in this thesis all use a central backend. In order for the app to synchronize with this backend, it will need a connection, the connection used is arbitrary: WiFi, 4G, Blueooth, etc. As long as it is supported by both the app and the backend. There should therefore be event callbacks when losing or gaining backend connectivity.
+\paragraph{Insufficient network throughput} When lots of items are cached and there is a high synchronization overhead, there is a possibility that the backend connection is too slow or unreliable to efficiently synchronize all items in the cache. It can be interesting to the developer to know when this is happening, based on this the app could for example decide to remove objects from the cache that are synchronized but are not used by the user or to only synchronize a subset of the cached items.
+\paragraph{Insufficient memory} Considering some mobile devices have a very limited amount of memory and a cache could potentially use lots of memory, it is important to make sure that the cache does not become to big. How much memory a particular device will allocate to a single app depends on the device and OS and cannot (always) be determined during compilation.
+\section{Cache synchronisation}
+When using a cache on a client application, data cached by the client can sometimes be updated on the backing data service. When this occurs there should be a synchronisation mechanism that allows the cached data of the client to be updated to the new data present in the data service. How this data can be updated has already been discussed in chapter \ref{chap:caching_algorithms}.
+\subsection{Update moments}
+When to update the cache depends on the volatility of the cached data, the events that occur and the expiration model used, if the cached data is read-only session data, one might want to update the cache when a new session is opened. In other words, there is no single solution as to when the cache should be updated, yet one can argue that a low synchronization overhead is better than a high synchronization overhead if they both have the same results. The volatility of the cached data and the events that occur are typically outside the control of the developer, yet the expiration model can be optimized.
+\subsection{Expiration models}
+An expiration model is a way of checking whether the cached object has been changed or updated at the source, where the source is a backend, and whether the client should retrieve a newer version of this object. Several expiration models will be discussed in this section. All of these are a part of some system or protocol, yet they are explained in a fashion that allows for an arbitrary implementation.
+\subsubsection{Server-specified expirations}
+\label{sec:server_spec_expirations}
+This is one of the easiest ways to check the expiration of objects for the client. When requesting an object, the server will not only return the object, but will also return an expiration time, which could be anything the client can understand, e.g. a UNIX timestamp or a detailed zoned string. Although this is very easy for the client, this might not always be accurate as sometimes the expiration time can be an estimation. For objects that are updated at a fixed interval this would be very useful.
+\\\\
+Sometimes the expiration time is partially based on the client, in these scenario's it is more interesting to use an expiration model requiring participation of the client. If the expiration time cannot be exactly determined, the server uses a \emph{heuristic expiration}. If a heuristic expiration is the worst-case scenario, in other words, if the expiration time is the lowest date the backend can reliably determine, an expiration time could possibly be very different when requesting the same object later. If the last request results in a heuristic expiration time that is lower than that of the expiration time used in the cache, one should make sure to update the value in that cache. The cache replacement algorithm could then be a specialized cache that replaces the element that has the lowest expiration date, in other words, the element that will expire the soonest \citep{http_caching}.
+\\\\
+If the app is about to be stopped or suspended, the cache could be checked one last time for items that have expired or are nearly going to be expired. After this the app can persist the cache without cluttering the file, database, ... with items that will (most likely) be expired when restarting the app.
+\\\\
+When the backend connection is lost, the app cannot retrieve the updated value, yet it can independently determine whether a cache element is expired or not. Therefore if a new item should be added to the cache it can quickly decide which element to remove without any backend connection.
+\\\\
+If there is a backend connection, but insufficient network bandwidth, the cache can independently decide which cache elements should be refreshed and which should simply be removed from the cache or of which the older version should stay in the cache. Which elements these operations apply to are based on the cache replacement algorithm used, which might be a specialized cache that also looks at the expiration time of each element.
+\\\\
+The same principle applies when there is not enough memory to hold the entire cache. Based on the cache replacement algorithm it could remove elements optimized for some trace and could also be based on the expiration times. Note how elements that are expired or nearly expired can be removed regardless of the choices the cache replacement algorithm makes, if the cache should stay consistent. A consistent cache is a cache where the collection of elements is a subset of the collection of elements in the backend. In other words, every element in the cache is at any moment also an element in the backend, where two elements with the same content, yet with two different versions, are not the same.
+\subsubsection{Last-Modified}
+When the server cannot create a reliable (heuristic) expiration time, the client can send a request to the backend asking whether the object has been changed since the last time the object was actually retrieved. The actual implementation of this principle is arbitrary, HTTP implements using the \emph{Last-Modified} header. If the backend only responds with a yes or no answer, this might be inefficient as the client will need to send two separate requests. Therefore the responses could be altered to either send a very small response if the object has not changed or it could send the actual new object eliminating the need of sending a second request. Note how the client should then be prepared and able to possibly receive a new object.
+\\\\
+The app should have a reliable backend connection, as even simple expiration checks require an internet connection. The actual expiration checks are however very reliable, as the expiration checks are always up-to-date, compared to the server-specified expirations.
+\\\\
+The main overhead will be server-sided, as the server needs to know when each object has been changed. This means that the server should  know of every change to an object and should hold this in memory (or disk). With a multi-server architecture, where different servers are providing the same API and objects, these servers will need to inform each other with new changes that could have been done on a different server. It would also be possible to hold a timestamp in an ACID database, e.g. an SQL database, where the timestamp is the last time that record has been updated. If the requested object however uses different records, timestamps of each of these records should be checked \citep{http_caching}.
+\\\\
+Considering that closing an app should be done relatively quickly, it is not recommended to perform an expiration check on every cache element, as this can take relatively long depending on the connection throughput. Therefore, most of the time one would either persist the entire cache or persist nothing. When reopening the app afterwards expiration checks can be performed, possibly asynchronous or by using a loading screen.
+\\\\
+If there is no connection with the backend, the app cannot know which elements are up-to-date and which require a synchronization. Obviously, the app will also not be able to update certain elements. This means that the app completely depends on the backend and therefore there should always be a backend connection to keep a consistent cache.
+\\\\
+If the backend only sends yes-no responses, the app can perform expiration checks even with a very low network throughput. If the backend sends the new object instead of a simple no-response there should be a relatively high network throughput, as simple expiration checks can result in the retrieval of new objects. This means that if the entire cache is checked for expirations, the final result would automatically be a completely up-to-date cache.
+\\\\
+With insufficient memory, expiration checks can be a relatively expensive operation, possibly requiring more memory than there is available, therefore the app cannot always rely upon expiration checks and will mostly, or completely, be based on the choices of the cache replacement algorithm used.
+\subsubsection{Entity Tags}
+Entity tags are tags bound to some entity, when the client sends a request to the server to check whether the cached object is still valid, the entity tags of that object are send with it. The backend can then check whether the send entity tags are the same as the entity tags of the up-to-date object. These tags could be one or more hashes of the object, could be a UUID stored by the backend server or could be anything else. If the tags are solely based on the object itself, these tags could be generated on the client-side, removing some of the overhead on the backend, making it more scaleable. Note that if the probability of tag collisions is high, this method can become very unreliable, e.g. a hashing function having an image with a cardinality that is extremely small compared to the cardinality of the domain \citep{http_etag}.
+\\\\
+Entity tags can be seen as an abstraction of the Last-Modified expiration model, except that with the Last-Modified model, the tag (current timestamp) could be implicit. Which means that all event handling can be similar to the event handling of the Last-Modified expiration model described above.
+\subsubsection{Fuzzy expiration}
+Fuzzy expiration can be used if there are still too much cached values that have already been updated in the backend application. Fuzzy expiration uses additional metrics to decide which of the expired cached objects should be replaced. The expiration models in the previous sections use a \emph{Boolean freshness}, which means that the object should either be synchronized or it is should not. More fuzzy expiration models can use the number of changes that have been done on the backend since retrieving the object or can use value deviation as mentioned by \cite{olston2002best}.
+\\\\
+In this expiration model, the backend does not answer with a yes or no answer, but it responds with a value indicating how different the backend version of the object is compared to the cached version. The object space $O$, being the space in which all cacheable objects reside, is a metric space (without enforcing the triangle inequality axiom) where the result returned by the backend is the result of applying the objects on the metric $M$: the distance $d$. The app could then decide to replace those elements with the highest distance and keep those with a lower distance.
+\\\\
+If $M$ is a strictly increasing function through time, meaning $d$ can only increment through time, the distances can be stored and based on those, several elements could be removed from the cache before persisting the cache due to the app being closed. If $\frac{\delta D}{\delta o}$ can be approximated, where $o$ is the cached object, the app could also deduce which elements should no longer be kept in the cache when relaunching the app. This could even simply be a constant function of the average increasing distance value:
+\[
+\forall x \in O, \frac{\delta D}{\delta o_t}(x) = \frac{D(o_t, o_0)}{2}
+\]
+where $o_0$ is the initial object and $o_t$ is the object at time $t$.
+\\\\
+Just like when closing the app, the app is able to guess which elements should be removed from the cache and which should be kept when there is no connection with the backend. If the cache must be consistent at all times, this technique cannot be used, except if there is a reliable prediction function for the worst-case scenario, where the worst-case scenario is the scenario where the expiration (distance) increases the quickest. Note how simply setting the worst-case scenario to an immediate expiration is a trivial solution that every other expiration model can also do by simply truncating the cache.
+\\\\
+With insufficient network throughput, the app can decide to replace those elements with the highest distance and the app might still be able to do expiration checks on certain elements. With insufficient memory throughput, the app might not be able to predict the current distance if this requires too much processing. If this is the case, the app can remove elements based on the distance or can use a simplified distance predication, for example by using the average distance increase per time unit.
+\subsection{Combining expiration models with cache replacement algorithms}
+Every expiration model is based on the replacement or removal of elements based on their expiration, yet this conflicts with the cache replacement algorithm used. It is after all the cache replacement algorithm that should decide which elements should be replaced, resulting in a high hit ratio based on the trace and the cache replacement algorithm used. The expiration model approach also results in a linear time complexity, where every expiration check requires a new network connection, with the exception being the server-specified expiration and possibly the fuzzy expiration if a suitably reliable pattern can be detected.
+\\\\
+The proposed approach would be a combination of the two, where the cache replacement algorithm provides a high hit ratio and the expiration model makes sure that the cache stays suitably up-to-date. The cache replacement algorithm should however be the first system selecting an eviction candidate, the expiration model could then have the veto right, where it can decide not to remove the candidate selected by the cache replacement algorithm. This solution could allow the cache to keep a high hit ratio depending on the trace and the expiration checks should not be executed linearly, but should only be done on the eviction candidates.
+\\\\
+It is however still important that frequently accessed items are also synchronized with the backend, to solve this, the expiration model can asynchronously retrieve updated versions of cache elements and update these elements by their newer versions when the backend has responded. This could also have a linear time complexity, however this is done asynchronously, possibly while the user is doing nothing. It is a background maintenance task not influencing the responsiveness of the app, yet keeps the cache suitably up-to-date.
+\subsection{Specialized caches}
+To avoid frequent cache synchronization, one could create several separate caches which might be used together throughout the application. The granularity can then be defined by the volatility and locality of reference. For example: imagine a blog where readers can post comments on a specific blog post, these comments have a message, an author and a timestamp, which cannot be changed after the message is committed/send to the server. When the mobile app for this blog is used, there exist two separate caches: one for authors and one for blog comments. The author is a piece of data that is bound to some key and is completely useless separately (in the use case discussed in this section). It is a blog comment, present in the blog comment cache, that links the author to a message and timestamp and gives it meaning. The volatility of the author is very low, as it can be seen as an immutable atomic piece of data. In the backend, the only changing elements are the blog comments.
+\\\\
+When the cache of authors is full, a possible decent replacement algorithm is an algorithm that replaces that element that is accessed the least frequently: LFU\footnote{See section \ref{sec:LFU}}. The messages are not stored in a separate cache as its reference history and lifecycle completely depends on that of the blog comment itself, that is, it cannot exist by itself like an author can. The cache replacement algorithm of the cache storing blog comments can be the algorithm most efficient for the trace that can represent the blog comments reference history, yet an educated guess could be the ARC replacement algorithm\footnote{See section \ref{ch:conclusion}}.
+This is an example of how there are different caches for different objects that each have their own cache replacement algorithm for optimal performance.
 \chapter{Conclusion}
 \label{ch:conclusion}
-
-% TODO: Trek een duidelijke conclusie, in de vorm van een antwoord op de
-% onderzoeksvra(a)g(en). Reflecteer kritisch over het resultaat. Zijn er
-% zaken die nog niet duidelijk zijn? Heeft het ondezoek geleid tot nieuwe
-% vragen die uitnodigen tot verder onderzoek?
-\lipsum[76-80]
-
+In general, considering the cache replacement algorithms mentioned in section \ref{sec:cache_algorithms_benchmark} with the traces mentioned in section \ref{sec:traces} the best choice as a cache replacement algorithm in mobile applications is ARC. It provides the highest hit ratio in a myriad of traces while sacrificing its average runtime, ultimately being more time efficient than all the other algorithms, considering a retrieval cost $> 12\text{µs}$, which can be considered true if retrieving a non-cached value results in connecting to an external data service\footnote{This can easily be tested by performing a PING request to the external data service}.
+\\\\
+One of the downsides of both ARC and LIRS is that they can each store some extra information concerning the users access history. LIRS contains a \emph{LIR stack} and ARC contains $B1$ and $B2$, yet depending on the implementation this overhead can be reduced. Therefore, if memory usage is the most vital factor, one might want to consider either using ARC or LIRS with a slightly smaller cache size, or using another cache replacement algorithm.
+\\\\
+Further research can be done towards benchmarking of memory usage on mobile applications. In this thesis the focus with the benchmarks is on runtime speed, yet some of the algorithms intrinsically use more memory than some other algorithms.
+\\\\
+In general, one can use the expiration models described in the HTTP protocol to decide when to update cached objects. Mainly depending on the available resources of the client device and the reliability of the backend connection a suitable expiration model can be chosen. The server-specified expiration allows for quick and completely autonomous expiration checks while using entity tags or the Last-Modified expiration model allows for more reliable expiration checks. The fuzzy expiration can be used to always keep a consistent cache, while it can still fall back to a semiconsistent cache independent of the backend connection. Note how multiple expiration models can be used simultaneously.
+\\\\
+In real world applications, a combination of an expiration model and a cache replacement algorithm will be used, to get a suitably up-to-date cache with a relatively high hit ratio. These combinations might require tweeking to get the optimal results, both should be able to make compromises and should know of each others existence. More research can be done to give more insight in which combinations might work and which are a bad idea.
+\\\\
+In general there are a few cases where very specific instructions must be followed to keep the cache in a reliable and efficient state. This is typically the case when updating a value that is already in the cache and when certain events occur on the device.
 \bibliographystyle{apa}
 \bibliography{tin-bachproef}
 
